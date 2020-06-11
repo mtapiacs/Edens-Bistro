@@ -1,7 +1,9 @@
-<?php require_once "./includes/dbConnect.php"; ?>
+<?php
+include_once "./includes/header.php";
+?>
 
-<h1>Hello planet</h1>
+dfasdfsadfsdfsdf
 
 <?php
-$conn->close();
+include_once "./includes/footer.php";
 ?>
