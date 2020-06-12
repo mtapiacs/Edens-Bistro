@@ -1,0 +1,76 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: "Rubik", sans-serif;
+}
+
+div {
+    text-align: center;
+}
+
+.color-primary {
+    color: #034c3c;
+}
+
+.color-secondary {
+    color: #b1b1b1;
+}
+
+.color-final {
+    color: #902923;
+}
+
+.color-rubik {
+    color: orange;
+}
+
+.navigation {
+    background-color: #034c3c;
+    padding: 1em;
+}
+
+/* REUSABLE CLASSES */
+.container {
+    max-width: 1800px;
+    width: 90%;
+    margin: 0 auto;
+    padding: 1.5em 0;
+}
+
+.navigation ul {
+    list-style: none;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+}
+
+.navigation li {
+    margin: 0 1em;
+    font-size: 1.2rem;
+    flex-basis: 100;
+}
+
+.navigation a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.navigation a:hover {
+    border-bottom: 0.5px solid #ffffff;
+}
+
+.navigation__main {
+    text-transform: uppercase;
+    color: #ffffff;
+    font-size: 1.2rem;
+    display: inline-block;
+    margin-right: auto;
+}
+
+.navigation__main:hover {
+    border-bottom: none;
+}
