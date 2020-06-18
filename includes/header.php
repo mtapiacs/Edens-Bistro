@@ -16,7 +16,7 @@
             <li><a href="#">Home</a></li>
             <li><a href="#">Events</a></li>
             <li><a href="#">Menu</a></li>
-            <li><a href="#">Reservation</a></li>
+            <li><a href="reservation.php">Reservation</a></li>
             <li><a href="#">Pickup</a></li>
             <li><a href="order.php">Order</a></li>
             <li><a href="logout.php">Logout</a></li>
