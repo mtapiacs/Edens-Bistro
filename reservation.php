@@ -15,16 +15,16 @@ include_once "./includes/header.php";
             <option value = "15seat">15 seat party room</option>
             </select> <br> <br>
 
-        <label class = "reservation_labels">Number of People:<label>
+        <label class = "reservation_labels">Number of People:</label>
         <input type = "number" name = "amount_people"> <br> <br>
 
-        <label class = "reservation_labels">Time:<label>
+        <label class = "reservation_labels">Time:</label>
         <input type = "time" name = "time_reservation"> <br> <br>
 
-        <label class = "reservation_labels">Phone Number:<label>
+        <label class = "reservation_labels">Phone Number:</label>
         <input type = "tel" name = "reservation_phone_number" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"> <br> <br>
 
-        <label class = "reservation_labels">Additional Instructions:<label>
+        <label class = "reservation_labels">Additional Instructions:</label>
         <input type = "textarea" name = "time_reservation"> <br> <br>
 
         <button type = "submit" value = "registration_submit" name = "registration_submit" >Submit</button>
