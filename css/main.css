@@ -1,3 +1,4 @@
+/*** CORE HTML ***/
 * {
     box-sizing: border-box;
     padding: 0;
@@ -6,12 +7,22 @@
 
 body {
     font-family: "Rubik", sans-serif;
+    overflow-y: scroll;
 }
 
-div {
-    text-align: center;
+/*** REUSABLE CLASSES ***/
+.main-container {
+    max-width: 1250px;
+    width: 90%;
+    margin: 0 auto;
+    padding: 5rem 0 0 0;
 }
 
+.bg-main-green {
+    background-color: #034c3c;
+}
+
+/* Colors */
 .color-primary {
     color: #034c3c;
 }
@@ -24,53 +35,29 @@ div {
     color: #902923;
 }
 
-.color-rubik {
-    color: orange;
+/* Typography */
+.page-header {
+    text-align: center;
+    font-weight: 300;
 }
 
-.navigation {
-    background-color: #034c3c;
-    padding: 1em;
+.lower-weight {
+    font-weight: 300;
 }
 
-/* REUSABLE CLASSES */
-.container {
-    max-width: 1800px;
-    width: 90%;
-    margin: 0 auto;
-    padding: 1.5em 0;
+/*** HOME ***/
+.carousel-image {
+    height: 500px;
+    object-fit: cover;
+    object-position: 50% 50%;
 }
 
-.navigation ul {
-    list-style: none;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: flex-start;
+.carousel-caption {
+    /* Additional CSS Properties For Better View */
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 12px;
 }
 
-.navigation li {
-    margin: 0 1em;
-    font-size: 1.2rem;
-    flex-basis: 100;
-}
-
-.navigation a {
-    color: #ffffff;
-    text-decoration: none;
-}
-
-.navigation a:hover {
-    border-bottom: 0.5px solid #ffffff;
-}
-
-.navigation__main {
-    text-transform: uppercase;
-    color: #ffffff;
-    font-size: 1.2rem;
-    display: inline-block;
-    margin-right: auto;
-}
-
-.navigation__main:hover {
-    border-bottom: none;
+.home-info {
+    text-align: justify;
 }
