@@ -17,7 +17,7 @@ include_once "./includes/header.php";
             </select> <br> <br>
 
             <label class="reservation_labels">Number of People:</label>
-            <input type="number" name="amount_people"> <br> <br>
+            <input type="number" name="amount_people" max = "40"> <br> <br>
 
             <label class="reservation_labels">Time:</label>
             <input type="time" name="time_reservation"> <br> <br>
