@@ -13,8 +13,8 @@ Eden's bistro is a restaurant located in NYC!
 
 ## Project Structure:
 
-├── **api** &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; # RESTful API Endpoints ([View](/api)) \
-├── **css** &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; # CSS Sheets ([View](/css)) \
+├── **api** &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; # RESTful API Endpoints ([View](./tree/master/api)) \
+├── **css** &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; # CSS Sheets ([View]()) \
 ├── **img** &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; # Image Files ([View](/img)) \
 ├── **includes** &nbsp; # Re-usable Scripts And Helpers ([View](/includes)) \
 ├── **js** &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; # JavaScript Files ([View](/js)) \
