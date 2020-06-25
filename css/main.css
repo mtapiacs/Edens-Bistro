@@ -35,6 +35,12 @@ body {
     color: #902923;
 }
 
+.btn-site-main {
+    color: white !important;
+    background-color: #034c3c !important;
+    border-color: #034c3c !important;
+}
+
 /* Typography */
 .page-header {
     text-align: center;
@@ -60,4 +66,10 @@ body {
 
 .home-info {
     text-align: justify;
+}
+
+/*** REGISTER ***/
+.form-container {
+    width: 90%;
+    max-width: 500px;
 }

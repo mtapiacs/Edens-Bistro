@@ -17,7 +17,7 @@ include_once "./includes/header.php";
             </select> <br> <br>
 
             <label class="reservation_labels">Number of People:</label>
-            <input type="number" name="amount_people" max = "40"> <br> <br>
+            <input type="number" name="amount_people" max="40"> <br> <br>
 
             <label class="reservation_labels">Time:</label>
             <input type="time" name="time_reservation"> <br> <br>
@@ -28,7 +28,7 @@ include_once "./includes/header.php";
             <label class="reservation_labels">Additional Instructions:</label>
             <input type="textarea" name="time_reservation"> <br> <br>
 
-            <button type="submit" value="registration_submit" name="registration_submit">Submit</button>
+            <button class="btn btn-site-main" type="submit" value="registration_submit" name="registration_submit">Submit</button>
         </form>
     </div>
 </main>
