@@ -18,6 +18,13 @@ body {
     padding: 5rem 0 0 0;
 }
 
+/* For Alerts */
+.notice {
+    width: 90%;
+    max-width: 500px;
+    margin: 2em auto 0 auto;
+}
+
 .bg-main-green {
     background-color: #034c3c;
 }
@@ -35,6 +42,7 @@ body {
     color: #902923;
 }
 
+/* Buttons */
 .btn-site-main {
     color: white !important;
     background-color: #034c3c !important;

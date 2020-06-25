@@ -1,5 +1,22 @@
 <?php
 include_once "./includes/header.php";
+
+if (isset($_POST["register-form"])) {
+    // $username = $_POST["username"];
+    // $password = $_POST["password"];
+
+    // $acceptedUsername = "ddec"; // TODO: Compare Against DB
+    // $acceptedPassword = "password";
+
+    // if ($username === $acceptedUsername && $password === $acceptedPassword) {
+    //     session_start();
+    //     $_SESSION["userId"] = $username; //* Would use user id
+    //     header("Location: index.php");
+    // } else {
+    //     $error = array("message" => "Wrong Username Or Password!");
+    // }
+    $error = array("message" => var_dump($_POST));
+}
 ?>
 
 <main class="main-container">
@@ -24,7 +41,7 @@ include_once "./includes/header.php";
             </div>
         </section>
 
-        <section id="register-address">
+        <section id="register-address" style="display:none;">
             <div class="form-group">
                 <label for="addressLineMain">Address 1</label>
                 <input class="form-control" type="text" name="addressLineMain" id="addressLineMain" required>
@@ -48,7 +65,11 @@ include_once "./includes/header.php";
             </div>
         </section>
 
-        <section id="register-password">
+        <section id="register-password" style="display:none;">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input class="form-control" type="text" name="username" id="username" required>
+            </div>
             <div class="form-group">
                 <label for="password">Password</label>
                 <input class="form-control" type="password" name="password" id="password" required>
@@ -58,7 +79,13 @@ include_once "./includes/header.php";
                 <input class="form-control" type="password" name="confirmPassword" id="confirmPassword" required>
             </div>
         </section>
+        <button id="register-btn" class="btn btn-block btn-site-main" name="register-form" type="submit">Register</button>
     </form>
+    <?php
+    if (isset($error)) {
+        echo "<div class='alert alert-danger notice' role='alert'>{$error['message']}</div>";
+    }
+    ?>
 </main>
 
 <?php
