@@ -17,13 +17,19 @@ include_once "./includes/header.php";
     <form method="POST" action="" class="form-container mx-auto mb-4">
 <!-- name -->
     <div class="form-group">
-        <label for="Name">Name:</label>
-        <input type="text" class="form-control" id="reservation_name" name = "reservation_name" required> 
+        <label for="reservation_name">Name:</label>
+        <input type="text" class="form-control" id="reservation_name" name = "reservation_name" placeholder = "John Doe" required> 
+    </div>
+ <!-- email -->
+    <div class="form-group">
+        <label for="reservation_email">Email:</label>
+        <input type="email" id="reservation_email" name="reservation_email" class = "form-control" placeholder="johndoe@example.com" required>
     </div>
 <!-- choosing a room -->
     <div class="form-group">
         <label for="reservation_room">Choose a room:</label>
-        <select name="reservation_rooms" class = "form-control" required>
+        <select name="reservation_rooms" id = "reservation_rooms" class = "form-control" required>
+          <option value="---">---</option>
           <option value="40seat">40 seat party room</option>
           <option value="newlywed">Newlywed Corner</option>
           <option value="15seat">15 seat party room</option>
@@ -36,19 +42,18 @@ include_once "./includes/header.php";
     </div>
 <!-- time of reservation -->
     <div class="form-group">
-        <label for="time_of_reservation">Time:</label>
-        <input type="time" class="form-control" id="reservation_time"   name = "reservation_time" min = "10:00" max = "22:00" required>
+        <label for="reservation_time">Time:</label>
+        <input type="time" class="form-control" id="reservation_time"   name = "reservation_time" min = "10:00" max = "22:00"  required>
         <small>Time Format: 12:30 PM</small>
     </div>
-  <!-- phonenumber -->
+<!-- phonenumber -->
     <div class="form-group">
-        <label for="reservation_phonenumber">Phonenumber:</label>
-        <input type="tel" class="form-control" id="reservation_phonenumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder = "123-456-7890" name = "reservation_phonenumber" required>
-        <small>Format: 123-456-7890</small>
+        <label for="reservation_phonenumber">Phone Number:</label>
+        <input type="tel" class="form-control" id="reservation_phonenumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder = "e.g. 555-555-5555" name = "reservation_phonenumber" required>
     </div>
 <!-- comments/questions -->
     <div class="form-group">
-        <label for="reservation_comment_ques">Additional comments & Questions:</label>
+        <label for="reservation_comment_ques">Additional Comments & Questions:</label>
         <textarea type="text" class="form-control" id="reservation_questions_comments"  name = "reservation_questions_comments"></textarea>
     </div>
 <!-- submit -->
