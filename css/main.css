@@ -48,6 +48,12 @@ body {
     background-color: #034c3c !important;
     border-color: #034c3c !important;
 }
+/*creates a smaller button of the main one*/
+.btn-sm{
+    color: white !important;
+    background-color: #034c3c !important;
+    border-color: #034c3c !important;
+}
 
 /* Typography */
 .page-header {
