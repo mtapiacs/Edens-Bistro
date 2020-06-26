@@ -8,10 +8,11 @@ include_once "./includes/header.php";
 <!--collapse was found from https://getbootstrap.com/docs/3.4/javascript/#collapse -->
     <div class="container">        
         <button class="btn btn-sm" type="button" data-toggle="collapse" data-target="#reservation_map" aria-expanded="false" aria-controls="reservation_map">Bistro Layout</button>
-        <div class="collapse" id="reservation_map"> <br>
-        <div class = text-center>
-        <img src="./img/reservation-map.jpg" class="d-block w-50" alt="Map of bistro" style="display: none">
-        </div>
+            <div class="collapse" id="reservation_map"> <br>
+                <div class = text-center>
+                 <img src="./img/reservation-map.jpg" class="d-block w-50" alt="Map of bistro" style="display: none">
+                </div>
+            </div>
     </div>
     
     <form method="POST" action="" class="form-container mx-auto mb-4">
@@ -43,7 +44,7 @@ include_once "./includes/header.php";
 <!-- time of reservation -->
     <div class="form-group">
         <label for="reservation_time">Time:</label>
-        <input type="time" class="form-control" id="reservation_time"   name = "reservation_time" min = "10:00" max = "22:00"  required>
+        <input type="time" class="form-control" id="reservation_time" name = "reservation_time" min = "10:00" max = "22:00"  required>
         <small>Time Format: 12:30 PM</small>
     </div>
 <!-- phonenumber -->
