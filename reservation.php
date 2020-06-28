@@ -25,21 +25,12 @@ include_once "./includes/header.php";
             </div>
             <div class="col">
                 <img src="./img/reservation_map_2d.jpg" class="d-block w-50" alt="Map of bistro" style="display: none">
+                <img src="./img/reservation-map.jpg" class="d-block w-50" alt="Map of bistro" style="display: none">
             </div>
         </div>
     </div>
 </div>
 
-
-
-
-
-
-
-
-
-
-    
     <form method="POST" action="" class="form-container mx-auto mb-4">
 <!-- name -->
     <div class="form-group">
