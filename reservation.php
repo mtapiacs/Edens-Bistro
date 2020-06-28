@@ -30,16 +30,6 @@ include_once "./includes/header.php";
     </div>
 </div>
 
-
-
-
-
-
-
-
-
-
-    
     <form method="POST" action="" class="form-container mx-auto mb-4">
 <!-- name -->
     <div class="form-group">
