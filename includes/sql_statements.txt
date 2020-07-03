@@ -1,1 +1,0 @@
-This is a file that contains our SQL statements when creating our databases 
