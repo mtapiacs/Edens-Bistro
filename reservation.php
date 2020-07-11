@@ -10,19 +10,14 @@ include_once "./includes/header.php";
 <div class="container">
     <button class="btn btn-sm" type="button" data-toggle="collapse" data-target="#reservation_map" aria-expanded="false" aria-controls="reservation_map">Bistro Layout</button>
         <div class="collapse" id="reservation_map"> <br>
-            <div class="row">
                 <div class="col">
-                    <img src="./img/reservation_map_3d.jpg" class="d-block w-50" alt="Map of bistro" style="display: none">
+                    <div class = text-center">
+                        <img src="./img/reservation_map_2d.jpg" class="img-fluid" alt="Map of bistro"> 
+                    </div>
                 </div>
-                <div class="col">
-                    <img src="./img/reservation_map_2d.jpg" class="d-block w-50" alt="Map of bistro" style="display: none">
-                    <img src="./img/reservation-map.jpg" class="d-block w-50" alt="Map of bistro" style="display: none">
-                </div>
-            </div>
         </div>
 </div>
-
-    <form method="POST" action="" class="form-container mx-auto mb-4">
+<form method="POST" action="" class="form-container mx-auto mb-4">
 <!-- name -->
     <div class="form-group">
         <label for="reservation_name">Name:</label>
