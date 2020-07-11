@@ -8,21 +8,16 @@ include_once "./includes/header.php";
 <!--collapse was found from https://getbootstrap.com/docs/3.4/javascript/#collapse -->
  
 <div class="container">
-<button class="btn btn-sm" type="button" data-toggle="collapse" data-target="#reservation_map" aria-expanded="false" aria-controls="reservation_map">Bistro Layout</button>
-    <div class="collapse" id="reservation_map"> <br>
-        <div class="row">
-            <div class="col">
-                <img src="./img/reservation_map_3d.jpg" class="d-block w-50" alt="Map of bistro" style="display: none">
-            </div>
-            <div class="col">
-                <img src="./img/reservation_map_2d.jpg" class="d-block w-50" alt="Map of bistro" style="display: none">
-                <img src="./img/reservation-map.jpg" class="d-block w-50" alt="Map of bistro" style="display: none">
-            </div>
+    <button class="btn btn-sm" type="button" data-toggle="collapse" data-target="#reservation_map" aria-expanded="false" aria-controls="reservation_map">Bistro Layout</button>
+        <div class="collapse" id="reservation_map"> <br>
+                <div class="col">
+                    <div class = text-center">
+                        <img src="./img/reservation_map_2d.jpg" class="img-fluid" alt="Map of bistro"> 
+                    </div>
+                </div>
         </div>
-    </div>
 </div>
-
-    <form method="POST" action="" class="form-container mx-auto mb-4">
+<form method="POST" action="" class="form-container mx-auto mb-4">
 <!-- name -->
     <div class="form-group">
         <label for="reservation_name">Name:</label>
@@ -37,7 +32,7 @@ include_once "./includes/header.php";
     <div class="form-group">
         <label for="reservation_room">Choose a room:</label>
         <select name="reservation_rooms" id = "reservation_rooms" class = "form-control" required>
-          <option value="---">---</option>
+          <option value = "no_option">---</option>
           <option value="40seat">40 seat party room</option>
           <option value="newlywed">Newlywed Corner</option>
           <option value="15seat">15 seat party room</option>
@@ -65,7 +60,8 @@ include_once "./includes/header.php";
         <textarea type="text" class="form-control" id="reservation_questions_comments"  name = "reservation_questions_comments"></textarea>
     </div>
 <!-- submit -->
-    <button class="btn btn-block btn-site-main" name="reservation-form" type="submit">Submit</button>
+    <button class="btn btn-primary-color" name="reservation-form" type="submit">Submit</button>
+    <input type = "reset" class="btn btn-danger">
     </form>
 </main>
 
