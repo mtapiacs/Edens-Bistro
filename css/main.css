@@ -54,7 +54,18 @@ body {
     background-color: #034c3c !important;
     border-color: #034c3c !important;
 }
-
+/* large button design */
+.btn-lg {
+    color: white !important;
+    background-color: #034c3c !important;
+    border-color: #034c3c !important;
+}
+/* same color as the color scheme and is the same size as other buttons */
+.btn-primary-color{
+    color: white !important;
+    background-color: #034c3c !important;
+    border-color: #034c3c !important;
+}
 /* Typography */
 .page-header {
     text-align: center;

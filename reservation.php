@@ -32,7 +32,7 @@ include_once "./includes/header.php";
     <div class="form-group">
         <label for="reservation_room">Choose a room:</label>
         <select name="reservation_rooms" id = "reservation_rooms" class = "form-control" required>
-          <option value="---">---</option>
+          <option value = "no_option">---</option>
           <option value="40seat">40 seat party room</option>
           <option value="newlywed">Newlywed Corner</option>
           <option value="15seat">15 seat party room</option>
@@ -60,7 +60,8 @@ include_once "./includes/header.php";
         <textarea type="text" class="form-control" id="reservation_questions_comments"  name = "reservation_questions_comments"></textarea>
     </div>
 <!-- submit -->
-    <button class="btn btn-block btn-site-main" name="reservation-form" type="submit">Submit</button>
+    <button class="btn btn-primary-color" name="reservation-form" type="submit">Submit</button>
+    <input type = "reset" class="btn btn-danger">
     </form>
 </main>
 
