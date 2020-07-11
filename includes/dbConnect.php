@@ -2,12 +2,11 @@
 
 require_once "dbConfig.php";
 
-$conn = new mysqli($dbhost, $dbuser, $dbpassword, $dbname);
+$conn = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbname);
 
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+if (mysqli_connect_errno()) {
+    echo "Failed to connect to MySQL: " . mysqli_connect_error();
+    exit;
 }
-
-echo "Connected successfully";
 
 ?>

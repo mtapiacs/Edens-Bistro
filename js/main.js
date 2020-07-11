@@ -7,10 +7,51 @@ $(function () {
         $(this).addClass("active");
     });
 });
+// *************** REUSABLE *************** //
+const parseInput = type => {
+    if (type === "PHONE") {
+        const phoneElem = $("#phone");
+        const phoneElemVal = phoneElem.val();
+        if (phoneElemVal === "") {
+            return;
+        }
+        const tp = phoneElemVal.replaceAll("-", "");
+        const phoneParsed = `${tp.substring(0, 3)}-${tp.substring(
+            3,
+            6
+        )}-${tp.substring(6, 10)}`;
+        phoneElem.val(phoneParsed);
+    }
+};
 
 // *************** REGISTER *************** //
+const submitRegister = async () => {
+    const fields = $("input");
+    const postObj = {};
+
+    for (field of fields) {
+        postObj[field.id] = field.value;
+    }
+
+    const response = await fetch("./api/registerUser.php?type=REGISTER", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(postObj)
+    });
+
+    const data = await response.json();
+
+    if (data.message === "SUCCESS") {
+        location.replace("./login.php?registered");
+    } else {
+        // TODO: Send to register
+        alert("There was a problemo");
+    }
+};
+
 const handleNextPage = async (event, currentPage) => {
-    console.log(event);
     event.preventDefault();
 
     const validationData = await validateSection(currentPage);
@@ -20,7 +61,8 @@ const handleNextPage = async (event, currentPage) => {
         $(`#sec-${currentPage}`).hide();
 
         if (currentPage === 3) {
-            alert("At the end");
+            submitRegister();
+            return;
         }
 
         const nextPage = currentPage + 1;
@@ -47,7 +89,21 @@ const handleLastPage = currentPage => {
 const validateSection = async page => {
     // Temporary Promise Until Server Side Verification Is In place
     const promise = new Promise((resolve, reject) => {
-        setTimeout(() => resolve({ type: "SUCCESS" }), 1000);
+        setTimeout(() => resolve({ type: "SUCCESS" }), 500);
     });
     return promise;
+};
+
+const checkPasswordMatch = () => {
+    const passwordElem = $("#password");
+    const cPasswordElem = $("#confirmPassword");
+
+    // Trigger Errors If Passwords Don't Match
+    if (passwordElem.val() !== cPasswordElem.val()) {
+        passwordElem[0].setCustomValidity("Invalid field");
+        cPasswordElem[0].setCustomValidity("Invalid field");
+    } else {
+        passwordElem[0].setCustomValidity("");
+        cPasswordElem[0].setCustomValidity("");
+    }
 };

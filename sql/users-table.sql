@@ -7,5 +7,6 @@ CREATE TABLE users (
     phone VARCHAR(10) NOT NULL,
     password VARCHAR(255) NOT NULL,
    	username VARCHAR(255) NOT NULL UNIQUE,
-    FOREIGN KEY (user_id) REFERENCES addresses(address_id)
+    user_address INT NOT NULL,
+    FOREIGN KEY (user_address) REFERENCES addresses(address_id)
 );

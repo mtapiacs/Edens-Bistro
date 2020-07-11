@@ -2,5 +2,5 @@
 $dbhost = 'localhost';
 $dbuser = 'mtapia';
 $dbpassword = 'MiguelTapia';
-$dbname = 'mtasker';
+$dbname = 'cis431';
 ?>

@@ -1,6 +1,8 @@
 <?php
 include_once "./includes/header.php";
 
+$registered = isset($_GET["registered"]) ? true : false;
+
 if (isset($_POST["login-form"])) {
     $username = $_POST["username"];
     $password = $_POST["password"];
@@ -31,6 +33,8 @@ if (isset($_POST["login-form"])) {
         <button class="btn btn-block btn-site-main" name="login-form" type="submit">Login</button>
     </form>
     <?php
+    echo $registered ? "<div class='alert alert-dark notice' role='alert'>Sign in with registered values</div>" : "";
+
     if (isset($error)) {
         echo "<div class='alert alert-danger notice' role='alert'>{$error['message']}</div>";
     }
