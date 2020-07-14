@@ -9,3 +9,8 @@ CREATE TABLE reservations(
     phone_number VARCHAR(10) NOT NULL,
     comments_questions VARCHAR(255)    
 );
+
+ALTER TABLE reservations
+ADD FOREIGN KEY (room) REFERENCES rooms(room_id)
+
+-- SELECT * FROM `reservations` INNER JOIN rooms ON reservations.room = rooms.room_id;

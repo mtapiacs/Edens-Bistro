@@ -1,8 +1,7 @@
 CREATE TABLE orders (
-	order_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	customer INT NOT NULL,
-   // order_items INT NOT NULL,
+    order_id INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    order_status CHAR(1) NOT NULL, -- Index (Phpmyadmin ask sabal)
+    customer INT NOT NULL,
     transaction_id INT NOT NULL UNIQUE,
-	FOREIGN KEY (customer) REFERENCES users(user_id),
-   // FOREIGN KEY (order_items) REFERENCES order_items(order_item_id)
+    FOREIGN KEY (customer) REFERENCES user(user_id)
 );
