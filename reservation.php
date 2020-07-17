@@ -17,7 +17,7 @@ include_once "./includes/header.php";
                 </div>
         </div>
 </div>
-<form method="POST" action="" class="form-container mx-auto mb-4">
+<form method="POST" action= "includes/reservation.inc.php" class="form-container mx-auto mb-4">
 <!-- name -->
     <div class="form-group">
         <label for="reservation_name">Name:</label>
@@ -60,7 +60,7 @@ include_once "./includes/header.php";
         <textarea type="text" class="form-control" id="reservation_questions_comments"  name = "reservation_questions_comments"></textarea>
     </div>
 <!-- submit -->
-    <button class="btn btn-primary-color" name="reservation-form" type="submit">Submit</button>
+    <button class="btn btn-primary-color" name="reservation_submit" type="submit">Submit</button>
     <input type = "reset" class="btn btn-danger">
     </form>
 </main>
