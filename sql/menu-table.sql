@@ -6,6 +6,7 @@ CREATE TABLE menu (
     item_img VARCHAR(255) NOT NULL,
     take_out CHAR(1) NOT NULL,
     item_category INT NOT NULL,
+    FULLTEXT(item_name, item_desc),
     FOREIGN KEY (item_category) REFERENCES categories(category_id)
 );
 

@@ -1,6 +1,6 @@
 <?php
 $dbhost = 'localhost';
-$dbuser = 'root';
-$dbpassword = '';
-$dbname = 'cis431';
+$dbuser = 'mtapia';
+$dbpassword = 'MiguelTapia';
+$dbname = 'cis431-eden';
 ?>
