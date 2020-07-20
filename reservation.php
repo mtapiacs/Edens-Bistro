@@ -33,15 +33,15 @@ include_once "./includes/header.php";
         <label for="reservation_room">Choose a room:</label>
         <select name="reservation_rooms" id = "reservation_rooms" class = "form-control" required>
           <option value = "no_option">---</option>
-          <option value="40seat">40 seat party room</option>
+          <option value="40 seat">40 seat party room</option>
           <option value="newlywed">Newlywed Corner</option>
-          <option value="15seat">15 seat party room</option>
+          <option value="15 seat">15 seat party room</option>
          </select>
     </div>
 <!-- amount of people -->
     <div class="form-group">
         <label for="amount_of_people">Amount of people:</label>
-        <input type="number" class="form-control" id="amount_of_people" max = "40"  name = "amount_of_people" required>
+        <input type="number" class="form-control" id="amount_of_people" max = "40" min = "1" name = "amount_of_people" required>
     </div>
 <!-- time of reservation -->
     <div class="form-group">
