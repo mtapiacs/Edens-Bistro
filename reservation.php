@@ -43,6 +43,11 @@ include_once "./includes/header.php";
         <label for="amount_of_people">Amount of people:</label>
         <input type="number" class="form-control" id="amount_of_people" max = "40" min = "1" name = "amount_of_people" required>
     </div>
+<!-- date -->
+    <div class="form-group">
+        <label for="date">Date:</label>
+        <input type="date" class="form-control" id="reservation_date" name = "reservation_date" required>
+    </div>
 <!-- time of reservation -->
     <div class="form-group">
         <label for="reservation_time">Time:</label>
