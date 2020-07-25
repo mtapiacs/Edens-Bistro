@@ -104,26 +104,62 @@ body {
 }
 
 /** Menu **/
-.sidenav {
-    height: 100%;
-    width: 160px;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #034c3c;
-    overflow-x: hidden;
-    padding-top: 20px;
-}
-
-.sidenav a {
-    padding: 6px 8px 6px 16px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #ffffff;
-    display: block;
-}
-
-.sidenav a:hover {
-    color: #f1f1f1;
-}
+/* Style the tab */
+.tab {
+    overflow: hidden;
+    background-color: #fff;
+    color: #902923;
+  }
+  
+  /* Style the buttons inside the tab */
+  .tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 12px;
+    font-size: 1em;
+    color: #000 !important;
+  }
+  
+  /* Create an active/current tablink class */
+  .tab button.active {
+    color: #902923 !important;
+    font-weight: bold !important;
+  }
+  
+  /* Style the tab content */
+  .tabcontent {
+    display: none;
+    padding: 8px;
+    border-top: none;
+  }
+  
+  /*Style Menu Content */
+  .menu-content {
+    padding: 0 4px;
+    color: #000;
+  }
+  
+  /*Style list of menu items */
+  .menu-content ul {
+    list-style-type: none;
+    border-left: 2px solid #902923;
+    list-style-position: inside;
+    padding: 0 10px;
+    margin: 0;
+  }
+  
+  .menu-content li {
+    padding: 2px;
+  }
+  
+  .takeout {
+    color: #902923;
+  }
+  
+  .price {
+    padding: 6px;
+  }
+  
