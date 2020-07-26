@@ -107,8 +107,8 @@ body {
 /* Style the tab */
 .tab {
     overflow: hidden;
-    background-color: #fff;
-    color: #902923;
+    background-color: #902923;
+    color: #f1f1f1;
   }
   
   /* Style the buttons inside the tab */
@@ -125,8 +125,9 @@ body {
   
   /* Create an active/current tablink class */
   .tab button.active {
-    color: #902923 !important;
+    background-color: #000000aa !important;
     font-weight: bold !important;
+    color: #f1f1f1 !important;
   }
   
   /* Style the tab content */
@@ -142,25 +143,27 @@ body {
     color: #000;
   }
   
-  /*Style list of menu items */
-  .menu-content ul {
-    list-style-type: none;
-    border-left: 2px solid #902923;
-    list-style-position: inside;
-    padding: 0 10px;
-    margin: 0;
-  }
-  
-  .menu-content li {
-    padding: 2px;
-  }
-  
-  .takeout {
-    color: #902923;
-  }
-
-  
-  .price {
-    padding: 6px;
-  }
+  /*Style table of menu items */
+   .table-borderless td,
+   .table-borderless th {
+      border: 0 !important;
+   }
+   
+   .thead-dark {
+      background-color: #902923dd !important;
+   }
+   
+   th {
+      font-weight: bold !important;
+      color: #f1f1f1 !important;
+   }
+   
+   .tabcontent a {
+      text-decoration: none !important;
+   }
+   
+   .takeout {
+      color: #902923;
+      font-weight: bold;
+   }
   
