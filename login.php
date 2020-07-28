@@ -25,8 +25,8 @@ if (isset($_POST["login-form"])) {
 
     require "./includes/dbDisconnect.php";
 
-    $p_hashed = password_hash($p_in, PASSWORD_DEFAULT);
-    if (($u_in === $email || $u_in === $username) && ($p_hashed === $password)) {
+    $p_match = password_verify($p_in, $password);
+    if (($u_in === $email || $u_in === $username) && $p_match) {
         session_start();
         $_SESSION["userId"] = $user_id;
         header("Location: index.php");
