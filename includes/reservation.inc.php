@@ -14,7 +14,7 @@ if(isset($_POST['reservation_submit'])){
 
     //$sql = "INSERT INTO rooms(`room_name`, `room_desc`, `room_capacity`) VALUES ($room,'description',$num_people);";
     
-     $sql = "INSERT INTO reservations (`name`, `email`, `room`, `num_people`,`reservation_time`, `reservation_date`,`phone_number`,`comments_questions`)
+     $sql = "INSERT INTO reservations (name, email, room, num_people,reservation_time, reservation_date,phone_number,comments_questions)
             VALUES ($name,$email,$room,$num_people,$time,$date,$phonenum,$comments);";"
             )";
     mysqli_query($conn, $sql);
@@ -22,7 +22,7 @@ if(isset($_POST['reservation_submit'])){
 
     header("Location: ../reservation.php?reservation=success");
 
-// echo "$name , $email, $room, $num_people, $time, $date, $phonenum, $comments";
+//echo "$name , $email, $room, $num_people, $time, $date, $phonenum, $comments";
 }
 
 ?>

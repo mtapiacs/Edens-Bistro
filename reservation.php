@@ -33,9 +33,20 @@ include_once "./includes/header.php";
         <label for="reservation_room">Choose a room:</label>
         <select name="reservation_rooms" id = "reservation_rooms" class = "form-control" required>
           <option value = "no_option">---</option>
-          <option value="40 seat">40 seat party room</option>
+          <?php
+            require "./includes/dbConnect.php";
+
+            $query = "SELECT room_id, room_name FROM rooms";
+            $results = $conn-> query($query);
+
+            while($row = $results->fetch_assoc()){
+                echo "<option value = '{$row['room_id']}'>{$row["room_name"]}</option>";
+            }
+            //require "./includes/dbDisconnect.php";
+          ?>
+          <!-- <option value="40 seat">40 seat party room</option>
           <option value="newlywed">Newlywed Corner</option>
-          <option value="15 seat">15 seat party room</option>
+          <option value="15 seat">15 seat party room</option>-->
          </select>
     </div>
 <!-- amount of people -->
