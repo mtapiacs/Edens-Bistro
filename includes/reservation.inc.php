@@ -33,6 +33,7 @@ if(isset($_POST['reservation_submit'])){
 
     header("Location: ../reservation.php?reservation=success");
     exit();
+    
 //echo "$name , $email, $room, $num_people, $time, $date, $phonenum, $comments";
 
 

@@ -6,7 +6,7 @@ include_once "./includes/header.php";
     
     <h2 class="page-header">Make A Reservation</h2>
 <!--collapse was found from https://getbootstrap.com/docs/3.4/javascript/#collapse -->
- 
+            
 <div class="container">
     <button class="btn btn-sm" type="button" data-toggle="collapse" data-target="#reservation_map" aria-expanded="false" aria-controls="reservation_map">Bistro Layout</button>
         <div class="collapse" id="reservation_map"> <br>
@@ -16,7 +16,18 @@ include_once "./includes/header.php";
                     </div>
                 </div>
         </div>
-</div>
+</div> <br>
+<?php
+            if (isset($_GET['reservation'])){ 
+                if($_GET['reservation'] == "success"){
+                    echo"
+                    <div class='alert alert-success'>
+                        <strong>Success!</strong> Your reservation has been made successfully!
+                    </div>
+                    ";
+                }
+            }
+?>
 <form method="POST" action= "includes/reservation.inc.php" class="form-container mx-auto mb-4">
 <!-- name -->
     <div class="form-group">
