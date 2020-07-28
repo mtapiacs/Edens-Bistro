@@ -10,7 +10,7 @@ switch ($type) {
         $firstName = $postObj->firstName;
         $lastName = $postObj->lastName;
         $email = $postObj->email;
-        $phone = $postObj->phone;
+        $phone = str_replace("-", "", $postObj->phone);
 
         $addressLineMain = $postObj->addressLineMain;
         $addressLineSecondary = $postObj->addressLineSecondary;
@@ -19,44 +19,26 @@ switch ($type) {
         $zip = $postObj->zip;
 
         $username = $postObj->username;
-        $password = $postObj->password;
+        $password = hashPassword($postObj->password);
         $confirmPassword = $postObj->confirmPassword;
 
         require "../includes/dbConnect.php";
 
-        mysqli_autocommit($conn, FALSE);
+        // NOTE: Prepared Statements Used Inside Stored Procedure. The Procedure Leverages The Power Of Transactions.
+        $stmt = mysqli_prepare($conn, "CALL RegisterUser(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
+        mysqli_stmt_bind_param($stmt, "sssssssssss", $addressLineMain, $addressLineSecondary, $city, $state, $zip, $firstName, $lastName, $email, $phone, $password, $username);
 
-        if ($stmtAddress = mysqli_prepare($link, "INSERT INTO addresses (address_one, address_two, city, state, zip) VALUES (?, ?, ?, ?, ?);")) {
-            mysqli_stmt_bind_param($stmtAddress, "ssssss", $addressLineMain, $addressLineSecondary, $city, $state, $zip);
-            mysqli_stmt_execute($stmtAddress);
-            mysqli_stmt_bind_result($stmtAddress, $result);
-            mysqli_stmt_fetch($stmtAddress);
-            mysqli_stmt_close($stmtAddress);
-        }
-
-        $addressId = mysql_insert_id();
-
-        if ($stmtUser = mysqli_prepare($link, "INSERT INTO users (first_name, last_name, email, phone, password, username) VALUES (?, ?, ?, ?, ?, ?);")) {
-            mysqli_stmt_bind_param($stmtUser, "ssssss", $firstName, $lastName, $email, $phone, $password, $username);
-            mysqli_stmt_execute($stmtUser);
-            mysqli_stmt_bind_result($stmtUser, $result);
-            mysqli_stmt_fetch($stmtUser);
-            mysqli_stmt_close($stmtUser);
-        }
-
-
-
-        // Commit transaction
-        if (!$mysqli_commit($conn)) {
-            echo "Commit transaction failed";
-            exit();
-        }
-
+        $deleteRecord = mysqli_stmt_execute($stmt);
 
         require "../includes/dbDisconnect.php";
 
-        header('Content-type: application/json');
-        echo json_encode(array("message" => "SUCCESS"));
+        if ($deleteRecord === false) {
+            header('Content-type: application/json');
+            echo json_encode(array("message" => "FAIL"));
+        } else {
+            header('Content-type: application/json');
+            echo json_encode(array("message" => "SUCCESS"));
+        }
 
         return;
 
@@ -65,4 +47,27 @@ switch ($type) {
     default:
         $response = "You should not be here!";
         echo json_encode($response);
+}
+
+//***************** Validation *****************//
+// General / Contact Info
+function validatePage1()
+{
+}
+
+// Addresses
+function validatePage2()
+{
+}
+
+// User Data (Username, Passwords)
+function validatePage3()
+{
+}
+
+//***************** Helpers *****************//
+function hashPassword($incomingPassword)
+{
+    $hashedPassword = password_hash($incomingPassword, PASSWORD_DEFAULT);
+    return $hashedPassword;
 }
