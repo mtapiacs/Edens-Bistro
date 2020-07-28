@@ -6,7 +6,7 @@ include_once "./includes/header.php";
     
     <h2 class="page-header">Make A Reservation</h2>
 <!--collapse was found from https://getbootstrap.com/docs/3.4/javascript/#collapse -->
- 
+            
 <div class="container">
     <button class="btn btn-sm" type="button" data-toggle="collapse" data-target="#reservation_map" aria-expanded="false" aria-controls="reservation_map">Bistro Layout</button>
         <div class="collapse" id="reservation_map"> <br>
@@ -16,7 +16,18 @@ include_once "./includes/header.php";
                     </div>
                 </div>
         </div>
-</div>
+</div> <br>
+<?php
+            if (isset($_GET['reservation'])){ 
+                if($_GET['reservation'] == "success"){
+                    echo"
+                    <div class='alert alert-success'>
+                        <strong>Success!</strong> Your reservation has been made successfully!
+                    </div>
+                    ";
+                }
+            }
+?>
 <form method="POST" action= "includes/reservation.inc.php" class="form-container mx-auto mb-4">
 <!-- name -->
     <div class="form-group">
@@ -30,24 +41,40 @@ include_once "./includes/header.php";
     </div>
 <!-- choosing a room -->
     <div class="form-group">
-        <label for="reservation_room">Choose a room:</label>
+        <label for="reservation_rooms">Choose a room:</label>
         <select name="reservation_rooms" id = "reservation_rooms" class = "form-control" required>
           <option value = "no_option">---</option>
-          <option value="40seat">40 seat party room</option>
+          <?php
+            require "./includes/dbConnect.php";
+
+            $query = "SELECT room_id, room_name FROM rooms";
+            $results = $conn-> query($query);
+
+            while($row = $results->fetch_assoc()){
+                echo "<option value = '{$row['room_id']}'>{$row["room_name"]}</option>";
+            }
+            //require "./includes/dbDisconnect.php";
+          ?>
+          <!-- <option value="40 seat">40 seat party room</option>
           <option value="newlywed">Newlywed Corner</option>
-          <option value="15seat">15 seat party room</option>
+          <option value="15 seat">15 seat party room</option>-->
          </select>
     </div>
 <!-- amount of people -->
     <div class="form-group">
         <label for="amount_of_people">Amount of people:</label>
-        <input type="number" class="form-control" id="amount_of_people" max = "40"  name = "amount_of_people" required>
+        <input type="number" class="form-control" id="amount_of_people" max = "40" min = "1" name = "amount_of_people" required>
     </div>
 <!-- time of reservation -->
     <div class="form-group">
         <label for="reservation_time">Time:</label>
         <input type="time" class="form-control" id="reservation_time" name = "reservation_time" min = "10:00" max = "22:00"  required>
         <small>Time Format: 12:30 PM</small>
+    </div>
+<!-- date -->
+    <div class="form-group">
+        <label for="date">Date:</label>
+        <input type="date" class="form-control" id="reservation_date" name = "reservation_date" required>
     </div>
 <!-- phonenumber -->
     <div class="form-group">
@@ -60,7 +87,7 @@ include_once "./includes/header.php";
         <textarea type="text" class="form-control" id="reservation_questions_comments"  name = "reservation_questions_comments"></textarea>
     </div>
 <!-- submit -->
-    <button class="btn btn-primary-color" name="reservation_submit" type="submit">Submit</button>
+    <button class="btn btn-primary-color" name ="reservation_submit" type="submit">Submit</button>
     <input type = "reset" class="btn btn-danger">
     </form>
 </main>
