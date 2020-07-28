@@ -31,7 +31,7 @@ if (isset($_POST["login-form"])) {
         $_SESSION["userId"] = $user_id;
         header("Location: index.php");
     } else {
-        $error = array("message" => "Wrong Username Or Password!", "wrongUsername" => $username, "wrongPassword" => $password);
+        $error = array("message" => "Wrong Username Or Password!", "wrongUsername" => $username, "wrongPassword" => $p_in);
     }
 }
 ?>
