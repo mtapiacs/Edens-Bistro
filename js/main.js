@@ -95,11 +95,73 @@ const handleLastPage = currentPage => {
 
 //* Validate Inputs And Store In Server
 const validateSection = async page => {
-    // Temporary Promise Until Server Side Verification Is In place
-    const promise = new Promise((resolve, reject) => {
-        setTimeout(() => resolve({ type: "SUCCESS" }), 500);
-    });
-    return promise;
+    let data;
+    if (page === 1) {
+        const firstName = $("#firstName").val();
+        const lastName = $("#lastName").val();
+        const email = $("#email").val();
+        const phone = $("#phone").val();
+
+        data = await fetch(
+            `./api/registerUser.php?type=VALIDATE&page=${page}`,
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    firstName,
+                    lastName,
+                    email,
+                    phone
+                })
+            }
+        );
+    } else if (page === 2) {
+        const addressLineMain = $("#addressLineMain").val();
+        const addressLineSecondary = $("#addressLineSecondary").val();
+        const city = $("#city").val();
+        const state = $("#state").val();
+        const zip = $("#zip").val();
+
+        data = await fetch(
+            `./api/registerUser.php?type=VALIDATE&page=${page}`,
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    addressLineMain,
+                    addressLineSecondary,
+                    city,
+                    state,
+                    zip
+                })
+            }
+        );
+    } else if (page === 3) {
+        const username = $("#username").val();
+        const password = $("#password").val();
+        const confirmPassword = $("#confirmPassword").val();
+
+        data = await fetch(
+            `./api/registerUser.php?type=VALIDATE&page=${page}`,
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    username,
+                    password,
+                    confirmPassword
+                })
+            }
+        );
+    }
+
+    return await data.json();
 };
 
 const checkPasswordMatch = () => {
