@@ -25,10 +25,10 @@ Pages Located **HERE** At Root Level (_Ex: events.php_)
 ## Todo:
 
 -   [x] Create Boilerplate Including Pages
--   [ ] Clean up and finish login page, finish registration page, finish front landing (dynamic)
+-   [x] Clean up and finish login page, finish registration page, finish front landing (dynamic)
 -   [ ] Add favicon
 -   [ ] Download external libraries
--   [ ] Server side validation for registration
+-   [x] Server side validation for registration
 
 ## Sources:
 
