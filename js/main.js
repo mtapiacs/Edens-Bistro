@@ -177,3 +177,21 @@ const checkPasswordMatch = () => {
         cPasswordElem[0].setCustomValidity("");
     }
 };
+
+// *************** ORDER *************** //
+const addToCart = async itemId => {
+    const quantity = $(`#${itemId}-qty`).val();
+    const response = await fetch("./api/addToCart.php", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            itemId,
+            quantity
+        })
+    });
+    const data = await response.json();
+
+    location.reload();
+};

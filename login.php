@@ -29,6 +29,7 @@ if (isset($_POST["login-form"])) {
     if (($u_in === $email || $u_in === $username) && $p_match) {
         session_start();
         $_SESSION["userId"] = $user_id;
+        $_SESSION["cart"] = array();
         header("Location: index.php");
     } else {
         $error = array("message" => "Wrong Username Or Password!", "wrongUsername" => $username, "wrongPassword" => $p_in);
