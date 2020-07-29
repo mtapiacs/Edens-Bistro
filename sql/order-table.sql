@@ -3,5 +3,5 @@ CREATE TABLE orders (
     order_status CHAR(1) NOT NULL, -- Index (Phpmyadmin ask sabal)
     customer INT NOT NULL,
     transaction_id INT NOT NULL UNIQUE,
-    FOREIGN KEY (customer) REFERENCES user(user_id)
+    FOREIGN KEY (customer) REFERENCES users(user_id)
 );

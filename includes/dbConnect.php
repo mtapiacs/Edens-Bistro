@@ -1,6 +1,6 @@
 <?php
 
-require_once "dbConfig.php";
+require "dbConfig.php";
 
 $conn = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbname);
 

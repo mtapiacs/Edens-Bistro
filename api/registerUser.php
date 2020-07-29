@@ -11,6 +11,7 @@ switch ($type) {
             $response = array("type" => "FAIL", "message" => "You have an invalid value");
             header('Content-type: application/json');
             echo json_encode($response);
+            break;
         }
 
         $firstName = $postObj->firstName;
@@ -45,7 +46,7 @@ switch ($type) {
             echo json_encode(array("message" => "SUCCESS"));
         }
 
-        return;
+        break;
 
     case "VALIDATE":
         $page = (int)$_GET["page"];

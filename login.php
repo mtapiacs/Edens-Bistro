@@ -39,7 +39,7 @@ if (isset($_POST["login-form"])) {
     <h2 class="page-header">Login</h2>
     <form action="<?php $_SERVER["PHP_SELF"] ?>" method="POST" class="form-container mx-auto mb-4">
         <div class="form-group">
-            <label for="username">Username</label>
+            <label for="username">Username / Email</label>
             <input value="<?php echo isset($error) ? $error["wrongUsername"] : '' ?>" id="username" name="username" type="text" class="form-control" placeholder="johndoe" required />
         </div>
         <div class="form-group mb-4">
