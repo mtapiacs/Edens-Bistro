@@ -39,17 +39,20 @@ $currentPage = basename($_SERVER["PHP_SELF"]);
                 <li class="nav-item <?php echo $currentPage === "reservation.php" ? 'active' : '' ?>">
                     <a class="nav-link" href="reservation.php">Reservation</a>
                 </li>
-                <li class="nav-item dropdown <?php echo $currentPage === "order.php" ? 'active' : '' ?>">
+                <li class="nav-item <?php echo $currentPage === "order.php" ? 'active' : '' ?>">
+                    <a class="nav-link" href="order.php">Order</a>
+                </li>
+                <!-- <li class="nav-item dropdown <php echo $currentPage === "order.php" ? 'active' : '' ?>">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownOrder" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Orders
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownOrder">
-                        <a class="dropdown-item" href="order.php?place">Place Order</a>
-                        <a class="dropdown-item" href="order.php?status">Order Status</a>
+                        <a class="dropdown-item" href="order.php">Place Order</a>
+                        <a class="dropdown-item" href="order.php?a=status">Order Status</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="order.php?pickup">Pickup Status</a>
+                        <a class="dropdown-item" href="order.php?a=pickup">Pickup Status</a>
                     </div>
-                </li>
+                </li> -->
                 <li class="nav-item <?php echo $currentPage === "login.php" ? 'active' : '' ?>">
                     <?php
                     $isLoggedIn = false;
