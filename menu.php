@@ -1,6 +1,6 @@
 <?php
 include_once "./includes/header.php";
-require_once "./includes/dbConnect.php";
+require "./includes/dbConnect.php";
 ?>
 
 <main class="main-container">
