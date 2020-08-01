@@ -66,6 +66,14 @@ body {
     background-color: #034c3c !important;
     border-color: #034c3c !important;
 }
+
+/* button with the secondary color */
+.btn-secondary-color {
+   color: white !important;
+   background-color: #902923 !important;
+   border-color: #902923 !important;
+}
+
 /* Typography */
 .page-header {
     text-align: center;
@@ -140,6 +148,10 @@ body {
    
 .menucontent a:link, .menucontent a:visited, .menucontent a:hover, .menucontent td{
    color: #030E11;
+}
+
+.item-link:link,.item-link:visited,.item-link:hover {
+  color: #000000;
 }
    
 .desc {

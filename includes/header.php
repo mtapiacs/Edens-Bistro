@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap" rel="stylesheet">
-    <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAN6ZeADtXRQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACIAAAAAAAAAIgAAAAAAABEiEQAAAAAAESIRAAAAAAESIiEQAAAAESEiEhEAAAARESIREQAAABESIiERAAAAASEiEhAAAAAAESIRAAAAAAARIhEAAAAAAAEiEAAAAAAAAREQAAAAAAAAEQAAAAAAAAAAAAAAD//wAA/n8AAP5/AAD4HwAA+B8AAPAPAADgBwAA4AcAAOAHAADwDwAA+B8AAPgfAAD8PwAA/D8AAP5/AAD//wAA" rel="icon" type="image/x-icon" />
+    <link rel="icon" href="./img/EB2.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="./css/main.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
