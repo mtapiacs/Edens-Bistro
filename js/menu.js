@@ -1,3 +1,9 @@
+// *************** Menu *************** //
+$(".categories a").click(function (e) {
+    var a_href = $(this).attr("href");
+    e.preventDefault();
+});
+
 function openDiv(evt, menuCategory) {
     var i, menuItems;
 

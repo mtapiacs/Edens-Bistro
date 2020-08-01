@@ -28,7 +28,7 @@ require "./includes/dbConnect.php";
                 <tr>
                     <th scope="col">Name</th>
                     <th scope="col">Price</th>
-                    <th scope="col">Takeout</th>
+                    <th scope="col" class="takeout-header">Takeout</th>
                 </tr>
             </thead>
             <tbody>
@@ -93,7 +93,7 @@ require "./includes/dbConnect.php";
                 <tr>
                     <th scope="col">Name</th>
                     <th scope="col">Price</th>
-                    <th scope="col">Takeout</th>
+                    <th class="text-center" scope="col">Takeout</th>
                 </tr>
             </thead>
             <tbody>
@@ -105,7 +105,7 @@ require "./includes/dbConnect.php";
                         $itemname = $row['item_name'];
                         $itemprice = $row['item_price'];
                         $takeout = $row['take_out'];
-                        echo '<td><a class="item-link" href="#">' . $itemname . '</a></td><td>' . $itemprice . '</td><td><span class="takeout">' . $takeout . '</span></td></tr>';
+                        echo '<td><a class="item-link" href="#">' . $itemname . '</a></td><td>' . $itemprice . '</td><td class="text-center"><span class="takeout">' . $takeout . '</span></td></tr>';
                     }
                     ?>
             </tbody>

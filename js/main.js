@@ -1,9 +1,3 @@
-// *************** Menu *************** //
-$(".categories a").click(function (e) {
-    var a_href = $(this).attr("href");
-    e.preventDefault();
-});
-
 // *************** REUSABLE *************** //
 const parseInput = type => {
     if (type === "PHONE") {

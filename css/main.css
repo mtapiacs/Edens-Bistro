@@ -150,5 +150,10 @@ body {
    .takeout {
       color: #902923;
       font-weight: bold;
+      text-align: center;
+   }
+
+   .takeout-header {
+       text-align: center;
    }
   
