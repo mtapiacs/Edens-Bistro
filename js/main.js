@@ -41,13 +41,16 @@ const submitRegister = async () => {
         postObj[field.id] = field.value;
     }
 
-    const response = await fetch("./api/registerUser.php?type=REGISTER", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(postObj)
-    });
+    const response = await fetch(
+        "./api/register/registerUser.php?type=REGISTER",
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(postObj)
+        }
+    );
 
     const data = await response.json();
 
@@ -103,7 +106,7 @@ const validateSection = async page => {
         const phone = $("#phone").val();
 
         data = await fetch(
-            `./api/registerUser.php?type=VALIDATE&page=${page}`,
+            `./api/register/registerUser.php?type=VALIDATE&page=${page}`,
             {
                 method: "POST",
                 headers: {
@@ -125,7 +128,7 @@ const validateSection = async page => {
         const zip = $("#zip").val();
 
         data = await fetch(
-            `./api/registerUser.php?type=VALIDATE&page=${page}`,
+            `./api/register/registerUser.php?type=VALIDATE&page=${page}`,
             {
                 method: "POST",
                 headers: {
@@ -146,7 +149,7 @@ const validateSection = async page => {
         const confirmPassword = $("#confirmPassword").val();
 
         data = await fetch(
-            `./api/registerUser.php?type=VALIDATE&page=${page}`,
+            `./api/register/registerUser.php?type=VALIDATE&page=${page}`,
             {
                 method: "POST",
                 headers: {
@@ -181,7 +184,7 @@ const checkPasswordMatch = () => {
 // *************** ORDER *************** //
 const addToCart = async itemId => {
     const quantity = $(`#${itemId}-qty`).val();
-    const response = await fetch("./api/addToCart.php", {
+    const response = await fetch("./api/cart/addToCart.php", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
