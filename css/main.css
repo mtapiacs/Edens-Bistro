@@ -103,57 +103,52 @@ body {
     visibility: hidden;
 }
 
-   /** Menu **/
-  /* Style the menu categories */
-  .categories a {
-    float: left;
-    cursor: pointer;
-    padding: 0 4px 0 2px;
-    font-size: 1em;
-    color: #000 !important;
-    text-decoration: none;
-  }
+/*** Menu ***/
+/* Style the menu categories */
+.categories a {
+   float: left;
+   cursor: pointer;
+   padding: 0 4px 0 2px;
+   font-size: 1em;
+   color: #000 !important;
+   text-decoration: none;
+}
   
-  /* Create an active/current menu category */
-  .categories a.active {
-    font-weight: bold !important;
-    color: #902923 !important;
-    text-decoration: none;
-  }
-    
-   .menucontent {
-      float: left;
-      width: 100%;
-   }
-   
-  /*Style table of menu items */
-   .table-borderless td,
-   .table-borderless th {
-      border: 0 !important;
-   }
-   
-   th {
-      font-weight: bold !important;
-      color: #000 !important;
-      background-color: #902923;
-   }
-   
-   .item-link {
-      text-decoration: none !important;
-   }
-   
-   .desc {
-      font-size:1em;
-      font-style: italic;
-   }
-   
-   .takeout {
-      color: #902923;
-      font-weight: bold;
-      text-align: center;
-   }
+/* Create an active/current menu category */
+.categories a.active {
+   font-weight: bold !important;
+   color: #902923 !important;
+}
 
-   .takeout-header {
-       text-align: center;
-   }
-  
+/* Style the menu content */
+.menucontent {
+   float: left;
+   width: 100%;
+}
+   
+/*Style table of menu items */
+.table-borderless td,
+.table-borderless th {
+   border: 0 !important;
+}
+   
+.menucontent th {
+   font-weight: bold !important;
+   color: #f1f1f1 !important;
+   background-color: #902923;
+}
+   
+.item-link:link, .item-link:visited, .item-link:hover{
+   color: #030E11;
+}
+   
+.desc {
+   font-size:1em;
+   font-style: italic;
+   font-weight: bold;
+}
+   
+.takeout {
+   color: #902923;
+   font-weight: bold;
+}
