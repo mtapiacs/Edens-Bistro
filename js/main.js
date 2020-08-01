@@ -1,19 +1,25 @@
 // *************** Menu *************** //
+$(".categories a").click(function(e){
+   var a_href = $(this).attr('href');
+   e.preventDefault();
+ });
+ 
 function openDiv(evt, menuCategory) {
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-    document.getElementById(menuCategory).style.display = "block";
-    evt.currentTarget.className += " active";
+  var i, menuContent, menuItems;
+  menuContent = document.getElementsByClassName("menucontent");
+  for (i = 0; i < menuContent.length; i++) {
+    menuContent[i].style.display = "none";
+  }
+  menuItems = document.getElementsByClassName("menuitems");
+  for (i = 0; i < menuItems.length; i++) {
+    menuItems[i].className = menuItems[i].className.replace(" active", "");
+  }
+  document.getElementById(menuCategory).style.display = "block";
+  evt.currentTarget.className += " active";
 }
 // Get the element with id="defaultOpen" and click on it
-//document.getElementById("defaultOpen").click(); // This was causing some issues with the js
+
+document.getElementById("defaultOpen").click();
 
 // *************** REUSABLE *************** //
 const parseInput = type => {
@@ -98,6 +104,7 @@ const handleLastPage = currentPage => {
 
 //* Validate Inputs And Store In Server
 const validateSection = async page => {
+<<<<<<< HEAD
     let data;
     if (page === 1) {
         const firstName = $("#firstName").val();
@@ -165,6 +172,13 @@ const validateSection = async page => {
     }
 
     return await data.json();
+=======
+    // Temporary Promise Until Server Side Verification Is In place
+    const promise = new Promise((resolve, reject) => {
+        setTimeout(() => resolve({ type: "SUCCESS" }), 500);
+    });
+    return promise;
+>>>>>>> 3a88ef1097b23afaaaa1745c38ed8f96049a6b4b
 };
 
 const checkPasswordMatch = () => {
@@ -180,6 +194,7 @@ const checkPasswordMatch = () => {
         cPasswordElem[0].setCustomValidity("");
     }
 };
+<<<<<<< HEAD
 
 // *************** ORDER *************** //
 const addToCart = async itemId => {
@@ -198,3 +213,5 @@ const addToCart = async itemId => {
 
     location.reload();
 };
+=======
+>>>>>>> 3a88ef1097b23afaaaa1745c38ed8f96049a6b4b
