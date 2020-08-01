@@ -1,15 +1,40 @@
 <?php
 require "./includes/isAuthenticated.php";
+require "./api/payments/chargeCard.php";
 include_once "./includes/header.php";
 
 include_once "./includes/helpers/main.php";
-?>
 
-<?php
 if (isset($_POST["clean-cart"])) {
     $_SESSION["cart"] = array();
 } else if (isset($_POST["process-order"])) {
-    // TODO: Will Be Submitted From Form In Modal
+    // General Data
+    $chargeTotal = calculateCartTotal(); // Helper Function
+    $invoiceNo = getNextOrderId(); // Helper Function
+
+    // Card Data
+    $cardNumber = $_POST["cardNumber"];
+    $cvc = $_POST["cvc"];
+    $expirationYear = $_POST["expirationYear"];
+    $expirationMonth = $_POST["expirationMonth"];
+    $expirationComposed = "{$expirationYear}-{$expirationMonth}";
+    $reason = "Purchased food on Eden's Bistro";
+
+    // User Data
+    $userId = $_SESSION["userId"];
+    $userData = getUserData($userId); // Helper Function
+
+
+
+    // TODO:
+    // 1) Process Authorize
+    $response = chargeCreditCard($email, $cardNumber, $chargeTotal, $cvc, $expirationComposed, $invoiceNo, $userData, $reason);
+
+    // 2) Insert Into Orders Table (userId, transaction_id)
+
+    // 3) Insert Each Item Into Order Items Using order id from prev step
+
+
 }
 ?>
 
@@ -61,7 +86,50 @@ if (isset($_POST["clean-cart"])) {
                         </button>
                     </div>
                     <div class="modal-body">
-                        <!-- // TODO: Add Payment Stuff To Modal // -->
+                        <div class="row">
+                            <div class="col-9">
+                                <div class="form-group">
+                                    <label for="cardNumber">Card Number</label>
+                                    <input id="cardNumber" name="cardNumber" class="form-control" minlength="13" maxlength="19" placeholder="Ex: 5555555555554444" type="text" aria-label="Card Numbers Here" required="">
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-group">
+                                    <label for="cvc">CVC</label>
+                                    <input min="100" max="999" placeholder="123" id="cvc" name="cvc" type="number" class="form-control" required=""> </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="expirationYear">Year</label>
+                                    <select name="expirationYear" class="form-control" required>
+                                        <?php
+                                        $currentYear = date("Y"); // 2020 - 2010
+                                        echo "<option selected='true' disabled='disabled'>Select a year</option>";
+                                        for ($year = $currentYear; $year >= $currentYear - 10; $year--) {
+                                            echo "<option value='{$year}'>{$year}</option>";
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="expirationMonth">Month</label>
+                                    <select name="expirationMonth" class="form-control" required>
+                                        <?php
+                                        echo "<option selected='true' disabled='disabled'>Select a month</option>";
+                                        $months = array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+                                        foreach ($months as $idx => $month) {
+                                            $mIdx = $idx + 1;
+                                            echo "<option value='{$mIdx}'>{$month} - {$mIdx}</option>";
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>

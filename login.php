@@ -27,7 +27,9 @@ if (isset($_POST["login-form"])) {
 
     $p_match = password_verify($p_in, $password);
     if (($u_in === $email || $u_in === $username) && $p_match) {
-        session_start();
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
         $_SESSION["userId"] = $user_id;
         $_SESSION["cart"] = array();
         header("Location: index.php");

@@ -1,5 +1,6 @@
 <?php
 
+// ************** GENERIC ************** //
 function outputSession()
 {
     echo "<h2>Session Variable</h2>";
@@ -22,3 +23,53 @@ function outputSession()
         }
     }
 }
+
+// ************** ORDER PROCESSING ************** //
+function getUserData($userId)
+{
+    require "./includes/dbConnect.php";
+
+    // No Need For Prepared Statements, Since User Id Is Set On The Server On Session On Authentication
+    $sql = "SELECT * FROM users INNER JOIN addresses ON users.user_address = addresses.address_id WHERE user_id = {$userId};";
+    $result = mysqli_query($conn, $sql);
+
+    if (mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_assoc($result);
+        return $row;
+    } else {
+        return "";
+    }
+
+    require "./includes/dbDisconnect.php";
+}
+
+
+function getNextOrderId()
+{
+    require "./includes/dbConnect.php";
+
+    $sql = "SHOW TABLE STATUS LIKE 'orders';";
+    $result = mysqli_query($conn, $sql);
+
+    if (mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_assoc($result);
+        return $row["Auto_increment"];
+    } else {
+        return "";
+    }
+
+    require "./includes/dbDisconnect.php";
+}
+
+function calculateCartTotal()
+{
+    $cart = $_SESSION["cart"];
+
+    $chargeTotal = 0;
+    foreach ($cart as $item_id => $item_data) {
+        $chargeTotal += $item_data['total'];
+    }
+    return $chargeTotal;
+}
+
+// ************** () ************** //
