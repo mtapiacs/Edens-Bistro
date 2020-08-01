@@ -138,7 +138,7 @@ body {
    background-color: #902923;
 }
    
-.item-link:link, .item-link:visited, .item-link:hover{
+.menucontent a:link, .menucontent a:visited, .menucontent a:hover, .menucontent td{
    color: #030E11;
 }
    

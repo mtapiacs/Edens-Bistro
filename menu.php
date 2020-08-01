@@ -40,7 +40,7 @@ require "./includes/dbConnect.php";
                         $itemname = $row['item_name'];
                         $itemprice = $row['item_price'];
                         $takeout = $row['take_out'];
-                        echo '<a class="item-link" href="#"><td>' . $itemname . '</td><td>' . $itemprice . '</td><td class="text-center"><span class="takeout">' . $takeout . '</span></td></a></tr>';
+                        echo '<td><a href="#">' . $itemname . '</a></td><td>' . $itemprice . '</td><td class="text-center"><span class="takeout">' . $takeout . '</span></td></tr>';
                     }
                     ?>
             </tbody>
@@ -73,7 +73,7 @@ require "./includes/dbConnect.php";
                         $itemname = $row['item_name'];
                         $itemprice = $row['item_price'];
                         $takeout = $row['take_out'];
-                        echo '<a class="item-link" href="#"><td>' . $itemname . '</td><td>' . $itemprice . '</td><td class="text-center"><span class="takeout">' . $takeout . '</span></td></a></tr>';
+                        echo '<td><a href="#">' . $itemname . '</a></td><td>' . $itemprice . '</td><td class="text-center"><span class="takeout">' . $takeout . '</span></td></tr>';
                     }
                     ?>
             </tbody>
@@ -105,7 +105,7 @@ require "./includes/dbConnect.php";
                         $itemname = $row['item_name'];
                         $itemprice = $row['item_price'];
                         $takeout = $row['take_out'];
-                        echo '<a class="item-link" href="#"><td>' . $itemname . '</td><td>' . $itemprice . '</td><td class="text-center"><span class="takeout">' . $takeout . '</span></td></a></tr>';
+                        echo '<td><a href="#">' . $itemname . '</a></td><td>' . $itemprice . '</td><td class="text-center"><span class="takeout">' . $takeout . '</span></td></tr>';
                     }
                     ?>
             </tbody>
@@ -130,7 +130,7 @@ require "./includes/dbConnect.php";
                         $itemname = $row['item_name'];
                         $itemprice = $row['item_price'];
                         $takeout = $row['take_out'];
-                        echo '<a class="item-link" href="#"><td>' . $itemname . '</td><td>' . $itemprice . '</td><td class="text-center"><span class="takeout">' . $takeout . '</span></td></a></tr>';
+                        echo '<td><a href="#">' . $itemname . '</a></td><td>' . $itemprice . '</td><td class="text-center"><span class="takeout">' . $takeout . '</span></td></tr>';
                     }
                     ?>
             </tbody>
@@ -155,7 +155,7 @@ require "./includes/dbConnect.php";
                         $itemname = $row['item_name'];
                         $itemprice = $row['item_price'];
                         $takeout = $row['take_out'];
-                        echo '<a class="item-link" href="#"><td>' . $itemname . '</td><td>' . $itemprice . '</td><td class="text-center"><span class="takeout">' . $takeout . '</span></td></a></tr>';
+                        echo '<td><a href="#">' . $itemname . '</a></td><td>' . $itemprice . '</td><td class="text-center"><span class="takeout">' . $takeout . '</span></td></tr>';
                     }
                     ?>
             </tbody>
@@ -180,7 +180,7 @@ require "./includes/dbConnect.php";
                         $itemname = $row['item_name'];
                         $itemprice = $row['item_price'];
                         $takeout = $row['take_out'];
-                        echo '<a class="item-link" href="#"><td>' . $itemname . '</td><td>' . $itemprice . '</td><td class="text-center"><span class="takeout">' . $takeout . '</span></td></a></tr>';
+                        echo '<td><a href="#">' . $itemname . '</a></td><td>' . $itemprice . '</td><td class="text-center"><span class="takeout">' . $takeout . '</span></td></tr>';
                     }
                     ?>
             </tbody>
