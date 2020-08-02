@@ -7,7 +7,7 @@ use net\authorize\api\controller as AnetController;
 
 define("AUTHORIZENET_LOG_FILE", "phplog");
 
-function chargeCreditCard($email, $card, $charge, $cvc, $expiration, $invoiceNo, $client, $reason)
+function chargeCreditCard($card, $charge, $cvc, $expiration, $invoiceNo, $client, $reason)
 {
     //* MerchantAuthentication Info (KEY IN OBJ)
     $merchantAuthentication = new AnetAPI\MerchantAuthenticationType();
@@ -46,7 +46,7 @@ function chargeCreditCard($email, $card, $charge, $cvc, $expiration, $invoiceNo,
     $customerData = new AnetAPI\CustomerDataType();
     $customerData->setType("individual");
     $customerData->setId($client["user_id"]); // Use Email As Id
-    $customerData->setEmail($email);
+    $customerData->setEmail($client["email"]);
 
     // Transaction Settings
     $duplicateWindowSetting = new AnetAPI\SettingType();
@@ -65,7 +65,7 @@ function chargeCreditCard($email, $card, $charge, $cvc, $expiration, $invoiceNo,
     //* Transaction Request Data (KEY IN OBJ) => Before Items Added Beneath
     $transactionRequestType = new AnetAPI\TransactionRequestType();
     $transactionRequestType->setTransactionType("authCaptureTransaction");
-    $transactionRequestType->setAmount($charge);
+    $transactionRequestType->setAmount(number_format($charge, 2, '.', '') . ""); // https://github.com/AuthorizeNet/sdk-php/issues/366
     $transactionRequestType->setOrder($order);
     $transactionRequestType->setPayment($paymentOne);
     $transactionRequestType->setBillTo($customerAddress);
@@ -101,7 +101,7 @@ function chargeCreditCard($email, $card, $charge, $cvc, $expiration, $invoiceNo,
                     "description" => $tresponse->getMessages()[0]->getDescription()
                 );
 
-                return $responseObj["transactionId"];
+                return $responseObj;
             } else {
                 $responseObj = array(
                     "type" => "failed",

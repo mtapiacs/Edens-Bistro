@@ -18,15 +18,16 @@ Eden's bistro is a restaurant located in NYC!
 ├── **img** &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; # Image Files ([View](img/)) \
 ├── **includes** &nbsp; # Re-usable Scripts And Helpers ([View](includes/)) \
 ├── **js** &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; # JavaScript Files ([View](js/)) \
-├── **sql** &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; # SQL Files For Database Design ([View](sql/))
+├── **sql** &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; # SQL Files For Database Design ([View](sql/)) \
+├── **vendor** &nbsp; &nbsp; # External Dependencies ([View](vendor/))
 
 Pages Located **HERE** At Root Level (_Ex: events.php_)
 
-## Todo:
+## General Todo:
 
 -   [x] Create Boilerplate Including Pages
 -   [x] Clean up and finish login page, finish registration page, finish front landing (dynamic)
--   [ ] Add favicon
+-   [x] Add favicon
 -   [ ] Download external libraries
 -   [x] Server side validation for registration
 

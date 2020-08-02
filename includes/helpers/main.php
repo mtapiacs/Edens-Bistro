@@ -69,7 +69,21 @@ function calculateCartTotal()
     foreach ($cart as $item_id => $item_data) {
         $chargeTotal += $item_data['total'];
     }
+
     return $chargeTotal;
+}
+
+function composeCartInsertString($orderId)
+{
+    $cart = $_SESSION["cart"];
+    $sqlInsertString = "";
+
+    foreach ($cart as $itemId => $itemData) {
+        $qty = $itemData['quantity'];
+        $sqlInsertString .= "INSERT INTO order_items (quantity, order_id, menu_item_id) VALUES ($qty, $orderId, $itemId); ";
+    }
+
+    return $sqlInsertString;
 }
 
 // ************** () ************** //
