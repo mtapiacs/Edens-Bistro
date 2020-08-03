@@ -37,24 +37,7 @@ require "./includes/dbConnect.php";
                     $q = "SELECT item_id, item_name, item_price, item_desc, take_out FROM menu WHERE item_category = 8;";
                     $result = $conn->query($q);
                     while ($row = $result->fetch_assoc()) {
-                        echo '<td><a href="#" data-toggle="modal" data-target="#addToCartModal">' . $row['item_name'] . '</a></td><td>' . $row['item_price'] . '</td><td class="text-center"><span class="takeout">' . $row['take_out'] . '</span></td></tr>
-                        <div class="modal fade" id="addToCartModal" role="dialog">
-                                 <div class="modal-dialog">
-                                    <div class="modal-content">
-                                       <div class="modal-header">
-                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                          <h4 class="modal-title">'.$row['item_name'].'</h4>
-                                       </div>
-                                       <div class="modal-body">
-                                          <p>'.$row['item_desc'].'<br>'. $row['item_price'].'</p>
-                                       </div>
-                                       <div class="modal-footer">
-                                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                          <button id="cartBtn" type="button" class="btn btn-secondary-color" data-dismiss="modal">Add to Cart</button>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>';
+                        echo '<td class="name"><a href="#addToCartModal" data-toggle="modal">' . $row['item_name'] . '</a></td><td class="price">' . $row['item_price'] . '</td><td class="text-center"><span class="takeout">' . $row['take_out'] . '</span></td></tr>';
                     }
                     ?>
                     
@@ -82,27 +65,10 @@ require "./includes/dbConnect.php";
             <tbody>
                 <tr>
                     <?php
-                    $q = "SELECT item_name, item_price, take_out FROM menu WHERE item_category = 9;";
+                    $q = "SELECT item_name, item_desc, item_price, take_out FROM menu WHERE item_category = 9;";
                     $result = $conn->query($q);
                     while ($row = $result->fetch_assoc()) {
-                        echo '<td><a href="#" data-toggle="modal" data-target="#addToCartModal">' . $row['item_name'] . '</a></td><td>' . $row['item_price'] . '</td><td class="text-center"><span class="takeout">' . $row['take_out'] . '</span></td></tr>
-                        <div class="modal fade" id="addToCartModal" role="dialog">
-                                 <div class="modal-dialog">
-                                    <div class="modal-content">
-                                       <div class="modal-header">
-                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                          <h4 class="modal-title">'.$row['item_name'].'</h4>
-                                       </div>
-                                       <div class="modal-body">
-                                          <p>'.$row['item_desc'].'<br>'. $row['item_price'].'</p>
-                                       </div>
-                                       <div class="modal-footer">
-                                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                          <button id="cartBtn" type="button" class="btn btn-secondary-color" data-dismiss="modal">Add to Cart</button>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>';
+                        echo '<td class="name"><a href="#addToCartModal" data-toggle="modal">' . $row['item_name'] . '</a></td><td class="price">' . $row['item_price'] . '</td><td class="text-center"><span class="takeout">' . $row['take_out'] . '</span></td></tr>';
                     }
                     ?>
             </tbody>
@@ -128,27 +94,10 @@ require "./includes/dbConnect.php";
             <tbody>
                 <tr>
                     <?php
-                    $q = "SELECT item_name, item_price, take_out FROM menu WHERE item_category = 1;";
+                    $q = "SELECT item_name, item_desc, item_price, take_out FROM menu WHERE item_category = 1;";
                     $result = $conn->query($q);
                     while ($row = $result->fetch_assoc()) {
-                        echo '<td><a href="#" data-toggle="modal" data-target="#addToCartModal">' . $row['item_name'] . '</a></td><td>' . $row['item_price'] . '</td><td class="text-center"><span class="takeout">' . $row['take_out'] . '</span></td></tr>
-                        <div class="modal fade" id="addToCartModal" role="dialog">
-                                 <div class="modal-dialog">
-                                    <div class="modal-content">
-                                       <div class="modal-header">
-                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                          <h4 class="modal-title">'.$row['item_name'].'</h4>
-                                       </div>
-                                       <div class="modal-body">
-                                          <p>'.$row['item_desc'].'<br>'. $row['item_price'].'</p>
-                                       </div>
-                                       <div class="modal-footer">
-                                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                          <button id="cartBtn" type="button" class="btn btn-secondary-color" data-dismiss="modal">Add to Cart</button>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>';
+                        echo '<td class="name"><a href="#addToCartModal" data-toggle="modal">' . $row['item_name'] . '</a></td><td class="price">' . $row['item_price'] . '</td><td class="text-center"><span class="takeout">' . $row['take_out'] . '</span></td></tr>';
                     }
                     ?>
             </tbody>
@@ -156,45 +105,28 @@ require "./includes/dbConnect.php";
     </div>
 
     <div id="sides" class="menucontent">
-        <table class="table table-borderless">
-            <thead>
-                <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Price</th>
-                    <th scope="col" class="text-center">Takeout</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <?php
-                    $q = "SELECT item_name, item_price, take_out FROM menu WHERE item_category = 10;";
-                    $result = $conn->query($q);
-                    while ($row = $result->fetch_assoc()) {
-                        echo '<td><a href="#" data-toggle="modal" data-target="#addToCartModal">' . $row['item_name'] . '</a></td><td>' . $row['item_price'] . '</td><td class="text-center"><span class="takeout">' . $row['take_out'] . '</span></td></tr>
-                        <div class="modal fade" id="addToCartModal" role="dialog">
-                                 <div class="modal-dialog">
-                                    <div class="modal-content">
-                                       <div class="modal-header">
-                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                          <h4 class="modal-title">'.$row['item_name'].'</h4>
-                                       </div>
-                                       <div class="modal-body">
-                                          <p>'.$row['item_desc'].'<br>'. $row['item_price'].'</p>
-                                       </div>
-                                       <div class="modal-footer">
-                                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                          <button id="cartBtn" type="button" class="btn btn-secondary-color" data-dismiss="modal">Add to Cart</button>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>';
-                    }
-                    ?>
-            </tbody>
-        </table>
-    </div>
+      <table class="table table-borderless">
+         <thead>
+            <tr>
+               <th scope="col">Name</th>
+               <th scope="col">Price</th>
+               <th scope="col" class="text-center">Takeout</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <?php
+                  $q = "SELECT item_name, item_desc, item_price, take_out FROM menu WHERE item_category = 10;";
+                  $result = $conn->query($q);
+                  while ($row = $result->fetch_assoc()) {
+                        echo '<td class="name"><a href="#addToCartModal" data-toggle="modal">' . $row['item_name'] . '</a></td><td class="price">' . $row['item_price'] . '</td><td class="text-center"><span class="takeout">' . $row['take_out'] . '</span></td></tr>';
+                  }
+               ?>
+         </tbody>
+      </table>
+   </div>
 
-    <div id="desserts" class="menucontent">
+   <div id="desserts" class="menucontent">
         <table class="table table-borderless">
             <thead>
                 <tr>
@@ -206,27 +138,10 @@ require "./includes/dbConnect.php";
             <tbody>
                 <tr>
                     <?php
-                    $q = "SELECT item_name, item_price, take_out FROM menu WHERE item_category = 11;";
+                    $q = "SELECT item_name, item_desc, item_price, take_out FROM menu WHERE item_category = 11;";
                     $result = $conn->query($q);
                     while ($row = $result->fetch_assoc()) {
-                        echo '<td><a href="#" data-toggle="modal" data-target="#addToCartModal">' . $row['item_name'] . '</a></td><td>' . $row['item_price'] . '</td><td class="text-center"><span class="takeout">' . $row['take_out'] . '</span></td></tr>
-                        <div class="modal fade" id="addToCartModal" role="dialog">
-                                 <div class="modal-dialog">
-                                    <div class="modal-content">
-                                       <div class="modal-header">
-                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                          <h4 class="modal-title">'.$row['item_name'].'</h4>
-                                       </div>
-                                       <div class="modal-body">
-                                          <p>'.$row['item_desc'].'<br>'. $row['item_price'].'</p>
-                                       </div>
-                                       <div class="modal-footer">
-                                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                          <button id="cartBtn" type="button" class="btn btn-secondary-color" data-dismiss="modal">Add to Cart</button>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>';
+                        echo '<td class="name"><a href="#addToCartModal" data-toggle="modal">' . $row['item_name'] . '</a></td><td class="price">' . $row['item_price'] . '</td><td class="text-center"><span class="takeout">' . $row['take_out'] . '</span></td></tr>';
                     }
                     ?>
             </tbody>
@@ -245,32 +160,35 @@ require "./includes/dbConnect.php";
             <tbody>
                 <tr>
                     <?php
-                    $q = "SELECT item_name, item_price, take_out FROM menu WHERE item_category = 12;";
+                    $q = "SELECT item_name, item_desc, item_price, take_out FROM menu WHERE item_category = 12;";
                     $result = $conn->query($q);
                     while ($row = $result->fetch_assoc()) {
-                        echo '<td><a href="#" data-toggle="modal" data-target="#addToCartModal">' . $row['item_name'] . '</a></td><td>' . $row['item_price'] . '</td><td class="text-center"><span class="takeout">' . $row['take_out'] . '</span></td></tr>
-                        <div class="modal fade" id="addToCartModal" role="dialog">
-                                 <div class="modal-dialog">
-                                    <div class="modal-content">
-                                       <div class="modal-header">
-                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                          <h4 class="modal-title">'.$row['item_name'].'</h4>
-                                       </div>
-                                       <div class="modal-body">
-                                          <p>'.$row['item_desc'].'<br>'. $row['item_price'].'</p>
-                                       </div>
-                                       <div class="modal-footer">
-                                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                          <button id="cartBtn" type="button" class="btn btn-secondary-color" data-dismiss="modal">Add to Cart</button>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>';
+                        echo '<td class="name"><a href="#addToCartModal" data-toggle="modal">' . $row['item_name'] . '</a></td><td class="price">' . $row['item_price'] . '</td><td class="text-center"><span class="takeout">' . $row['take_out'] . '</span></td></tr>';
                     }
                     ?>
             </tbody>
         </table>
-    </div>
+   </div>
+   
+   <div class="modal fade" id="addToCartModal" role="dialog">
+      <div class="modal-dialog">
+         <div class="modal-content">
+            <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title"></h4>
+               </div>
+            <div class="modal-body">
+               <p class="item-desc"></p>
+               <p class="item-price"></p>
+            </div> 
+            <div class="modal-footer">
+               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+               <button id="cartBtn" type="button" class="btn btn-secondary-color" data-dismiss="modal">Add to Cart</button>
+            </div>
+         </div>
+      </div>
+   </div>
+   
 </main>
 
 <script type="text/javascript" src="./js/menu.js"></script>

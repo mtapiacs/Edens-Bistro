@@ -28,3 +28,25 @@ function hideMenuSections() {
 }
 
 document.getElementById("defaultOpen").click();
+
+//Adds details when you click the menu item
+$(function() {
+   $(".itemname").click(function() {
+      var itemname = $(this).parents("tr").find(".name").text();
+      var price = $(this).parents("tr").find(".price").text();
+      var p = "";
+      // CREATING DATA TO SHOW ON MODEL 
+      p += itemname;
+      p += "<br>" + price;
+      //SETTING THE TITLE 
+      $("#modal-title").html(itemname);
+      //CLEARING THE PREFILLED DATA 
+      $("#itemdetails").empty();
+      //WRITING THE DATA ON MODEL 
+      $("#itemdetails").append(p);
+  });
+});
+
+$(document).on("hidden.bs.modal", function (e) {
+	$(e.target).removeData("bs.modal").find(".modal-content").empty();
+});
