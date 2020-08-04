@@ -22,15 +22,37 @@ include_once "./includes/header.php";
 </div>
 <br>
 <?php
-            if (isset($_GET['reservation'])){ 
-                if($_GET['reservation'] == "success"){
-                    echo"
-                    <div class='alert alert-success'>
-                        <strong>Success!</strong> Your reservation has been made successfully!
-                    </div>
-                    ";
+            if (isset($_GET['error'])){ 
+                if($_GET['error'] == "invalid_email"){
+                   echo" <div class='alert alert-danger'>
+                    <strong>Danger!</strong> Indicates a dangerous or potentially negative action.
+                </div>";
+                }
+                else if ($_GET['error'] == "noTimetravelallowed"){
+                    echo" <div class='alert alert-danger'>
+                    <strong>Danger!</strong> You cannot time travel! Please select a date in the future.
+                </div>";
+                }
+                else if ($_GET['error'] == "too_manypeople"){
+                    echo" <div class='alert alert-danger'>
+                    <strong>Danger!</strong> There are too many people in your party!
+                </div>";
                 }
             }
+            else if($_GET['reservation'] == "success"){
+                echo"<div class='alert alert-success'>
+                        <strong>Success!</strong> Your reservation has been made successfully!
+                     </div>";
+                    }
+                
+                // if($_GET['reservation'] == "success"){
+                //     echo"
+                //     <div class='alert alert-success'>
+                //         <strong>Success!</strong> Your reservation has been made successfully!
+                //     </div>
+                //     ";
+                // }
+            
 ?>
 <form method="POST" action= "includes/reservation.inc.php" class="form-container mx-auto mb-4">
 <!-- name -->
