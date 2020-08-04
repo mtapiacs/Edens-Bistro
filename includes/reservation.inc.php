@@ -54,7 +54,7 @@ if(isset($_POST['reservation_submit'])){
             exit();  
         }
         else{
-           mysqli_stmt_bind_param($stmt,"sss",$time,$date,$room);
+           mysqli_stmt_bind_param($stmt,"ssi",$time,$date,$room);
            mysqli_stmt_execute($stmt);
            mysqli_stmt_store_result($stmt);
            $results = mysqli_stmt_num_rows($stmt);
@@ -72,7 +72,7 @@ if(isset($_POST['reservation_submit'])){
                 exit();
             }  
             else{
-                mysqli_stmt_bind_param($stmt, "ssssssss",$name, $email, $room, $num_people, $time, $date,$phonenum,$comments);
+                mysqli_stmt_bind_param($stmt, "ssisssss",$name, $email, $room, $num_people, $time, $date,$phonenum,$comments);
                 mysqli_stmt_execute($stmt);
                 header("Location: ../reservation.php?reservation=success");
             exit();
