@@ -14,3 +14,4 @@ ALTER TABLE reservations
 ADD FOREIGN KEY (room) REFERENCES rooms(room_id)
 
 -- SELECT * FROM `reservations` INNER JOIN rooms ON reservations.room = rooms.room_id;
+ALTER TABLE `cis431`.`reservations` DROP INDEX `email`, ADD INDEX `email` (`email`) USING BTREE; 
