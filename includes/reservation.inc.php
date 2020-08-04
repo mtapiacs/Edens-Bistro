@@ -20,22 +20,85 @@ if(isset($_POST['reservation_submit'])){
     //  $sql = "INSERT INTO reservations (name, email, room, num_people,reservation_time, reservation_date,phone_number,comments_questions)
     //         VALUES ('$name','$email',$room,'$num_people','$time','$date','$phonenum','$comments');";
     
-    $sql = "INSERT INTO reservations (name, email, room, num_people, reservation_time, reservation_date,phone_number,comments_questions) values(?, ?, ?, ?, ?, ?, ?, ?)";
+    if(empty($name) || empty($email) || empty($room) || empty($num_people) || empty($time) || empty($date) || empty($phonenum)){
+        header("Location: ../reservation.php?error=emptyinputs");
+        exit();
+    }
+    else if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+        header("Location: ../reservation.php?error=invalid_email");
+        exit(); 
+    }
+    else if($date < "2020-08-04"){
+        header("Location: ../reservation.php?error=noTimetravelallowed");
+        exit(); 
+    }
+    else if($room === 1 && $num_people > 40){
+        header("Location: ../reservation.php?error=too_manypeople");
+        exit(); 
+    }
+    else if($room === 2 && $num_people > 6){
+        header("Location: ../reservation.php?error=too_manypeople");
+        exit(); 
+    }
+    else{
+        $sql = "SELECT reservation_time, reservation_date FROM reservations WHERE reservation_time = ? AND reservation_date = ? AND room = ? ";
+        $statement = mysqli_stmt_init($conn);
 
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssssssss", $name, $email, $room, $num_people, $time, $date,$phonenum,$comments);
-    $stmt->execute();   
-    $stmt->close();
-    $conn->close();
+        if(!mysqli_stmt_prepare($statement, $sql)){
+            header("Location: ../reservation.php?error=sqlerror");
+            exit();  
+        }
+        else{
+           mysqli_stmt_bind_param($statement,"sss",$time,$date,$room);
+           mysqli_stmt_execute($statement);
+           mysqli_stmt_store_result($statement);
+           $results = mysqli_stmt_num_rows($statement);
 
-    mysqli_query($conn, $sql);
-    //mysqli_query($conn, $sql2);
+           if($results > 0){
+            header("Location: ../reservation.php?error=reservationtaken");
+            exit();
+           }
+           else{
 
-    header("Location: ../reservation.php?reservation=success");
-    exit();
+            $sql = "INSERT INTO reservations (name, email, room, num_people, reservation_time, reservation_date,phone_number,comments_questions) values(?, ?, ?, ?, ?, ?, ?, ?)";
+            $statement = mysqli_stmt_init($conn);
+            if(!mysqli_stmt_prepare($statement, $sql)) {
+                header("Location ../reservation.php?error=?sqlerror");
+                exit();
+            }  
+            else{
+                mysqli_stmt_bind_param($statement, "ssssssss",$name, $email, $room, $num_people, $time, $date,$phonenum,$comments);
+                mysqli_stmt_execute($statement);
+                header("Location: ../reservation.php?reservation=success");
+            exit();
+            }         
+    
+            //mysqli_query($conn, $sql);
+            //mysqli_query($conn, $sql2);
+        
+            
+           }
+        }
+    }
+    mysqli_stmt_close($statement);
+    include "dbDisconnect.php";
+    // $sql = "INSERT INTO reservations (name, email, room, num_people, reservation_time, reservation_date,phone_number,comments_questions) values(?, ?, ?, ?, ?, ?, ?, ?)";
+
+    // $stmt = $conn->prepare($sql);
+    // $stmt->bind_param("ssssssss", $name, $email, $room, $num_people, $time, $date,$phonenum,$comments);
+    // $stmt->execute();   
+    // $stmt->close();
+    // $conn->close();
+
+    // mysqli_query($conn, $sql);
+    // //mysqli_query($conn, $sql2);
+
+    // header("Location: ../reservation.php?reservation=success");
+    // exit();
     
 //echo "$name , $email, $room, $num_people, $time, $date, $phonenum, $comments";
-
-
 }
-?>
+else{
+    header("Location: ../reservation.php");
+    exit();
+}
