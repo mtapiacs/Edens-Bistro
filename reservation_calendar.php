@@ -4,9 +4,10 @@ require "./includes/dbConnect.php";
 ?>
 
 <main class="main-container">
+<h2 class="page-header">Reservation Calendar</h2>
 <a href = "reservation.php" class="btn btn-sm">Back To Reservation</a>
 
-<p>Work In Progress: calendar</p>
+
 
 
 </main>
