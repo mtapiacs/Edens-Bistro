@@ -72,7 +72,7 @@ if(isset($_POST['reservation_submit'])){
                 exit();
             }  
             else{
-                mysqli_stmt_bind_param($stmt, "ssisssss",$name, $email, $room, $num_people, $time, $date,$phonenum,$comments);
+                mysqli_stmt_bind_param($stmt, "ssisssss",$name, $email, $room, $num_people, $time, $date,$phonenum,$comments); //inserts the values in the DB using the sql variable
                 mysqli_stmt_execute($stmt);
                 // echo mysqli_stmt_error($stmt);
                 header("Location: ../reservation.php?reservation=success");
@@ -82,22 +82,27 @@ if(isset($_POST['reservation_submit'])){
            }
         }
     }
-    mysqli_stmt_close($stmt);
+    mysqli_stmt_close($stmt); //closes the statment and the DB connection
     include "dbDisconnect.php";
-    // $sql = "INSERT INTO reservations (name, email, room, num_people, reservation_time, reservation_date,phone_number,comments_questions) values(?, ?, ?, ?, ?, ?, ?, ?)";
+//part of reservation email if eden had its own server...found at https://www.youtube.com/watch?v=wUkKCMEYj9M&t=559s
+    // $reciever = $email;
 
-    // $stmt = $conn->prepare($sql);
-    // $stmt->bind_param("ssssssss", $name, $email, $room, $num_people, $time, $date,$phonenum,$comments);
-    // $stmt->execute();   
-    // $stmt->close();
-    // $conn->close();
+    // $subject = "Eden's Bistro Reservation Confirmation";
 
-    // mysqli_query($conn, $sql);
-    // //mysqli_query($conn, $sql2);
+    // $message .= "<p>Eden's Bistro has recieved that you have made a reservation for our cafe.</p><br>";
+
+    // $message .= "Below is your reservation information.";
+
+    // $message .= 'Name: '.$name.'Email: '.$email. 'Room: '.$room. 'Number of People: '.$num_people.'Time: '.$time.'Date: '.$date.'Phone Number: '.$phonenum.'Comments/Questions: '.$comments;
+
+    // $headers = "From: Edens_Bistro <edenbistromanhattanrc@gmail.com>\r\n";
+    // $headers .= "Reply-To: edenbistromanhattanrc@gmail.com\r\n";
+    // $headers .= "Content-type: text/html\r\n";
+
+    // mail($reciver, $subject, $message, $headers);
 
     // header("Location: ../reservation.php?reservation=success");
-    // exit();
-    
+//debug for making sure form values are taken    
 //echo "$name , $email, $room, $num_people, $time, $date, $phonenum, $comments";
 }
 else{

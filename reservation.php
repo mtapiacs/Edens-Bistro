@@ -39,20 +39,14 @@ include_once "./includes/header.php";
                 </div>";
                 }
             }
-            else if($_GET['reservation'] == "success"){
+            else if(isset($_GET['reservation'])){
+                if($_GET['reservation'] == "success"){
                 echo"<div class='alert alert-success'>
                         <strong>Success!</strong> Your reservation has been made successfully!
                      </div>";
                     }
-                
-                // if($_GET['reservation'] == "success"){
-                //     echo"
-                //     <div class='alert alert-success'>
-                //         <strong>Success!</strong> Your reservation has been made successfully!
-                //     </div>
-                //     ";
-                // }
-            
+            }
+           
 ?>
 <form method="POST" action= "includes/reservation.inc.php" class="form-container mx-auto mb-4">
 <!-- name -->
