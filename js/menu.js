@@ -32,7 +32,7 @@ document.getElementById("defaultOpen").click();
 //Adds details when you click the menu item
 async function populateModal (itemId) {
    const response = await fetch(
-      './api/getItemDetails.php?itemId=${itemId}")', 
+      './api//menu/getItemDetails.php?itemId=${itemId}")', 
       {
          method: "GET"
       }
