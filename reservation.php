@@ -9,7 +9,7 @@ include_once "./includes/header.php";
             
 <div class="container">
     <button class="btn btn-sm" type="button" data-toggle="collapse" data-target="#reservation_map" aria-expanded="false" aria-controls="reservation_map">Bistro Layout</button>
-    <!-- <div style = "text-align: right"> -->
+    
         <a href = "reservation_calendar.php" class="btn btn-sm" style = "text-align: right">Calendar View</a>
     <!-- </div> -->
         <div class="collapse" id="reservation_map"> <br>
