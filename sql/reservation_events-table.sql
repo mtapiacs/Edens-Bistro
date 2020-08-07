@@ -1,5 +1,5 @@
 --creating the table
-
+--from the jquery fullcalendar guide found at https://www.webslesson.info/2017/12/jquery-fullcalandar-integration-with-php-and-mysql.html
 CREATE TABLE IF NOT EXISTS `reservation_events` (
   `res_id` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,

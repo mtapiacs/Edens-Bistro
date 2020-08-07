@@ -12,14 +12,10 @@ if(isset($_POST['reservation_submit'])){
     $date = $_POST['reservation_date'];
     $phonenum = $_POST['reservation_phonenumber'];
     $comments = $_POST['reservation_questions_comments'];
-
-    //$sql = "INSERT INTO rooms(`room_name`, `room_desc`, `room_capacity`) VALUES ($room,'description',$num_people);";
-    // $sql = "INSERT INTO reservations (name, email, room, num_people,reservation_time, reservation_date,phone_number,comments_questions)
-    // VALUES ('dan','dan@gmail.com',$room,'40','02:30:PM','2021-02-02','7186982707','test');";
-
-    //  $sql = "INSERT INTO reservations (name, email, room, num_people,reservation_time, reservation_date,phone_number,comments_questions)
-    //         VALUES ('$name','$email',$room,'$num_people','$time','$date','$phonenum','$comments');";
-    
+    //datetime combines the date and time into a datetime format
+    $datetime = $_POST['reservation_date'] . ' ' . $_POST['reservation_time'];
+    //gets the last id inserted in the table
+    //$last_id = mysqli_insert_id($conn);    
     if(empty($name) || empty($email) || empty($room) || empty($num_people) || empty($time) || empty($date) || empty($phonenum)){ //if there are empty inputs
         header("Location: ../reservation.php?error=emptyinputs");
         exit();
