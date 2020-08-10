@@ -7,7 +7,7 @@ $(".categories a").click(function (e) {
 //hide search table until search term is submitted
 document.getElementById("search-table").style.display = "none";
 $(".search-form").click(function(e) {
-   $(".search-table").show();
+   document.getElementById("search-table").style.display = "block";
 })
 
 

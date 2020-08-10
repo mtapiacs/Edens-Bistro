@@ -31,10 +31,15 @@ if(isset($_POST["search-form"])) {
          $results[] = array("name" => $item_name, "description" => $item_desc, "price" => $item_price);
       }
       
+      if(empty($results)) {
+         echo "No results found :(";
+         echo("Location: menu.php");
+      }
       //Close prepared Statement
       mysqli_stmt_close($stmt);
    }
    
    require "./includes/dbDisconnect.php";
+
 }
 ?>

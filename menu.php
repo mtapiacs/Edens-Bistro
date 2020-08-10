@@ -52,6 +52,9 @@ require "./includes/dbConnect.php";
                      </tr>";
             }
          }
+         else {
+            echo "No results found :(. Please try again.";
+         }
          ?>
          </tbody>
       </table>
