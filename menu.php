@@ -20,7 +20,7 @@ require "./includes/dbConnect.php";
 
    //<?php include_once './api//menu/searchmenu.php'; ?> 
 
-   <form method="POST" id="search" name="search" action="<?php echo "searchmenu.php" ?>">
+   <form method="POST" id="search" name="search" action="./api//menu/searchmenu.php">
         <div class="row">
             <div class="col-11">
                 <input class="form-control mr-sm-2" type="text" name="search-term" required>
