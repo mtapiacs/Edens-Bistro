@@ -31,7 +31,7 @@ if(isset($_POST["search-form"])) {
          $results[] = array("name" => $item_name, "description" => $item_desc, "price" => $item_price);
       }
       
-      if(empty($results)) {
+      if($results <= 0) {
          echo "No results found :(";
          echo("Location: menu.php");
       }
