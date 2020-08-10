@@ -18,9 +18,9 @@ require "./includes/dbConnect.php";
         <a class="menuitems" href="#" onClick="openDiv(event, 'drinks')">Drinks</a>
     </div>
 
-   <?php include_once './api//menu/searchmenu.php'; ?> 
+   //<?php include_once './api//menu/searchmenu.php'; ?> 
 
-   <form method="POST" id="search" name="search" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
+   <form method="POST" id="search" name="search" action="<?php echo "searchmenu.php" ?>">
         <div class="row">
             <div class="col-11">
                 <input class="form-control mr-sm-2" type="text" name="search-term" required>
@@ -51,9 +51,6 @@ require "./includes/dbConnect.php";
                         <td>{$row['price']}</td>
                      </tr>";
             }
-         }
-         else {
-            echo "No results found :(. Please try again.";
          }
          ?>
          </tbody>
