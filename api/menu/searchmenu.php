@@ -1,20 +1,14 @@
 <?php
 
 if(isset($_POST["search-form"])) {
-   require "./includes/dbConnect.php";
    
    $searchTerm = $_POST["search-term"];
    
-   //Check If Error Connecting to Database 
-   if(mysqli_connect_errno()) {
-      printf("Connect failed: %s\n", mysqli_connect_error());
-      exit();
-   }
-   
-   $query = "SELECT item_name, item_desc, item_price FROM menu WHERE MATCH(item_name, item_desc) AGAINST (? IN NATURAL LANGUAGE MODE);";
-   
+   require "./includes/dbConnect.php";
+
    //Create Prepared Statement
    $stmt = mysqli_stmt_init($conn);
+   $query = "SELECT item_name, item_desc, item_price FROM menu WHERE MATCH(item_name, item_desc) AGAINST (? IN NATURAL LANGUAGE MODE);";
    if(mysqli_stmt_prepare($stmt, $query)) {
       //Bind input to parameters
       mysqli_stmt_bind_param($stmt, "s", $searchTerm);
@@ -31,12 +25,6 @@ if(isset($_POST["search-form"])) {
          $results[] = array("name" => $item_name, "description" => $item_desc, "price" => $item_price);
       }
       
-      if(empty($results)) {
-          if($results <= 0) {
-            echo "No results found :(";
-            echo("Location: menu.php");
-          }
-      }
       //Close prepared Statement
       mysqli_stmt_close($stmt);
    }
