@@ -17,7 +17,7 @@ require "./includes/dbConnect.php";
 <SCRIPT type = "text/javascript"> 
     $(document).ready(function(){
         var calendar = $('#calendar').fullCalendar({
-            editable:true, //allows you to edit events on calendar
+            //editable:true, //allows you to edit events on calendar
             header:{ //different buttons for different options like month and week
                 left:'prev,next today', //puts button on left
                 center:'title', //title of calendar in center
