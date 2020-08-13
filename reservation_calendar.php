@@ -24,8 +24,8 @@ require "./includes/dbConnect.php";
                 right:'month,agendaWeek,agendaDay',
             }, //buttons to display week day and month
             events:'calendar_load.php', //loads info from the load page
-            selectable:true, //allows click and drag
-            selectHelper: true, //placeholder for the event
+            //selectable:true, //allows click and drag
+            //selectHelper: true, //placeholder for the event
         }); //calls the calendar method in the full calendar library 
     });
 

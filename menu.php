@@ -3,10 +3,13 @@ include_once "./includes/header.php";
 require "./includes/dbConnect.php";
 ?>
 
+// Sources: 
+// https://www.w3schools.com/howto/howto_js_tabs.asp
+// https://getbootstrap.com/docs/4.0/components/modal/
+
 <main class="main-container">
     <h3 class="page-header">Menu</h3>
-
-    <div class="categories">
+    <div class="row categories">
         <a class="menuitems" href="#" onClick="openDiv(event, 'breakfast')" id="defaultOpen">Breakfast</a>
         <a class="menuitems" href="#" onClick="openDiv(event, 'lunch')">Lunch</a>
         <a class="menuitems" href="#" onClick="openDiv(event, 'dinner')">Dinner</a>
@@ -14,13 +17,56 @@ require "./includes/dbConnect.php";
         <a class="menuitems" href="#" onClick="openDiv(event, 'desserts')">Desserts</a>
         <a class="menuitems" href="#" onClick="openDiv(event, 'drinks')">Drinks</a>
     </div>
+   
+   <?php include_once "./api/menu/searchmenu.php"; ?>
+   
+   <form method="POST" id="search" name="search" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
+        <div class="row">
+            <div class="col-11">
+                <input class="form-control mr-sm-2" type="text" name="search-term" required>
+            </div>
+            <div class="col-1">
+               <button name="search-form" class="btn btn-secondary-color">Search</button>
+            </div>
+        </div>
+    </form>
+    
+   <div id="search-table">
+      <table class='table table-borderless'>
+         <thead>
+            <tr>
+               <th scope='col'>Name</th>
+               <th scope='col'>Description</th>
+               <th scope='col'>Price</th>
+            </tr>
+         </thead>
+         <tbody>
+         
+         <?php 
+         if(isset($results)) {
+            foreach ($results as $row) {
+               echo "<tr>
+                        <th scope='row'>{$row['name']}</th>
+                        <td>{$row['description']}</td>
+                        <td>{$row['price']}</td>
+                     </tr>";
+            }
+         }
+         else {
+            echo "No results found :(";
+            header('Location: menu.php');
+         }
+         ?>
+         </tbody>
+      </table>
+   </div>
 
-    <div class="menucontent" id="breakfast">
+   <div class="menucontent" id="breakfast">
         <?php
         $q = "SELECT category_desc FROM categories WHERE category_id = 8";
         $result = $conn->query($q);
         if ($row = $result->fetch_assoc()) {
-            echo '<p class="desc">' . $row['category_desc'] . '</p>';
+            echo '<p class="category-desc">' . $row['category_desc'] . '</p>';
         }
         ?>
         <table class="table table-borderless">
@@ -37,7 +83,7 @@ require "./includes/dbConnect.php";
                     $q = "SELECT item_id, item_name, item_price, item_desc, take_out FROM menu WHERE item_category = 8;";
                     $result = $conn->query($q);
                     while ($row = $result->fetch_assoc()) {
-                        echo '<td class="name"><a href="#addToCartModal" data-toggle="modal">' . $row['item_name'] . '</a></td><td class="price">' . $row['item_price'] . '</td><td class="text-center"><span class="takeout">' . $row['take_out'] . '</span></td></tr>';
+                        echo '<td class="itemName"><a href="#addToCartModal" data-toggle="modal">' . $row['item_name'] . '</a></td><td class="itemPrice">' . $row['item_price'] . '</td><td class="itemTakeout text-center"><span class="takeout">' . $row['take_out'] . '</span></td></tr>';
                     }
                     ?>
                     
@@ -51,7 +97,7 @@ require "./includes/dbConnect.php";
         $q = "SELECT category_desc FROM categories WHERE category_id = 9";
         $result = $conn->query($q);
         if ($row = $result->fetch_assoc()) {
-            echo '<p class="desc">' . $row['category_desc'] . '</p>';
+            echo '<p class="category-desc">' . $row['category_desc'] . '</p>';
         }
         ?>
         <table class="table table-borderless">
@@ -80,7 +126,7 @@ require "./includes/dbConnect.php";
         $q = "SELECT category_desc FROM categories WHERE category_id = 1";
         $result = $conn->query($q);
         if ($row = $result->fetch_assoc()) {
-            echo '<p class="desc">' . $row['category_desc'] . '</p>';
+            echo '<p class="category-desc">' . $row['category_desc'] . '</p>';
         }
         ?>
         <table class="table table-borderless">
@@ -178,8 +224,8 @@ require "./includes/dbConnect.php";
                   <h4 class="modal-title"></h4>
                </div>
             <div class="modal-body">
-               <p class="item-desc"></p>
-               <p class="item-price"></p>
+               <p class="modal-item-desc"></p>
+               <p class="modal-item-price"></p>
             </div> 
             <div class="modal-footer">
                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -194,5 +240,6 @@ require "./includes/dbConnect.php";
 <script type="text/javascript" src="./js/menu.js"></script>
 
 <?php
+require "./includes/dbDisconnect.php";
 include_once "./includes/footer.php";
 ?>
