@@ -7,9 +7,9 @@ include_once "./includes/header.php";
     <h2 class="page-header">Make A Reservation</h2>
 <!--collapse was found from https://getbootstrap.com/docs/3.4/javascript/#collapse -->
             
-<div class="container">
+<div class="container space-buttons">
     <button class="btn btn-sm" type="button" data-toggle="collapse" data-target="#reservation_map" aria-expanded="false" aria-controls="reservation_map">Bistro Layout</button>
-    <!-- <div style = "text-align: right"> -->
+    
         <a href = "reservation_calendar.php" class="btn btn-sm" style = "text-align: right">Calendar View</a>
     <!-- </div> -->
         <div class="collapse" id="reservation_map"> <br>

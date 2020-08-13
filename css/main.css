@@ -112,40 +112,40 @@ body {
 }
 
 /*** Menu ***/
-/* Style the menu categories */
+/* Categories */
 .categories a {
    float: left;
    cursor: pointer;
    padding: 0 4px 0 2px;
    font-size: 1em;
    color: #000 !important;
-   text-decoration: none;
 }
   
-/* Create an active/current menu category */
 .categories a.active {
    font-weight: bold !important;
    color: #902923 !important;
 }
 
-/* Style the menu content */
+/* Content & Tables */
 .menucontent {
    float: left;
    width: 100%;
 }
-   
-/*Style table of menu items */
-.table-borderless td,
+
+// .table-borderless td,
+// .table-borderless th {
+//    border: 0 !important;
+// }
+
 .table-borderless th {
-   border: 0 !important;
-}
-   
-.menucontent th {
+   color: #902923 !important;
    font-weight: bold !important;
-   color: #f1f1f1 !important;
-   background-color: #902923;
+   border: 0 !important;
+   .table-borderless td {
+      border: 0 !important;
+   }
 }
-   
+
 .menucontent a:link, .menucontent a:visited, .menucontent a:hover, .menucontent td{
    color: #030E11;
 }
@@ -163,4 +163,10 @@ body {
 .takeout {
    color: #902923;
    font-weight: bold;
+}
+
+/*** res/calendar ***/
+.space-buttons {
+    display: flex;
+    justify-content: space-evenly;
 }

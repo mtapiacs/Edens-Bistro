@@ -4,6 +4,13 @@ $(".categories a").click(function (e) {
     e.preventDefault();
 });
 
+//hide search table until search term is submitted
+document.getElementById("search-table").style.display = "none";
+$(".search-form").click(function(e) {
+   document.getElementById("search-table").style.display = "block";
+})
+
+
 function openDiv(evt, menuCategory) {
     var i, menuItems;
 
