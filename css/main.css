@@ -112,7 +112,7 @@ body {
 }
 
 /*** Menu ***/
-/* Style the menu categories */
+/* Categories */
 .categories a {
    float: left;
    cursor: pointer;
@@ -122,19 +122,17 @@ body {
    text-decoration: none;
 }
   
-/* Create an active/current menu category */
 .categories a.active {
    font-weight: bold !important;
    color: #902923 !important;
 }
 
-/* Style the menu content */
+/* Content & Tables */
 .menucontent {
    float: left;
    width: 100%;
 }
    
-/*Style table of menu items */
 .table-borderless td,
 .table-borderless th {
    border: 0 !important;
@@ -143,7 +141,7 @@ body {
 .menucontent th, #search-table th {
    font-weight: bold !important;
    color: #f1f1f1 !important;
-   background-color: #902923;
+   border-color: 1px solid #902923;
 }
    
 .menucontent a:link, .menucontent a:visited, .menucontent a:hover, .menucontent td{
