@@ -119,7 +119,6 @@ body {
    padding: 0 4px 0 2px;
    font-size: 1em;
    color: #000 !important;
-   text-decoration: none;
 }
   
 .categories a.active {
@@ -132,18 +131,21 @@ body {
    float: left;
    width: 100%;
 }
-   
-.table-borderless td,
+
+// .table-borderless td,
+// .table-borderless th {
+//    border: 0 !important;
+// }
+
 .table-borderless th {
-   border: 0 !important;
-}
-   
-.menucontent th, #search-table th {
+   color: #902923 !important;
    font-weight: bold !important;
-   color: #f1f1f1 !important;
-   border-color: 1px solid #902923;
+   border: 0 !important;
+   .table-borderless td {
+      border: 0 !important;
+   }
 }
-   
+
 .menucontent a:link, .menucontent a:visited, .menucontent a:hover, .menucontent td{
    color: #030E11;
 }
