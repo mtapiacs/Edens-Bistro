@@ -164,3 +164,9 @@ body {
    color: #902923;
    font-weight: bold;
 }
+
+/*** res/calendar ***/
+.space-buttons {
+    display: flex;
+    justify-content: space-evenly;
+}
