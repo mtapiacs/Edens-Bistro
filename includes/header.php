@@ -8,6 +8,9 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+$isAdmin = isset($_SESSION["isAdmin"]) ? true : false;
+$isLoggedIn = isset($_SESSION["userId"])
+
 ?>
 
 <head>
@@ -72,13 +75,26 @@ if (session_status() === PHP_SESSION_NONE) {
                     <a class="nav-link" href="order.php">Order</a>
                 </li>
 
+                <?php
+                if ($isLoggedIn && $isAdmin) {
+                    $adminPages = array("orders-manage.php");
+                    $activeClass = in_array($currentPage, $adminPages) ? "active" : "";
+                    echo "<li class='nav-item dropdown $activeClass'>
+                            <a class='nav-link dropdown-toggle' href='#' id='navbarDropdownOrder' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                                Manage
+                            </a>
+                            <div class='dropdown-menu' aria-labelledby='navbarDropdownOrder'>
+                                <a class='dropdown-item' href='orders-manage.php'>Manage Orders</a>
+                            </div>
+                        </li>";
+                }
+                ?>
+
                 <li class="nav-item <?php echo $currentPage === "login.php" ? 'active' : '' ?>">
                     <?php
-                    $isLoggedIn = false;
 
                     // User Has A Session => Logged In, So Show Logout
-                    if (isset($_SESSION["userId"])) {
-                        $isLoggedIn = true;
+                    if ($isLoggedIn) {
                         echo "<a class='nav-link' href='logout.php'>Logout</a>";
                     } else { // Else Show Login
                         echo "<a class='nav-link' href='login.php'>Login</a>";
@@ -87,11 +103,13 @@ if (session_status() === PHP_SESSION_NONE) {
                     ?>
                 </li>
                 <?php
+
                 // Don't Show Register If Logged In
                 if (!$isLoggedIn) {
                     $activeClass = $currentPage === 'register.php' ? 'active' : '';
                     echo "<li class='nav-item {$activeClass}'><a class='nav-link' href='register.php'>Register</a></li>";
                 }
+
                 ?>
 
             </ul>

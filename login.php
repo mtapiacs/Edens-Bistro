@@ -30,6 +30,8 @@ if (isset($_POST["login-form"])) {
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
+
+        $_SESSION["isAdmin"] = $u_in === "mtapiafdez@gmail.com" || $u_in === "mtapiafdez" ? true : false;
         $_SESSION["userId"] = $user_id;
         $_SESSION["cart"] = array();
         header("Location: index.php");
