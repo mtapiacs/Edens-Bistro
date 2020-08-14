@@ -11,12 +11,12 @@ if (isset($_POST["login-form"])) {
 
     $stmt = mysqli_stmt_init($conn);
 
-    if (mysqli_stmt_prepare($stmt, "SELECT user_id, email, username, password FROM users WHERE email = ? OR username = ?;")) {
+    if (mysqli_stmt_prepare($stmt, "SELECT user_id, email, username, password, isAdmin FROM users WHERE email = ? OR username = ?;")) {
         mysqli_stmt_bind_param($stmt, "ss", $u_in, $u_in);
 
         mysqli_stmt_execute($stmt);
 
-        mysqli_stmt_bind_result($stmt, $user_id, $email, $username, $password);
+        mysqli_stmt_bind_result($stmt, $user_id, $email, $username, $password, $isAdmin);
 
         mysqli_stmt_fetch($stmt);
 
@@ -31,7 +31,7 @@ if (isset($_POST["login-form"])) {
             session_start();
         }
 
-        $_SESSION["isAdmin"] = $u_in === "mtapiafdez@gmail.com" || $u_in === "mtapiafdez" ? true : false;
+        $_SESSION["isAdmin"] = $isAdmin === 1 ? true : false;
         $_SESSION["userId"] = $user_id;
         $_SESSION["cart"] = array();
         header("Location: index.php");

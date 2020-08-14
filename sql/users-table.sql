@@ -10,3 +10,6 @@ CREATE TABLE users (
     user_address INT NOT NULL,
     FOREIGN KEY (user_address) REFERENCES addresses(address_id)
 );
+
+ALTER TABLE users
+ADD isAdmin BIT NOT NULL DEFAULT 0;
