@@ -8,7 +8,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-$isAdmin = $_SESSION["isAdmin"];
+$isAdmin = isset($_SESSION["isAdmin"]) ? $_SESSION["isAdmin"] : null;
 $isLoggedIn = isset($_SESSION["userId"])
 
 ?>
