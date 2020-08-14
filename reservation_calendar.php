@@ -17,15 +17,18 @@ require "./includes/dbConnect.php";
 <SCRIPT type = "text/javascript"> 
     $(document).ready(function(){
         var calendar = $('#calendar').fullCalendar({
-            editable:true, //allows you to edit events on calendar
+            //editable:true, //allows you to edit events on calendar
             header:{ //different buttons for different options like month and week
                 left:'prev,next today', //puts button on left
                 center:'title', //title of calendar in center
                 right:'month,agendaWeek,agendaDay',
             }, //buttons to display week day and month
-            events:'calendar_load.php', //loads info from the load page
+            events:'./includes/calendar_load.php', //loads info from the load page
             //selectable:true, //allows click and drag
             //selectHelper: true, //placeholder for the event
+            eventTextColor: 'White', //#034c3c
+            eventColor: "#034c3c",
+            allDay:false,
         }); //calls the calendar method in the full calendar library 
     });
 

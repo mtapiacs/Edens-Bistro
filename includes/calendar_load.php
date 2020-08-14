@@ -1,5 +1,5 @@
 <?php
-include "dbConfig.php";
+require "dbConnect.php";
 
 //$connect = new PDO("mysql:host=localhost;dbname=calendar", "root",''); //connection pdo
 
@@ -20,5 +20,6 @@ if ($resultCheck > 0){
             'end' => $row['end_event'],
         );
     }
+    
     echo json_encode($data); //converts to a string and displays on calendar
 }
