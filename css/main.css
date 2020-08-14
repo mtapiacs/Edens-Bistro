@@ -170,3 +170,7 @@ body {
     display: flex;
     justify-content: space-evenly;
 }
+.reservation-results{
+    list-style-type: none !important;
+    display: inline-block !important;
+  }
