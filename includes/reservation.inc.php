@@ -1,7 +1,8 @@
 <?php
 //used https://www.codeandcourse.com/how-to-connect-html-register-form-to-mysql-database-with-php/ as a refrence for inserting
 if(isset($_POST['reservation_submit'])){
-
+    date("Y/m/d");
+    date_default_timezone_set("America/New_York");
     include_once "dbConnect.php";
 
     $name = $_POST['reservation_name'];
@@ -27,6 +28,10 @@ if(isset($_POST['reservation_submit'])){
         exit(); 
     }
     else if($date < "2020-08-04"){
+        header("Location: ../reservation.php?error=noTimetravelallowed"); //if there is a past date
+        exit(); 
+    }
+    else if($date < date("Y/m/d") && $time < date("h:i:sa")){
         header("Location: ../reservation.php?error=noTimetravelallowed"); //if there is a past date
         exit(); 
     }
