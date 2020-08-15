@@ -33,10 +33,6 @@ require "./includes/dbConnect.php";
     });
 
 </SCRIPT>
-    
-
-<!-- </BODY>
-</HTML> -->
 </main>
 
 <?php
