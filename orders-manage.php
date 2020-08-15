@@ -1,10 +1,14 @@
 <?php
+$isAdminPage = true;
+
 include_once "./includes/header.php";
+require "./includes/helpers/main.php";
+require "./includes/isAuthenticated.php";
 ?>
 
 <main class="main-container">
     <h2 class="page-header mb-4">Manage Orders</h2>
-    <select value="<?php echo isset($_GET['oid']) ? $_GET['oid'] : '' ?>" class="form-control w-75 mx-auto mb-4" onchange="location.replace(`./orders-manage.php?oid=${this.value}`);">
+    <select value="<?php echo isset($_GET['oid']) ? $_GET['oid'] : '' ?>" class="form-control w-50 mx-auto mb-4" onchange="location.replace(`./orders-manage.php?oid=${this.value}`);">
         <?php
         echo "<option value='0' selected disabled>Select an order</option>";
 
@@ -25,7 +29,7 @@ include_once "./includes/header.php";
     </select>
 
 
-    <table class="table mb-4">
+    <table class="table mb-5">
         <thead>
             <tr>
                 <th scope="col">Quantity</th>
@@ -79,9 +83,16 @@ include_once "./includes/header.php";
             ?>
         </tbody>
     </table>
-    <h3 class="text-center">
+    <h3 class="text-center mb-3">
         <?php echo "Order Total: $$total"; ?>
     </h3>
+    <h2 class="text-center color-primary">
+        <?php
+        $total = calculateOrdersTotal();
+
+        echo "Grand Total: $$total";
+        ?>
+    </h2>
 </main>
 
 <?php

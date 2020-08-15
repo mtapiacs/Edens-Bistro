@@ -1,0 +1,34 @@
+{
+    "columns": [
+        {
+            "title": "Events",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris id auctor est. Mauris vestibulum, erat id pellentesque ornare, massa lectus semper nisi, nec finibus neque erat eget orci. Maecenas pulvinar lectus lacus, eu rutrum dui tincidunt sed. Maecenas condimentum odio erat, vitae dapibus risus pellentesque in. Vivamus elit orci, vulputate at ornare eget, varius quis mauris. Vestibulum ex est, vestibulum dictum lectus condimentum, blandit tincidunt sem. Suspendisse quis egestas velit. Sed pretium tortor eu augue convallis, et egestas tortor tincidunt. Morbi ac efficitur justo. Ut turpis diam, vulputate vitae neque sit amet, finibus pharetra massa. Cras maximus commodo mi, sed varius eros sollicitudin sit amet. Pellentesque in leo lacus. Mauris porta fermentum turpis. Vivamus vestibulum, arcu quis malesuada ultricies, leo sem."
+        },
+        {
+            "title": "Specials",
+            "content": "Quisque a est interdum, viverra tortor eu, dictum neque. Nam non augue dapibus, porttitor arcu sed, commodo ante. Nam euismod erat erat, a posuere dolor porttitor at. Nulla blandit sem quis nulla blandit, quis hendrerit mauris tincidunt. In hac habitasse platea dictumst. Ut et lacinia magna. Donec blandit laoreet dui, quis dictum arcu malesuada sed. Aliquam vestibulum, felis quis commodo pellentesque, turpis sem faucibus ipsum, non varius ipsum nisl ullamcorper neque. Aliquam tempus urna odio, ut convallis turpis ultricies eu. Mauris vitae lorem id libero sollicitudin eleifend. Phasellus porttitor magna eu ipsum egestas laoreet. Vestibulum porttitor justo in dictum vehicula. Proin porttitor erat ut urna sollicitudin, non accumsan turpis placerat. Curabitur sem nunc, faucibus sit amet tincidunt vitae, posuere sit amet purus."
+        },
+        {
+            "title": "Info",
+            "content": "Vivamus blandit, justo eget venenatis volutpat, odio nisi laoreet tortor, ut malesuada lacus sapien a turpis. Sed nec pretium tortor. Phasellus pellentesque aliquam sapien in eleifend. Donec eget metus et enim efficitur condimentum. Pellentesque feugiat rhoncus justo sit amet bibendum. Morbi vulputate, risus eget tincidunt commodo, lacus ante dapibus sem, et semper nunc tortor id ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Ut tempus quam ut dapibus tempor. Cras dapibus arcu eu ipsum convallis, sed porttitor nisi sollicitudin. Quisque condimentum elementum turpis, sit amet iaculis nibh condimentum ac. Integer turpis lectus, tempor quis malesuada id, cursus sed sapien. Sed mattis sapien eget est finibus cursus."
+        }
+    ],
+    "carousel": [
+        {
+            "title": "First slide label",
+            "content": "Nulla vitae elit libero, a pharetra augue mollis interdum.",
+            "img": {
+                "path": "./img/food-1.jpg",
+                "alt": "Food close on plate"
+            }
+        },
+        {
+            "title": "Second slide label",
+            "content": "Praesent commodo cursus magna, vel scelerisque nisl consectetur.",
+            "img": {
+                "path": "./img/food-2.jpg",
+                "alt": "More food on table"
+            }
+        }
+    ]
+}

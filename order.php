@@ -185,10 +185,10 @@ if (isset($_POST["clean-cart"])) {
     </div>
 
 
-    <hr>
+    <!-- <hr>
     <h3 class="mb-3">Factory Starts Here 😂 | Will Not Be In Production</h3>
 
-    <?php
+    < ?php
     require "./includes/dbConnect.php";
 
     $sql = "SELECT * FROM menu;";
@@ -208,7 +208,7 @@ if (isset($_POST["clean-cart"])) {
 
     outputSession();
 
-    ?>
+    ?> -->
 </main>
 
 
