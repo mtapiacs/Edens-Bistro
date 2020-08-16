@@ -18,8 +18,8 @@ include_once "./includes/dbConnect.php";
 <div class="main-container">
 
 <form action="search.php" method="POST">
-  <input type="text" name="search" placeholder="search">
-  <button type="submit" name="submit-search">search</button>
+  <input type="text" name="search" placeholder="Search">
+  <button type="submit" name="submit-search">Search</button>
 </form>
 
 </BR>

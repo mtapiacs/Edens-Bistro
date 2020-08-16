@@ -27,6 +27,9 @@ require "./includes/dbConnect.php";
                     echo "<div>
                     <h3>".$row['event_name']."</h3>
                     <p>".$row['event_desc']."</p>
+                    <p>Starts: ".$row['event_start_date']."</p>
+                    <p>".$row['event_time']."</p>
+                    <p>Ends: ".$row['event_end_date']."</p>
                   </div>";
                 }
             } else {
