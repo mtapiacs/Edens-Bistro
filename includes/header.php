@@ -90,6 +90,7 @@ $isLoggedIn = isset($_SESSION["userId"])
                                 <a class='dropdown-item' href='orders-manage.php'>Orders</a>
                                 <a class='dropdown-item' href='register-manage.php'>Register</a>
                                 <a class='dropdown-item' href='reservation-manage.php'>Reservation</a>
+                                <a class='dropdown-item' href='events-manage.php'>Events</a>
                             </div>
                         </li>";
                 }
