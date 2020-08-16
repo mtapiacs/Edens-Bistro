@@ -181,3 +181,53 @@ const addToCart = async itemId => {
 
     location.reload();
 };
+
+const modifyCart = async (action, itemId, quantity) => {
+    if (action === "SHOW") {
+        // Exit Early As Just Populating Modal
+        $("#modifyItemQty").val(quantity);
+        $("#modifyItemId").val(itemId);
+
+        $("#modifyItemModal").modal("toggle");
+
+        return;
+    }
+
+    itemId = $("#modifyItemId").val();
+    quantity = $("#modifyItemQty").val();
+
+    const requestBody = action === "AMOUNT" ? { itemId, quantity } : { itemId };
+
+    const response = await fetch(`./api/cart/modifyCart.php?action=${action}`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(requestBody)
+    });
+    const data = await response.json();
+
+    location.reload();
+};
+
+// *************** MANAGE *************** //
+const changeAdminStatus = async event => {
+    const userId = event.target.value;
+    const isAdmin = event.target.checked;
+
+    const response = await fetch("./api/manage/changeUserStatus.php", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            userId,
+            isAdmin
+        })
+    });
+    const data = await response.json();
+
+    if (data.type !== "SUCCESS") {
+        alert("There has been an error updating the user");
+    }
+};
