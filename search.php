@@ -16,13 +16,13 @@ require "./includes/dbConnect.php";
             $sql = "SELECT * FROM events WHERE MATCH(event_name, event_desc) AGAINST ('$search' IN NATURAL LANGUAGE MODE)";
             //echo $sql;
             $result = mysqli_query($conn, $sql);
-            echo $conn -> error;
-            echo $result;
+            //echo $conn -> error;
+            //echo $result;
             $queryResult = mysqli_num_rows($result);
-            echo $queryResult;
+            //echo $queryResult;
 
             if ($queryResult > 0) {
-                echo "There are ".$queryResult." results!";
+                echo "There are ".$queryResult." results";
                 while ($row = mysqli_fetch_assoc($result)) {
                     echo "<div>
                     <h3>".$row['event_name']."</h3>

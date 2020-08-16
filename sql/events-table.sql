@@ -7,6 +7,8 @@ CREATE TABLE events (
     event_end_date DATE NOT NULL
 );
 
+ALTER TABLE events ADD FULLTEXT(event_name, event_desc);
+
 INSERT INTO events (`event_name`, `event_desc`, `event_time`, `event_start_date`, `event_end_date`) VALUES ('Free dessert with RCMH ticket', 'Free dessert for anyone who presents a Radio City Music Hall ticket.', '00:00:00', '2020-12-1', '2020-12-31');
 INSERT INTO events (`event_name`, `event_desc`, `event_time`, `event_start_date`, `event_end_date`) VALUES ('Free Hot Cider for a carol', 'One free hot apple cider for anyone who sings us a christmas carol.', '00:00:00', '2020-12-01', '2020-12-31');
 INSERT INTO events (`event_name`, `event_desc`, `event_time`, `event_start_date`, `event_end_date`) VALUES ('Free Cocoa for Santa', 'One free hot cocoa for anyone wearing a Santa or Elf costume.', '00:00:00', '2020-12-01', '2020-12-01');

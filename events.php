@@ -35,7 +35,10 @@ include_once "./includes/dbConnect.php";
           <h3>".$row['event_name']."</h3>
           <p>".$row['event_desc']."</p>
           <p>Begins at ".$row['event_time']."</p>
+          Starts:
           <p>".$row['event_start_date']."</p>
+          Ends:
+          <p>".$row['event_end_date']."</p>
         </div>";
       }
     }
