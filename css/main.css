@@ -117,6 +117,13 @@ body {
     background-color: #f4f4f4;
 }
 
+/*** MANAGE ***/
+.manage-index-box {
+    width: 90%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
 /*** Menu ***/
 /* Categories */
 .categories a {

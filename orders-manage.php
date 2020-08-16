@@ -28,42 +28,42 @@ require "./includes/isAuthenticated.php";
         ?>
     </select>
 
+    <div class="table-responsive">
+        <table class="table mb-5">
+            <thead>
+                <tr>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Item Name</th>
+                    <th scope="col">Item Price</th>
+                    <th scope="col">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                require "./includes/dbConnect.php";
 
-    <table class="table mb-5">
-        <thead>
-            <tr>
-                <th scope="col">Quantity</th>
-                <th scope="col">First Name</th>
-                <th scope="col">Last Name</th>
-                <th scope="col">Email</th>
-                <th scope="col">Item Name</th>
-                <th scope="col">Item Price</th>
-                <th scope="col">Total</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            require "./includes/dbConnect.php";
+                $sql = "SELECT transaction_id, quantity, first_name, last_name, email, phone, username, item_name, item_price FROM orders INNER JOIN order_items ON orders.order_id = order_items.order_id INNER JOIN users ON orders.customer = users.user_address INNER JOIN menu ON order_items.menu_item_id = menu.item_id WHERE orders.order_id = ?;";
+                $orderId = isset($_GET["oid"]) ? $_GET["oid"] : 0;
 
-            $sql = "SELECT transaction_id, quantity, first_name, last_name, email, phone, username, item_name, item_price FROM orders INNER JOIN order_items ON orders.order_id = order_items.order_id INNER JOIN users ON orders.customer = users.user_address INNER JOIN menu ON order_items.menu_item_id = menu.item_id WHERE orders.order_id = ?;";
-            $orderId = isset($_GET["oid"]) ? $_GET["oid"] : 0;
+                $stmt = mysqli_stmt_init($conn);
 
-            $stmt = mysqli_stmt_init($conn);
+                if (!mysqli_stmt_prepare($stmt, $sql)) {
+                    print "Failed to prepare statement \n";
+                } else {
+                    mysqli_stmt_bind_param($stmt, "i", $orderId);
 
-            if (!mysqli_stmt_prepare($stmt, $sql)) {
-                print "Failed to prepare statement \n";
-            } else {
-                mysqli_stmt_bind_param($stmt, "i", $orderId);
+                    mysqli_stmt_execute($stmt);
 
-                mysqli_stmt_execute($stmt);
+                    $result = mysqli_stmt_get_result($stmt);
+                    $total = (float) 0;
 
-                $result = mysqli_stmt_get_result($stmt);
-                $total = (float) 0;
-
-                while ($row = mysqli_fetch_array($result)) {
-                    $localTotal = $row["item_price"] * $row["quantity"];
-                    $total += $localTotal;
-                    echo "
+                    while ($row = mysqli_fetch_array($result)) {
+                        $localTotal = $row["item_price"] * $row["quantity"];
+                        $total += $localTotal;
+                        echo "
                         <tr>
                             <td>{$row['quantity']}</td>
                             <td>{$row['first_name']}</td>
@@ -74,15 +74,16 @@ require "./includes/isAuthenticated.php";
                             <td>{$localTotal}</td>
                         </tr>
                     ";
+                    }
                 }
-            }
 
-            mysqli_stmt_close($stmt);
+                mysqli_stmt_close($stmt);
 
-            require "./includes/dbDisconnect.php";
-            ?>
-        </tbody>
-    </table>
+                require "./includes/dbDisconnect.php";
+                ?>
+            </tbody>
+        </table>
+    </div>
     <h3 class="text-center mb-3">
         <?php echo "Order Total: $$total"; ?>
     </h3>

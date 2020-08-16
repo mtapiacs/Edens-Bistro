@@ -27,8 +27,8 @@ $carouselItems = $homeObj["carousel"];
                 $imgAlt = $v["img"]["alt"];
 
                 echo
-                    "<div class='carousel-item carousel-image $active'>
-                    <img src='$imgPath' class='d-block w-100' alt='$imgAlt'>
+                    "<div class='carousel-item $active'>
+                    <img src='$imgPath' class='d-block w-100 carousel-image' alt='$imgAlt'>
                     <div class='carousel-caption d-none d-md-block'>
                         <h5>$title</h5>
                         <p>$content</p>
