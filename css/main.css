@@ -170,3 +170,30 @@ body {
     display: flex;
     justify-content: space-evenly;
 }
+.reservation-results{
+    list-style-type: none !important;
+    display: inline-block !important;
+  }
+  .manage-res-table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  .res-td, .res-th {
+    border: 1px solid white;
+    text-align: left;
+    padding: 8px;
+    
+  }
+  .res-tr:nth-child(even) {
+    background-color:#034c3c;
+  }
+  .res-records{
+    color: white;  
+  }
+  .reservation-container{
+    width: 1000px;
+    background-color: white;
+    padding: 30px;
+  
+  }

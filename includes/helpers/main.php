@@ -86,4 +86,26 @@ function composeCartInsertString($orderId)
     return $sqlInsertString;
 }
 
+function calculateOrdersTotal()
+{
+    require "./includes/dbConnect.php";
+
+    $sql = "SELECT SUM(quantity) * item_price AS local_total, SUM(quantity) AS item_qty, item_price FROM orders INNER JOIN order_items ON orders.order_id = order_items.order_id INNER JOIN menu ON order_items.menu_item_id = menu.item_id GROUP BY item_id;";
+
+    $result = mysqli_query($conn, $sql);
+
+    if (mysqli_num_rows($result) > 0) {
+        // output data of each row
+        $total = (float) 0;
+        while ($row = mysqli_fetch_assoc($result)) {
+            $total += $row['local_total'];
+        }
+        return $total;
+    } else {
+        return "No results";
+    }
+
+    require "./includes/dbDisconnect.php";
+}
+
 // ************** () ************** //
