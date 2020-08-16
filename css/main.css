@@ -125,6 +125,10 @@ body {
 }
 
 /*** Menu ***/
+.hide-search-table {
+    display: none;
+}
+
 /* Categories */
 .categories a {
     float: left;
