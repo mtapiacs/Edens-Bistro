@@ -79,7 +79,7 @@ $isLoggedIn = isset($_SESSION["userId"])
 
                 <?php
                 if ($isLoggedIn && $isAdmin) {
-                    $adminPages = array("orders-manage.php", "index-manage.php", "register-manage.php");
+                    $adminPages = array("orders-manage.php", "index-manage.php", "register-manage.php", "reservation-manage.php");
                     $activeClass = in_array($currentPage, $adminPages) ? "active" : "";
                     echo "<li class='nav-item dropdown $activeClass'>
                             <a class='nav-link dropdown-toggle' href='#' id='navbarDropdownOrder' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
@@ -89,6 +89,7 @@ $isLoggedIn = isset($_SESSION["userId"])
                                 <a class='dropdown-item' href='index-manage.php'>Index</a>
                                 <a class='dropdown-item' href='orders-manage.php'>Orders</a>
                                 <a class='dropdown-item' href='register-manage.php'>Register</a>
+                                <a class='dropdown-item' href='reservation-manage.php'>Reservation</a>
                             </div>
                         </li>";
                 }
