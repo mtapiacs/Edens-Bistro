@@ -5,11 +5,10 @@ $(".categories a").click(function (e) {
 });
 
 //hide search table until search term is submitted
-document.getElementById("search-table").style.display = "none";
-$(".search-form").click(function(e) {
-   document.getElementById("search-table").style.display = "block";
-})
-
+// document.getElementById("search-table").style.display = "none";
+// $("button[name='search-form']").click(function (e) {
+//     document.getElementById("search-table").style.display = "block";
+// });
 
 function openDiv(evt, menuCategory) {
     var i, menuItems;
@@ -37,29 +36,27 @@ function hideMenuSections() {
 document.getElementById("defaultOpen").click();
 
 //Adds details when you click the menu item
-async function populateModal (itemId) {
-   const response = await fetch(
-      './api//menu/getItemDetails.php?itemId=${itemId}")', 
-      {
-         method: "GET"
-      }
-   );
-   
-   const data = await response.json();
-   
-   //data.whatever
-   data.itemName
-   data.itemPrice
-   data.itemDesc
-   
-   //send to modal
-   document.getElementById("modal-title").textContent = data.itemName;
-   document.getElementById("modal-item-desc").textContent = data.itemDesc;
-   document.getElementById("modal-item-price").textContent = data.itemPrice;
+async function populateModal(itemId) {
+    const response = await fetch(
+        './api//menu/getItemDetails.php?itemId=${itemId}")',
+        {
+            method: "GET"
+        }
+    );
+
+    const data = await response.json();
+
+    //data.whatever
+    data.itemName;
+    data.itemPrice;
+    data.itemDesc;
+
+    //send to modal
+    document.getElementById("modal-title").textContent = data.itemName;
+    document.getElementById("modal-item-desc").textContent = data.itemDesc;
+    document.getElementById("modal-item-price").textContent = data.itemPrice;
 }
 
 $(document).on("hidden.bs.modal", function (e) {
-	$(e.target).removeData("bs.modal").find(".modal-content").empty();
+    $(e.target).removeData("bs.modal").find(".modal-content").empty();
 });
-
-

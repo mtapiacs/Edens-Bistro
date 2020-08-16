@@ -76,29 +76,33 @@ if (isset($_POST["clean-cart"])) {
 
 <main class="main-container">
     <h2 class="page-header">Order</h2>
-    <?php
-    $cart = $_SESSION["cart"];
+    <div class="row">
+        <?php
+        $cart = $_SESSION["cart"];
 
-    if (count(array_keys($cart)) === 0) {
-        $cartEmpty = true;
-        echo "<h5 class='my-4 text-center'>Cart is empty! Visit <a class='color-primary' href='./menu.php'>Menu!</a></h5>";
-    } else {
-        $cartEmpty = false;
-        $total = 0;
-        foreach ($cart as $item_id => $item_data) {
-            $total += $item_data['total'];
-            echo "<div class='card mb-3'>";
-            echo "<div class='card-body'>";
-            echo "<h5 class='card-title'>{$item_data['name']} - \${$item_data['price']}</h5>";
-            echo "<p class='card-text'>Ordered: {$item_data['quantity']} = Total: {$item_data['total']}</p>";
-            echo "</div>";
-            echo "</div>";
+        if (count(array_keys($cart)) === 0) {
+            $cartEmpty = true;
+            echo "<div class='col-12'><h5 class='my-4 text-center'>Cart is empty! Visit <a class='color-primary' href='./menu.php'>Menu!</a></h5></div>";
+        } else {
+            $cartEmpty = false;
+            $total = 0;
+            foreach ($cart as $item_id => $item_data) {
+                $total += $item_data['total'];
+                echo "<div class='col-sm-6'>";
+                echo "<div class='card mb-3'>";
+                echo "<div class='card-body order-item' onclick='modifyCart(\"SHOW\", \"$item_id\", \"{$item_data['quantity']}\");'>";
+                echo "<h5 class='card-title'>{$item_data['name']} - \${$item_data['price']}</h5>";
+                echo "<p class='card-text'>Ordered: {$item_data['quantity']} = Total: {$item_data['total']}</p>";
+                echo "</div>";
+                echo "</div>";
+                echo "</div>";
+            }
+
+            echo "<div class='col-12'><h3 class='text-center my-4'>Order Total: \${$total}</h3></div>";
         }
 
-        echo "<h3 class='text-center my-4'>Order Total: \${$total}</h3>";
-    }
-
-    ?>
+        ?>
+    </div>
 
     <div class="row">
         <div class="col-sm-3 offset-sm-2">
@@ -113,12 +117,14 @@ if (isset($_POST["clean-cart"])) {
             </button>
         </div>
     </div>
+
     <?php
     if (isset($result) && $result['type'] === 'FAIL') {
         echo "<h5 class='text-center'>There was a problem fulfilling your request!</h5>";
-        var_dump($response);
+        // var_dump($response);
     }
     ?>
+
     <div class="modal fade" id="placeOrderModal" tabindex="-1" role="dialog" aria-labelledby="placeOrderModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -184,6 +190,34 @@ if (isset($_POST["clean-cart"])) {
         </div>
     </div>
 
+    <div class="modal fade" id="modifyItemModal" tabindex="-1" role="dialog" aria-labelledby="modifyItemModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modifyItemModal">Modify Order Item</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="modifyItemQty">Quantity</label>
+                                <input id="modifyItemQty" name="modifyItemQty" class="form-control" type="number" min="0">
+                                <input type="hidden" id="modifyItemId">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-around">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <button onclick="modifyCart('REMOVE');" type="button" class="btn btn-danger" data-dismiss="modal">Remove Item</button>
+                    <button onclick="modifyCart('AMOUNT');" type="button" class="btn btn-site-main" data-dismiss="modal">Update Qty</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <hr>
     <h3 class="mb-3">Factory Starts Here 😂 | Will Not Be In Production</h3>

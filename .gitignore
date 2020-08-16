@@ -1,3 +1,5 @@
 .vscode
 NOTES-ME.md
 includes/dbConfig.php
+phplog
+1-home.json
