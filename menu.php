@@ -117,7 +117,11 @@ if (isset($_POST["search-form"])) {
                   $result = mysqli_query($conn, "SELECT item_id, item_name, item_price, item_desc, take_out FROM menu WHERE item_category = 8;");
                   if (mysqli_num_rows($result) > 0) {
                      while ($row = mysqli_fetch_assoc($result)) {
-                        echo '<td class="itemName"><a href="#addToCartModal" data-toggle="modal">' . $row['item_name'] . '</a></td><td class="itemPrice">' . $row['item_price'] . '</td><td class="itemTakeout text-center"><span class="takeout">' . $row['take_out'] . '</span></td></tr>';
+                         if ($row['take_out'] === 'Y') {
+                            echo "<td class='itemName'><a href='#addToCartModal' onclick='populateModal(\"{$row['item_id']}\");'>" . $row['item_name'] . '</a></td><td class="itemPrice">' . $row['item_price'] . '</td><td class="itemTakeout text-center"><span class="takeout">' . $row['take_out'] . '</span></td></tr>';
+                         } else {
+                            echo "<td class='itemName'>" . $row['item_name'] . '</td><td class="itemPrice">' . $row['item_price'] . '</td><td class="itemTakeout text-center"><span class="takeout">' . $row['take_out'] . '</span></td></tr>';
+                         }
                      }
                   } else {
                      echo "0 results";
@@ -302,16 +306,24 @@ if (isset($_POST["search-form"])) {
       <div class="modal-dialog">
          <div class="modal-content">
             <div class="modal-header">
+               <h4 id="modal-item-title" class="modal-title"></h4>
                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-               <h4 class="modal-title"></h4>
             </div>
             <div class="modal-body">
-               <p class="modal-item-desc"></p>
-               <p class="modal-item-price"></p>
+               <p id="modal-item-desc"></p>
+               <div class="row">
+                   <div class="col-sm-6">
+                        <p id="modal-item-price"></p>
+                   </div>
+                   <div class="col-sm-6">
+                        <input id="item-qty" class="form-control" type="number" name='item-qty'/>
+                   </div>
+               </div>
+               <input id="modal-item-id" type="hidden" name="add-item-id" />
             </div>
             <div class="modal-footer">
                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-               <button id="cartBtn" type="button" class="btn btn-secondary-color" data-dismiss="modal">Add to Cart</button>
+               <button onclick="addToCart();" id="cartBtn" type="button" class="btn btn-secondary-color" data-dismiss="modal">Add to Cart</button>
             </div>
          </div>
       </div>

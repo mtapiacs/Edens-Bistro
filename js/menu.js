@@ -30,27 +30,27 @@ $(".categories a").click(function (e) {
  // Get item details when each item is selected
  async function populateModal(itemId) {
      const response = await fetch(
-         './api//menu/getItemDetails.php?itemId=${itemId}")',
+         `./api/menu/getItemDetails.php?itemId=${itemId}`,
          {
              method: "GET"
          }
      );
  
+     // id, name, desc, price
      const data = await response.json();
  
-     // Assigning item details to variables
-     data.itemName;
-     data.itemPrice;
-     data.itemDesc;
- 
      // Send corresponding item details to modal
-     document.getElementById("modal-title").textContent = data.itemName;
-     document.getElementById("modal-item-desc").textContent = data.itemDesc;
-     document.getElementById("modal-item-price").textContent = data.itemPrice;
+     document.getElementById("modal-item-title").textContent = data.name; // $("#menu-modal-title").val(data.name)
+     document.getElementById("modal-item-desc").textContent = data.desc;
+     document.getElementById("modal-item-price").textContent = data.price;
+     document.getElementById("modal-item-id").value = data.id;
+
+     // Show The Modal
+     $('#addToCartModal').modal('show');
  }
  
  // Remove data when modal is closed
- $(document).on("hidden.bs.modal", function (e) {
-     $(e.target).removeData("bs.modal").find(".modal-content").empty();
- });
+//  $(document).on("hidden.bs.modal", function (e) {
+//      $(e.target).removeData("bs.modal").find(".modal-content").empty();
+//  });
  
