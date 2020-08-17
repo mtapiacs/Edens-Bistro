@@ -181,8 +181,8 @@
     font-weight: bold;
  }
  
- .manage-menu {
-    color: #902923;
+ .admin-btn {
+    color: #902923 !important;
     font-weight: bold;
  }
  

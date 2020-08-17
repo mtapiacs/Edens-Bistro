@@ -1,3 +1,5 @@
+// Source: http://talkerscode.com/webtricks/sort-mysql-table-using-php.php
+
 <?php
 include_once "./includes/header.php";
 require "./includes/dbConnect.php";
@@ -10,7 +12,7 @@ if (isset($_POST["search-form"])) {
 
     $stmt = mysqli_stmt_init($conn);
 
-    if (mysqli_stmt_prepare($stmt, "SELECT item_name, item_desc, item_price, take_out FROM menu WHERE MATCH(item_name, item_desc) AGAINST (? IN NATURAL LANGUAGE MODE);")) {
+    if (mysqli_stmt_prepare($stmt, "SELECT item_name, item_desc, item_price, take_out FROM menu;")) {
         mysqli_stmt_bind_param($stmt, "s", $searchTerm);
 
         mysqli_stmt_execute($stmt);
@@ -27,11 +29,10 @@ if (isset($_POST["search-form"])) {
 
     $showSearchTable = true;
 }
-
 ?>
-
+   
 <main class="main-container">
-   // Searching the menu database table 
+   
    <form method="POST" id="search" name="search" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
         <div class="row">
             <div class="col-11">
@@ -44,7 +45,6 @@ if (isset($_POST["search-form"])) {
         </div>
     </form>
 
-   // Displaying search results
    <div id="search-table" class="<?php echo $showSearchTable ? '' : 'hide-search-table' ?>">
       <table class='table table-borderless'>
          <thead>
@@ -52,7 +52,7 @@ if (isset($_POST["search-form"])) {
                <th scope='col'>Name</th>
                <th scope='col'>Description</th>
                <th scope='col'>Price</th>
-               <th scope='col'>Takeout</th>
+               <th scope="col">Takeout</th>
             </tr>
          </thead>
          <tbody>
@@ -70,6 +70,35 @@ if (isset($_POST["search-form"])) {
                   echo "No results found :(";
                }
             ?>
+         </tbody>
+      </table>
+   </div>
+   
+   <div id="admin-menu-table" class="menucontent">
+      <table class="table table-borderless">
+         <thead>
+            <tr>
+               <th scope='col'><a href='menu-manage.php?orderby=name&order=".$order."'>Name</a></th>
+               <th scope='col'><a href='menu-manage.php?orderby=price&order=".$order."'>Price</a></th>
+               <th scope='col'><a href='menu-manage.php?orderby=desc&order=".$order."'>Description</a></th>
+               <th scope='col'><a href='menu-manage.php?orderby=takeout&order=".$order."'>Takeout</a></th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <?php
+                  require "./includes/dbConnect.php";
+                  $result = mysqli_query($conn, "SELECT * from menu;");
+                  while($row=mysqli_fetch_assoc($result)){
+                        echo "<tr>
+                                 <td class='itemName'>".$row['item_name']."</td>
+                                 <td class='itemPrice'>".$row['item_price']."</td>
+                                 <td class='itemDesc'>".$row['item_desc']."</td>
+                                 <td class='itemTakeout text-center'>".$row['take_out']."</td>
+                              </tr>";
+                        }
+                  require "./includes/dbDisconnect.php"
+               ?>
          </tbody>
       </table>
    </div>

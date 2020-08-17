@@ -35,7 +35,7 @@ if (isset($_POST["search-form"])) {
 
 <main class="main-container">
    <h3 class="page-header">Menu</h3>
-   // Menu Naviation
+   <!--Menu Naviation-->
    <div class="row categories">
       <a class="menuitems" href="#" onClick="openDiv(event, 'breakfast')" id="defaultOpen">Breakfast</a>
       <a class="menuitems" href="#" onClick="openDiv(event, 'lunch')">Lunch</a>
@@ -45,7 +45,7 @@ if (isset($_POST["search-form"])) {
       <a class="menuitems" href="#" onClick="openDiv(event, 'drinks')">Drinks</a>
    </div>
 
-   // Searching the menu database table 
+   <!--Searching the menu database table -->
    <form method="POST" id="search" name="search" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
         <div class="row">
             <div class="col-11">
@@ -58,7 +58,7 @@ if (isset($_POST["search-form"])) {
         </div>
     </form>
 
-   // Displaying search results
+   <!--Displaying search results-->
    <div id="search-table" class="<?php echo $showSearchTable ? '' : 'hide-search-table' ?>">
       <table class='table table-borderless'>
          <thead>
@@ -86,8 +86,8 @@ if (isset($_POST["search-form"])) {
       </table>
    </div>
    
+   <!--Displaying breakfast menu description-->
    <div class="menucontent" id="breakfast">
-      // Displaying breakfast menu description
       <?php
          require "./includes/dbConnect.php";
          $result = mysqli_query($conn, "SELECT category_desc FROM categories WHERE category_id = 8");
@@ -101,7 +101,7 @@ if (isset($_POST["search-form"])) {
         require "./includes/dbDisconnect.php";
       ?>
       
-      // Displaying breakfast menu items
+      <!--Displaying breakfast menu items-->
       <table class="table table-borderless">
          <thead>
             <tr>
@@ -128,9 +128,9 @@ if (isset($_POST["search-form"])) {
       </table>
       <p class="desc">Add fruit, 1/4 cup, to panackes or waffles for $0.79 <br> Add fruit, 1/2 cup, to pancakes or waffles for $1.49 </p>
    </div>
-
+   
+   <!--Displaying lunch menu description -->
    <div id="lunch" class="menucontent">
-      // Displaying lunch menu description 
       <?php
          require "./includes/dbConnect.php";
          $result = mysqli_query($conn, "SELECT category_desc FROM categories WHERE category_id = 9");
@@ -144,7 +144,7 @@ if (isset($_POST["search-form"])) {
         require "./includes/dbDisconnect.php";
       ?>
       
-      // Displaying lunch menu items
+      <!--Displaying lunch menu items-->
       <table class="table table-borderless">
          <thead>
             <tr>
@@ -171,8 +171,8 @@ if (isset($_POST["search-form"])) {
         </table>
     </div>
 
+   <!--Displaying dinner menu description-->
    <div id="dinner" class="menucontent">
-      // Displaying dinner menu description
       <?php
          require "./includes/dbConnect.php";
          $result = mysqli_query($conn, "SELECT category_desc FROM categories WHERE category_id = 1");
@@ -186,7 +186,7 @@ if (isset($_POST["search-form"])) {
          require "./includes/dbDisconnect.php";
       ?>
       
-      // Displaying dinner menu items
+      <!--Displaying dinner menu items-->
       <table class="table table-borderless">
          <thead>
             <tr>
@@ -213,7 +213,7 @@ if (isset($_POST["search-form"])) {
       </table>
    </div>
 
-   // Displaying side menu items
+   <!--Displaying side menu items-->
    <div id="sides" class="menucontent">
       <table class="table table-borderless">
          <thead>
@@ -241,7 +241,7 @@ if (isset($_POST["search-form"])) {
       </table>
    </div>
 
-   // Displaying dessert menu items
+   <!--Displaying dessert menu items-->
    <div id="desserts" class="menucontent">
       <table class="table table-borderless">
          <thead>
@@ -269,7 +269,7 @@ if (isset($_POST["search-form"])) {
       </table>
    </div>
 
-   // Displaying drink menu items
+   <!--Displaying drink menu items-->
    <div id="drinks" class="menucontent">
       <table class="table table-borderless">
          <thead>
@@ -297,7 +297,7 @@ if (isset($_POST["search-form"])) {
       </table>
    </div>
 
-   // Displaying menu item description and add to cart functionality
+   <!--Displaying menu item description and add to cart functionality-->
    <div class="modal fade" id="addToCartModal" role="dialog">
       <div class="modal-dialog">
          <div class="modal-content">
@@ -316,6 +316,7 @@ if (isset($_POST["search-form"])) {
          </div>
       </div>
    </div>
+   <button class = "btn admin-btn"><a class="manage-menu" href="menu-manage.php">Edit Menu</a></button> 
 
 </main>
 
