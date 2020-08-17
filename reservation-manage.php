@@ -3,12 +3,16 @@ require "./includes/dbConnect.php";
 include_once "./includes/header.php";
 ?>
 <main class="main-container">
-    
-<div class = "reservation-container">
 
+<div class="container space-buttons">    
+<!-- <div class = "reservation-container"> -->
+
+    <form method = POST action = "search-res.php" class = "form-inline">
+        <input class = "form-control mr-sm-2" placeholder = "Search Reservation" name = "res-search"/>
+        <button class = "btn btn-primary-color" type = "submit" name = "submit">Search</button>
+    </form> <br> 
+</div>    
     <?php
-
-
         $sql = "SELECT * FROM reservations ORDER BY reservation_id";
         $results = mysqli_query($conn,$sql);
         $result_amount = mysqli_num_rows($results);
@@ -43,10 +47,8 @@ include_once "./includes/header.php";
                             </table>
                 </div>";
             }
-        }
 
-
-    ?>
+        }       ?>
 </div>
 
 </main>
