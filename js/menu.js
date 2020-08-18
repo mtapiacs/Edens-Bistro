@@ -27,7 +27,7 @@ $(".categories a").click(function (e) {
  // Show default menu when page is loaded
  document.getElementById("defaultOpen").click();
  
- // Get item details when each item is selected
+ // Get item details when each item is selected based on the id given
  async function populateModal(itemId) {
      const response = await fetch(
          `./api/menu/getItemDetails.php?itemId=${itemId}`,
@@ -36,7 +36,7 @@ $(".categories a").click(function (e) {
          }
      );
  
-     // id, name, desc, price
+     // create a variable that contains the data from JSON
      const data = await response.json();
  
      // Send corresponding item details to modal
@@ -48,9 +48,5 @@ $(".categories a").click(function (e) {
      // Show The Modal
      $('#addToCartModal').modal('show');
  }
- 
- // Remove data when modal is closed
-//  $(document).on("hidden.bs.modal", function (e) {
-//      $(e.target).removeData("bs.modal").find(".modal-content").empty();
-//  });
+
  

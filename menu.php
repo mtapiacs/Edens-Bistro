@@ -59,7 +59,8 @@ if (isset($_POST["search-form"])) {
     </form>
 
    <!--Displaying search results-->
-   <div id="search-table" class="<?php echo $showSearchTable ? '' : 'hide-search-table' ?>">
+   <h4 class="search-table-header" style="hidden">Search Results</h4>
+   <div id="search-table" class="<?php echo $showSearchTable ? '' : 'hide-menu-table' ?>">
       <table class='table table-borderless'>
          <thead>
             <tr>
@@ -85,6 +86,8 @@ if (isset($_POST["search-form"])) {
          </tbody>
       </table>
    </div>
+   
+   <div class="space-between"></div>
    
    <!--Displaying breakfast menu description-->
    <div class="menucontent" id="breakfast">
@@ -164,7 +167,11 @@ if (isset($_POST["search-form"])) {
                   $result = mysqli_query($conn, "SELECT item_id, item_name, item_price, item_desc, take_out FROM menu WHERE item_category = 9;");
                   if (mysqli_num_rows($result) > 0) {
                      while ($row = mysqli_fetch_assoc($result)) {
-                        echo '<td class="itemName"><a href="#addToCartModal" data-toggle="modal">' . $row['item_name'] . '</a></td><td class="itemPrice">' . $row['item_price'] . '</td><td class="itemTakeout text-center"><span class="takeout">' . $row['take_out'] . '</span></td></tr>';
+                         if ($row['take_out'] === 'Y') {
+                            echo "<td class='itemName'><a href='#addToCartModal' onclick='populateModal(\"{$row['item_id']}\");'>" . $row['item_name'] . '</a></td><td class="itemPrice">' . $row['item_price'] . '</td><td class="itemTakeout text-center"><span class="takeout">' . $row['take_out'] . '</span></td></tr>';
+                         } else {
+                            echo "<td class='itemName'>" . $row['item_name'] . '</td><td class="itemPrice">' . $row['item_price'] . '</td><td class="itemTakeout text-center"><span class="takeout">' . $row['take_out'] . '</span></td></tr>';
+                         }
                      }
                   } else {
                      echo "0 results";
@@ -206,7 +213,11 @@ if (isset($_POST["search-form"])) {
                   $result = mysqli_query($conn, "SELECT item_id, item_name, item_price, item_desc, take_out FROM menu WHERE item_category = 1;");
                   if (mysqli_num_rows($result) > 0) {
                      while ($row = mysqli_fetch_assoc($result)) {
-                        echo '<td class="itemName"><a href="#addToCartModal" data-toggle="modal">' . $row['item_name'] . '</a></td><td class="itemPrice">' . $row['item_price'] . '</td><td class="itemTakeout text-center"><span class="takeout">' . $row['take_out'] . '</span></td></tr>';
+                         if ($row['take_out'] === 'Y') {
+                            echo "<td class='itemName'><a href='#addToCartModal' onclick='populateModal(\"{$row['item_id']}\");'>" . $row['item_name'] . '</a></td><td class="itemPrice">' . $row['item_price'] . '</td><td class="itemTakeout text-center"><span class="takeout">' . $row['take_out'] . '</span></td></tr>';
+                         } else {
+                            echo "<td class='itemName'>" . $row['item_name'] . '</td><td class="itemPrice">' . $row['item_price'] . '</td><td class="itemTakeout text-center"><span class="takeout">' . $row['take_out'] . '</span></td></tr>';
+                         }
                      }
                   } else {
                      echo "0 results";
@@ -234,10 +245,14 @@ if (isset($_POST["search-form"])) {
                   $result = mysqli_query($conn, "SELECT item_id, item_name, item_price, item_desc, take_out FROM menu WHERE item_category = 10;");
                   if (mysqli_num_rows($result) > 0) {
                      while ($row = mysqli_fetch_assoc($result)) {
-                        echo '<td class="itemName"><a href="#addToCartModal" data-toggle="modal">' . $row['item_name'] . '</a></td><td class="itemPrice">' . $row['item_price'] . '</td><td class="itemTakeout text-center"><span class="takeout">' . $row['take_out'] . '</span></td></tr>';
+                         if ($row['take_out'] === 'Y') {
+                            echo "<td class='itemName'><a href='#addToCartModal' onclick='populateModal(\"{$row['item_id']}\");'>" . $row['item_name'] . '</a></td><td class="itemPrice">' . $row['item_price'] . '</td><td class="itemTakeout text-center"><span class="takeout">' . $row['take_out'] . '</span></td></tr>';
+                         } else {
+                            echo "<td class='itemName'>" . $row['item_name'] . '</td><td class="itemPrice">' . $row['item_price'] . '</td><td class="itemTakeout text-center"><span class="takeout">' . $row['take_out'] . '</span></td></tr>';
+                         }
                      }
                   } else {
-                        echo "0 results";
+                     echo "0 results";
                   }
                   require "./includes/dbDisconnect.php";
                ?>
@@ -262,7 +277,11 @@ if (isset($_POST["search-form"])) {
                   $result = mysqli_query($conn, "SELECT item_id, item_name, item_price, item_desc, take_out FROM menu WHERE item_category = 11;");
                   if (mysqli_num_rows($result) > 0) {
                      while ($row = mysqli_fetch_assoc($result)) {
-                        echo '<td class="itemName"><a href="#addToCartModal" data-toggle="modal">' . $row['item_name'] . '</a></td><td class="itemPrice">' . $row['item_price'] . '</td><td class="itemTakeout text-center"><span class="takeout">' . $row['take_out'] . '</span></td></tr>';
+                         if ($row['take_out'] === 'Y') {
+                            echo "<td class='itemName'><a href='#addToCartModal' onclick='populateModal(\"{$row['item_id']}\");'>" . $row['item_name'] . '</a></td><td class="itemPrice">' . $row['item_price'] . '</td><td class="itemTakeout text-center"><span class="takeout">' . $row['take_out'] . '</span></td></tr>';
+                         } else {
+                            echo "<td class='itemName'>" . $row['item_name'] . '</td><td class="itemPrice">' . $row['item_price'] . '</td><td class="itemTakeout text-center"><span class="takeout">' . $row['take_out'] . '</span></td></tr>';
+                         }
                      }
                   } else {
                      echo "0 results";
@@ -290,7 +309,11 @@ if (isset($_POST["search-form"])) {
                   $result = mysqli_query($conn, "SELECT item_id, item_name, item_price, item_desc, take_out FROM menu WHERE item_category = 12;");
                   if (mysqli_num_rows($result) > 0) {
                      while ($row = mysqli_fetch_assoc($result)) {
-                        echo '<td class="itemName"><a href="#addToCartModal" data-toggle="modal">' . $row['item_name'] . '</a></td><td class="itemPrice">' . $row['item_price'] . '</td><td class="itemTakeout text-center"><span class="takeout">' . $row['take_out'] . '</span></td></tr>';
+                         if ($row['take_out'] === 'Y') {
+                            echo "<td class='itemName'><a href='#addToCartModal' onclick='populateModal(\"{$row['item_id']}\");'>" . $row['item_name'] . '</a></td><td class="itemPrice">' . $row['item_price'] . '</td><td class="itemTakeout text-center"><span class="takeout">' . $row['take_out'] . '</span></td></tr>';
+                         } else {
+                            echo "<td class='itemName'>" . $row['item_name'] . '</td><td class="itemPrice">' . $row['item_price'] . '</td><td class="itemTakeout text-center"><span class="takeout">' . $row['take_out'] . '</span></td></tr>';
+                         }
                      }
                   } else {
                      echo "0 results";
@@ -328,7 +351,7 @@ if (isset($_POST["search-form"])) {
          </div>
       </div>
    </div>
-   <button class = "btn admin-btn"><a class="manage-menu" href="menu-manage.php">Edit Menu</a></button> 
+   <button class = "btn admin-btn" onclick="window.location.href='menu-manage.php'">Edit Menu</button> 
 
 </main>
 
