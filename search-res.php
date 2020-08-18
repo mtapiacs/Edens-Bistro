@@ -3,15 +3,8 @@ require "./includes/dbConnect.php";
 include_once "./includes/header.php";
 ?>
 <main class = "main-container">
-<div class="container space-buttons">
-    <form method = POST action = "search-res.php" class = "form-inline">
-            <input class = "form-control mr-sm-2" placeholder = "Search Reservation"/>
-            <button class = "btn btn-primary-color" type = "submit">Search</button>
-    </form>
-        <a class = "btn btn-primary-color" href = "reservation-manage.php" style = "text-align: right">View All</a>
-    <br>
-</div>
-
+<a class = "btn btn-primary-color" href = "reservation-manage.php" style = "text-align: right">New Search</a>
+    <br> <br>
     <div class = "resultscontainer">
         <?php
             if(isset($_POST['submit'])){
