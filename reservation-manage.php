@@ -11,6 +11,7 @@ include_once "./includes/header.php";
         <input class = "form-control mr-sm-2" placeholder = "Search Reservation" name = "res-search"/>
         <button class = "btn btn-primary-color" type = "submit" name = "submit">Search</button>
     </form> <br> 
+    <a class = "btn btn-primary-color" href = "reservation_manage_calendar.php">Calendar View</a>
 </div>    
     <?php
         $sql = "SELECT * FROM reservations ORDER BY reservation_id";
@@ -45,7 +46,7 @@ include_once "./includes/header.php";
                                     <td class = 'res-td'><h5 class = 'res-records'>".$row['comments_questions']."</h5></td>
                                 </tr>
                             </table>
-                </div>";
+                </div><br>";
             }
 
         }       ?>
