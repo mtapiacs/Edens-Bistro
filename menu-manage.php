@@ -13,7 +13,7 @@ if (isset($_POST["search-form"])) {
 
     $stmt = mysqli_stmt_init($conn);
 
-    if (mysqli_stmt_prepare($stmt, "SELECT item_name, item_desc, item_price, take_out FROM menu;")) {
+    if (mysqli_stmt_prepare($stmt, "SELECT item_name, item_desc, item_price, take_out FROM menu WHERE MATCH(item_name, item_desc) AGAINST (? IN NATURAL LANGUAGE MODE);")) {
         mysqli_stmt_bind_param($stmt, "s", $searchTerm);
 
         mysqli_stmt_execute($stmt);
@@ -33,7 +33,7 @@ if (isset($_POST["search-form"])) {
 ?>
    
 <main class="main-container">
-   
+   <h3 class="page-header">Menu</h3>
    <form method="POST" id="search" name="search" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
         <div class="row">
             <div class="col-11">
@@ -46,7 +46,8 @@ if (isset($_POST["search-form"])) {
         </div>
     </form>
 
-   <div id="search-table" class="<?php echo $showSearchTable ? '' : 'hide-search-table' ?>">
+   <div id="search-table" class="<?php echo $showSearchTable ? '' : 'hide-menu-table' ?>">
+      <h5 class="table-header">Search Results</h5>
       <table class='table table-borderless'>
          <thead>
             <tr>
@@ -58,40 +59,40 @@ if (isset($_POST["search-form"])) {
          </thead>
          <tbody>
             <?php
-               if (isset($results)) {
+               if (!isset($results)) {
+                  echo "No results found :(";
+               }
+               else {
                   foreach ($results as $row) {
                         echo "<tr>
                                  <td>{$row['name']}</td>
                                  <td>{$row['description']}</td>
                                  <td>{$row['price']}</td>
-                                 <td>{$row['take_out']}</td>
+                                 <td>{$row['takeout']}</td>
                               </tr>";
                   }
-               } else {
-                  echo "No results found :(";
-               }
+               } 
             ?>
          </tbody>
       </table>
    </div>
+
    <div id="admin-menu-table" class="menucontent">
+      <h5>All Menu Items</h5>
        <table class="table table-borderless">
          <thead>
             <tr>
-               <th scope='col'><a href="menu-manage.php?column=name">Name</a></th>
-               <th scope='col'><a href="menu-manage.php?column=price">Price</a></th>
-               <th scope='col'><a href="menu-manage.php?column=desc">Description</a></th>
-               <th scope='col'><a href="menu-manage.php?column=takeout">Takeout</a></th>
+               <th scope='col'>Name</th>
+               <th scope='col'>Price</th>
+               <th scope='col'>Description</th>
+               <th scope='col'>Takeout</th>
             </tr>
          </thead>
-      <tbody>
-         <?php
-      require "./includes/dbConnect.php";
-      
-      $orderOptions = array('name', 'price', 'description', 'takeout');
-      $order = 'type';
-      // if(order is set and inside array, then set $order to whatever the type is?)
-      $result = mysqli_query($conn, "SELECT * from menu ORDER BY ".$order."");
+         <tbody>
+            <?php
+               require "./includes/dbConnect.php";
+               
+               $result = mysqli_query($conn, "SELECT * from menu ORDER BY item_category");
                   while($row=mysqli_fetch_assoc($result)){
                         echo "<tr>
                                  <td class='itemName'>".$row['item_name']."</td>
@@ -100,8 +101,8 @@ if (isset($_POST["search-form"])) {
                                  <td class='itemTakeout text-center'>".$row['take_out']."</td>
                               </tr>";
                         }
-                  require "./includes/dbDisconnect.php"
-               ?>
+               require "./includes/dbDisconnect.php"
+            ?>
          </tbody>
       </table>
    </div>

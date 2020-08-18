@@ -5,7 +5,7 @@ include_once "./includes/header.php";
 // https://www.w3schools.com/howto/howto_js_tabs.asp
 // https://getbootstrap.com/docs/4.0/components/modal/
 
-$showSearchTable = false;
+$showTable = false;
 
 if (isset($_POST["search-form"])) {
     require "./includes/dbConnect.php";
@@ -28,7 +28,7 @@ if (isset($_POST["search-form"])) {
     }
     require "./includes/dbDisconnect.php";
 
-    $showSearchTable = true;
+    $showTable = true;
 }
 
 ?>
@@ -46,6 +46,7 @@ if (isset($_POST["search-form"])) {
    </div>
 
    <!--Searching the menu database table -->
+   <div class="break"><br></div>
    <form method="POST" id="search" name="search" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
         <div class="row">
             <div class="col-11">
@@ -56,11 +57,12 @@ if (isset($_POST["search-form"])) {
             </div>
             <div class="break" style="padding: 4px"></div>
         </div>
+        <div class="break"><br></div>
     </form>
 
    <!--Displaying search results-->
-   <h4 class="search-table-header" style="hidden">Search Results</h4>
-   <div id="search-table" class="<?php echo $showSearchTable ? '' : 'hide-menu-table' ?>">
+   <div id="search-table" class="<?php echo $showTable ? '' : 'hide-menu-table' ?>">
+      <h4 class="table-header">Search Results</h4>
       <table class='table table-borderless'>
          <thead>
             <tr>
@@ -91,6 +93,7 @@ if (isset($_POST["search-form"])) {
    
    <!--Displaying breakfast menu description-->
    <div class="menucontent" id="breakfast">
+      <h5 class="table-header">Breakfast Items</h5>
       <?php
          require "./includes/dbConnect.php";
          $result = mysqli_query($conn, "SELECT category_desc FROM categories WHERE category_id = 8");
@@ -138,6 +141,7 @@ if (isset($_POST["search-form"])) {
    
    <!--Displaying lunch menu description -->
    <div id="lunch" class="menucontent">
+      <h5 class="table-header">Lunch Items</h5>
       <?php
          require "./includes/dbConnect.php";
          $result = mysqli_query($conn, "SELECT category_desc FROM categories WHERE category_id = 9");
@@ -184,6 +188,8 @@ if (isset($_POST["search-form"])) {
 
    <!--Displaying dinner menu description-->
    <div id="dinner" class="menucontent">
+      <h5 class="table-header">Dinner Items</h5>
+
       <?php
          require "./includes/dbConnect.php";
          $result = mysqli_query($conn, "SELECT category_desc FROM categories WHERE category_id = 1");
@@ -230,6 +236,7 @@ if (isset($_POST["search-form"])) {
 
    <!--Displaying side menu items-->
    <div id="sides" class="menucontent">
+      <h5 class="table-header">Side Items</h5>
       <table class="table table-borderless">
          <thead>
             <tr>
@@ -262,6 +269,7 @@ if (isset($_POST["search-form"])) {
 
    <!--Displaying dessert menu items-->
    <div id="desserts" class="menucontent">
+      <h5 class="table-header">Dessert Items</h5>
       <table class="table table-borderless">
          <thead>
             <tr>
@@ -294,6 +302,7 @@ if (isset($_POST["search-form"])) {
 
    <!--Displaying drink menu items-->
    <div id="drinks" class="menucontent">
+      <h5 class="table-header">Drink Items</h5>
       <table class="table table-borderless">
          <thead>
             <tr>
@@ -351,7 +360,6 @@ if (isset($_POST["search-form"])) {
          </div>
       </div>
    </div>
-   <button class = "btn admin-btn" onclick="window.location.href='menu-manage.php'">Edit Menu</button> 
 
 </main>
 

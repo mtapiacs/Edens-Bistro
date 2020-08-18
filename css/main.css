@@ -145,15 +145,6 @@
     font-weight: bold !important;
     color: #902923 !important;
  }
- 
- /* Search Table */
- .space-between {
-     padding: 4px;
- }
-
-.search-table-header !i {
-    color: #902923 !important;
-}
 
  /* Menu Content & Tables */
  .menucontent {
@@ -190,11 +181,9 @@
     font-weight: bold;
  }
  
- .admin-btn {
+ .search-table-header !i {
     color: #902923 !important;
-    border-color: 1px solid #902923 !important;
-    font-weight: bold;
- }
+}
  
  /*** Reservation and Calender ***/
  .space-buttons {
