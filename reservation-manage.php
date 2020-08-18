@@ -4,7 +4,7 @@ include_once "./includes/header.php";
 ?>
 <main class="main-container">
 
-<h2 align = "center">Admin Reservation View</h2><br>`
+<h2 align = "center">Admin Reservation View</h2><br>
 
 <div class="container space-buttons">    
 <!-- <div class = "reservation-container"> -->
