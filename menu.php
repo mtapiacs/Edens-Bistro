@@ -25,6 +25,12 @@ if (isset($_POST["search-form"])) {
             $results[] = array("name" => $item_name, "description" => $item_desc, "price" => $item_price);
         }
         mysqli_stmt_close($stmt);
+
+        if (count($results) === 0) {
+            $resultsEmpty = true;
+        } else {
+            $resultsEmpty = false;
+        }
     }
     require "./includes/dbDisconnect.php";
 
@@ -61,9 +67,9 @@ if (isset($_POST["search-form"])) {
     </form>
 
    <!--Displaying search results-->
-   <div id="search-table" class="<?php echo $showTable ? '' : 'hide-menu-table' ?>">
-      <h4 class="table-header">Search Results</h4>
-      <table class='table table-borderless'>
+   <h4 class="search-table-header" style="<?php echo $resultsEmpty ? 'display: none;' : '' ?>">Search Results</h4>
+   <div id="search-table" class="<?php echo $showSearchTable ? '' : 'hide-menu-table' ?>">
+      <table class='table table-borderless' style="<?php echo $resultsEmpty ? "display: none;" : '' ?>">
          <thead>
             <tr>
                <th scope='col'>Name</th>
@@ -73,21 +79,26 @@ if (isset($_POST["search-form"])) {
          </thead>
          <tbody>
             <?php
-               if (isset($results)) {
-                  foreach ($results as $row) {
-                        echo "<tr>
-                                 <td>{$row['name']}</td>
-                                 <td>{$row['description']}</td>
-                                 <td>{$row['price']}</td>
-                              </tr>";
-                  }
-               } else {
-                  echo "No results found :(";
-               }
+               
+            foreach ($results as $row) {
+                echo "<tr>
+                            <td>{$row['name']}</td>
+                            <td>{$row['description']}</td>
+                            <td>{$row['price']}</td>
+                        </tr>";
+            }
             ?>
          </tbody>
       </table>
    </div>
+
+   <?php
+
+    if (isset($resultsEmpty) && $resultsEmpty) {
+        echo "No results";
+    }
+    
+    ?>
    
    <div class="space-between"></div>
    
