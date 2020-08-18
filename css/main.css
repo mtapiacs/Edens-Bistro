@@ -128,7 +128,7 @@
  }
  
  /*** Menu ***/
- .hide-search-table {
+ .hide-menu-table {
      display: none;
  }
  
@@ -146,6 +146,15 @@
     color: #902923 !important;
  }
  
+ /* Search Table */
+ .space-between {
+     padding: 4px;
+ }
+
+.search-table-header !i {
+    color: #902923 !important;
+}
+
  /* Menu Content & Tables */
  .menucontent {
     float: left;
@@ -183,6 +192,7 @@
  
  .admin-btn {
     color: #902923 !important;
+    border-color: 1px solid #902923 !important;
     font-weight: bold;
  }
  

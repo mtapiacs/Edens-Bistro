@@ -1,10 +1,14 @@
 <link rel="stylesheet" href="./css/main.css" />
 
 <?php
+include_once "./includes/header.php";
+?>
+
+<?php
 require "./includes/dbConnect.php";
 ?>
 
-
+<main class="main-container">
 <h1>Events matching your search:</h1>
 <div>
     <?php
@@ -37,4 +41,6 @@ require "./includes/dbConnect.php";
             }
         }
     ?>
+    <a href = "events.php">Return to Events</a>
 </div>
+</main>

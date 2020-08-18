@@ -5,25 +5,20 @@ include_once "./includes/header.php";
 
 <main class="main-container">
     <h2 class="page-header">Events</h2>
-</main>
+
 
 <?php
 include_once "./includes/dbConnect.php";
 ?>
 
 
-
-<h1>All Events</h1>
-
-<div class="main-container">
-
 <form action="search.php" method="POST">
   <input type="text" name="search" placeholder="Search">
-  <button type="submit" name="submit-search">Search</button>
+  <button class="btn btn-site-main" type="submit" name="submit-search">Search</button>
 </form>
 
 </BR>
-
+<div class="form-container mx-auto">
   <?php
     $sql = "SELECT * FROM events";
     $result = mysqli_query($conn, $sql);
@@ -32,7 +27,7 @@ include_once "./includes/dbConnect.php";
     if ($queryResults > 0) {
       while ($row = mysqli_fetch_assoc($result)) {
         echo "<div class='events-box'>
-          <h3>".$row['event_name']."</h3>
+          <h2>".$row['event_name']."</h2>
           <p>".$row['event_desc']."</p>
           <p>Begins at ".$row['event_time']."</p>
           Starts:
@@ -43,7 +38,8 @@ include_once "./includes/dbConnect.php";
       }
     }
   ?>
-</div>
+  </div>
+</main>
 
 <?php
 /*$q = "SELECT event_name, event_desc FROM events;";
@@ -59,6 +55,7 @@ if ($result !== false) {
 } else {
     print $link->error;
 }*/
+
 ?>
 
 <?php

@@ -1,4 +1,5 @@
 // Source: http://talkerscode.com/webtricks/sort-mysql-table-using-php.php
+// Source: https://www.tutorialrepublic.com/php-tutorial/php-mysql-order-by-clause.php
 
 <?php
 include_once "./includes/header.php";
@@ -73,22 +74,24 @@ if (isset($_POST["search-form"])) {
          </tbody>
       </table>
    </div>
-   
    <div id="admin-menu-table" class="menucontent">
-      <table class="table table-borderless">
+       <table class="table table-borderless">
          <thead>
             <tr>
-               <th scope='col'><a href='menu-manage.php?orderby=name&order=".$order."'>Name</a></th>
-               <th scope='col'><a href='menu-manage.php?orderby=price&order=".$order."'>Price</a></th>
-               <th scope='col'><a href='menu-manage.php?orderby=desc&order=".$order."'>Description</a></th>
-               <th scope='col'><a href='menu-manage.php?orderby=takeout&order=".$order."'>Takeout</a></th>
+               <th scope='col'><a href="menu-manage.php?column=name">Name</a></th>
+               <th scope='col'><a href="menu-manage.php?column=price">Price</a></th>
+               <th scope='col'><a href="menu-manage.php?column=desc">Description</a></th>
+               <th scope='col'><a href="menu-manage.php?column=takeout">Takeout</a></th>
             </tr>
          </thead>
-         <tbody>
-            <tr>
-               <?php
-                  require "./includes/dbConnect.php";
-                  $result = mysqli_query($conn, "SELECT * from menu;");
+      <tbody>
+         <?php
+      require "./includes/dbConnect.php";
+      
+      $orderOptions = array('name', 'price', 'description', 'takeout');
+      $order = 'type';
+      // if(order is set and inside array, then set $order to whatever the type is?)
+      $result = mysqli_query($conn, "SELECT * from menu ORDER BY ".$order."");
                   while($row=mysqli_fetch_assoc($result)){
                         echo "<tr>
                                  <td class='itemName'>".$row['item_name']."</td>
