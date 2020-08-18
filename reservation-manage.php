@@ -10,7 +10,7 @@ include_once "./includes/header.php";
 <!-- <div class = "reservation-container"> -->
 
     <form method = POST action = "search-res.php" class = "form-inline">
-        <input class = "form-control mr-sm-2" placeholder = "Search Reservation" name = "res-search"/>
+        <input class = "form-control mr-sm-2" placeholder = "Search Name" name = "res-search"/>
         <button class = "btn btn-primary-color" type = "submit" name = "submit">Search</button>
     </form> <br> 
     <a class = "btn btn-primary-color" href = "reservation_manage_calendar.php">Calendar View</a>
