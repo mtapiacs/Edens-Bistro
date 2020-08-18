@@ -165,8 +165,10 @@ const checkPasswordMatch = () => {
 };
 
 // *************** ORDER *************** //
-const addToCart = async itemId => {
-    const quantity = $(`#${itemId}-qty`).val();
+const addToCart = async () => {
+    const itemId = $("#modal-item-id").val();
+    const quantity = $("#item-qty").val();
+
     const response = await fetch("./api/cart/addToCart.php", {
         method: "POST",
         headers: {
@@ -179,7 +181,7 @@ const addToCart = async itemId => {
     });
     const data = await response.json();
 
-    location.reload();
+    alert(`Added ${quantity} to cart!`);
 };
 
 const modifyCart = async (action, itemId, quantity) => {

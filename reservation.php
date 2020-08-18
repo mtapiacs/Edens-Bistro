@@ -53,6 +53,7 @@ include_once "./includes/header.php";
     <div class="form-group">
         <label for="reservation_name">Name:</label>
         <input type="text" class="form-control" id="reservation_name" name = "reservation_name" placeholder = "John Doe" required> 
+        <small>Please Include First and Last</small>
     </div>
  <!-- email -->
     <div class="form-group">

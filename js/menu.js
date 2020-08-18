@@ -1,62 +1,52 @@
-// *************** Menu *************** //
+// Category link functionality 
 $(".categories a").click(function (e) {
     var a_href = $(this).attr("href");
     e.preventDefault();
-});
-
-//hide search table until search term is submitted
-// document.getElementById("search-table").style.display = "none";
-// $("button[name='search-form']").click(function (e) {
-//     document.getElementById("search-table").style.display = "block";
-// });
-
-function openDiv(evt, menuCategory) {
+ });
+ 
+ // Open menu when menu category is selected
+ function openDiv(evt, menuCategory) {
     var i, menuItems;
-
     hideMenuSections();
-
     menuItems = document.getElementsByClassName("menuitems");
     for (i = 0; i < menuItems.length; i++) {
-        menuItems[i].className = menuItems[i].className.replace(" active", "");
+       menuItems[i].className = menuItems[i].className.replace(" active", "");
     }
     document.getElementById(menuCategory).style.display = "block";
     evt.currentTarget.className += " active";
-}
-
-function hideMenuSections() {
+ }
+ 
+ // Hide menu when new menu category is selected
+ function hideMenuSections() {
     var items = document.getElementsByClassName("menucontent"); // [HTMLElement, HTMLElement]
     for (var i = 0; i < items.length; i++) {
-        items[i].style.display = "none";
+       items[i].style.display = "none";
     }
-    // for (const item of items) { // [HTMLELEMENT, HTMLELEMENT]
-    //     item.style.display = "none";
-    // }
-}
+ }
+ 
+ // Show default menu when page is loaded
+ document.getElementById("defaultOpen").click();
+ 
+ // Get item details when each item is selected based on the id given
+ async function populateModal(itemId) {
+     const response = await fetch(
+         `./api/menu/getItemDetails.php?itemId=${itemId}`,
+         {
+             method: "GET"
+         }
+     );
+ 
+     // create a variable that contains the data from JSON
+     const data = await response.json();
+ 
+     // Send corresponding item details to modal
+     document.getElementById("modal-item-title").textContent = data.name; // $("#menu-modal-title").val(data.name)
+     document.getElementById("modal-item-desc").textContent = data.desc;
+     document.getElementById("modal-item-price").textContent = data.price;
+     document.getElementById("modal-item-id").value = data.id;
 
-document.getElementById("defaultOpen").click();
+     // Show The Modal
+     $('#addToCartModal').modal('show');
+ }
 
-//Adds details when you click the menu item
-async function populateModal(itemId) {
-    const response = await fetch(
-        './api//menu/getItemDetails.php?itemId=${itemId}")',
-        {
-            method: "GET"
-        }
-    );
-
-    const data = await response.json();
-
-    //data.whatever
-    data.itemName;
-    data.itemPrice;
-    data.itemDesc;
-
-    //send to modal
-    document.getElementById("modal-title").textContent = data.itemName;
-    document.getElementById("modal-item-desc").textContent = data.itemDesc;
-    document.getElementById("modal-item-price").textContent = data.itemPrice;
-}
-
-$(document).on("hidden.bs.modal", function (e) {
-    $(e.target).removeData("bs.modal").find(".modal-content").empty();
-});
+ 
