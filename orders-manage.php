@@ -91,7 +91,9 @@ require "./includes/isAuthenticated.php";
         <?php
         $total = calculateOrdersTotal();
 
-        echo "Grand Total: $$total";
+        $total = $total !== 'No results' ? $total : 0;
+
+        echo "Grand Revenue: $$total";
         ?>
     </h2>
 </main>

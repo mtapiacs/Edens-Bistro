@@ -11,7 +11,7 @@ $itemId = $_GET["itemId"];
 if (isset($itemId) && $itemId != "") {
     require "../../includes/dbConnect.php";
 
-    $query = 'SELECT item_id, item_name, item_desc, item_price FROM menu WHERE item_id = ?;';
+    $query = 'SELECT item_id, item_name, item_desc, item_price, item_category, take_out FROM menu WHERE item_id = ?;';
 
     $stmt = mysqli_stmt_init($conn);
 
@@ -31,7 +31,7 @@ if (isset($itemId) && $itemId != "") {
          $result = mysqli_stmt_get_result($stmt);
          $itemDetails = mysqli_fetch_array($result);
          // stores data in array according to item values
-         $response = array("id" => $itemDetails['item_id'], "name" => $itemDetails['item_name'], "desc" => $itemDetails['item_desc'], "price" => $itemDetails['item_price']);
+         $response = array("id" => $itemDetails['item_id'], "name" => $itemDetails['item_name'], "desc" => $itemDetails['item_desc'], "price" => $itemDetails['item_price'], "category" => $itemDetails['item_category'], "takeout" => $itemDetails['take_out']);
          header('Content-type: application/json');
          echo json_encode($response);
       }

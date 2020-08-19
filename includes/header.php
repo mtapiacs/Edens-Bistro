@@ -79,7 +79,7 @@ $isLoggedIn = isset($_SESSION["userId"])
 
                 <?php
                 if ($isLoggedIn && $isAdmin) {
-                    $adminPages = array("orders-manage.php", "index-manage.php", "register-manage.php", "reservation-manage.php", "events-manage.php", "reservation_manage_calendar.php");
+                    $adminPages = array("orders-manage.php", "index-manage.php", "register-manage.php", "reservation-manage.php", "events-manage.php", "reservation_manage_calendar.php", "menu-manage.php");
                     $activeClass = in_array($currentPage, $adminPages) ? "active" : "";
                     echo "<li class='nav-item dropdown $activeClass'>
                             <a class='nav-link dropdown-toggle' href='#' id='navbarDropdownOrder' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
