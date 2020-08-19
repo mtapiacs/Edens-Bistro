@@ -111,7 +111,6 @@ include_once "./includes/header.php";
 <!-- submit -->
     <button class="btn btn-primary-color" name ="reservation_submit" type="submit">Submit</button>
     <input type = "reset" class="btn btn-danger">
-    <a href = "reservation-manage.php">click</a>
     </form>
 </main>
 
