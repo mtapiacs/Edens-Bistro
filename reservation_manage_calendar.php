@@ -79,9 +79,9 @@ require "./includes/dbConnect.php";
                 if(confirm("You sure you want to remove")){
                     var id = event.id;
                     $.ajax({
-                        url:"delete.php",
+                        url:"./includes/calendar-delete.php",
                         type:"POST",
-                        data:{id:id},
+                        data:{reservation_id:id},
                         success:function(){
                             calendar.fullCalendar('refetchEvents');
                             alert("Event deleted");
