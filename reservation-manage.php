@@ -31,8 +31,8 @@ include_once "./includes/header.php";
                                     <th class = 'res-th'>Name:</th>
                                     <th class = 'res-th'>Room:</th>
                                     <th class = 'res-th'>Guests:</th>
-                                    <th class = 'res-th'>Time:</th>
-                                    <th class = 'res-th'>Date:</th>
+                                    <th class = 'res-th'>Start Event:</th>
+                                    <th class = 'res-th'>End Event:</th>
                                     <th class = 'res-th'>Phone Number:</th>
                                     <th class = 'res-th'>Comments:</th>
 
@@ -42,8 +42,8 @@ include_once "./includes/header.php";
                                     <td class = 'res-td'><h5 class = 'res-records'>".$row['name']."</h5></td>
                                     <td class = 'res-td'><h5 class = 'res-records'>".$row['room']."</h5></td>
                                     <td class = 'res-td'><h5 class = 'res-records'>".$row['num_people']."</h5></td>
-                                    <td class = 'res-td'><h5 class = 'res-records'>".$row['reservation_time']."</h5></td>
-                                    <td class = 'res-td'><h5 class = 'res-records'>".$row['reservation_date']."</h5></td>
+                                    <td class = 'res-td'><h5 class = 'res-records'>".$row['start_event']."</h5></td>
+                                    <td class = 'res-td'><h5 class = 'res-records'>".$row['end_event']."</h5></td>
                                     <td class = 'res-td'><h5 class = 'res-records'>".$row['phone_number']."</h5></td>
                                     <td class = 'res-td'><h5 class = 'res-records'>".$row['comments_questions']."</h5></td>
                                 </tr>
