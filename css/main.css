@@ -152,6 +152,11 @@
     width: 100%;
  }
  
+ .table-header {
+   color: #902923 !important;
+   font-weight: bold !important;
+ }
+ 
  .table-borderless th {
     color: #902923 !important;
     font-weight: bold !important;
@@ -180,10 +185,6 @@
  .takeout {
     font-weight: bold;
  }
- 
- .search-table-header !i {
-    color: #902923 !important;
-}
  
  /*** Reservation and Calender ***/
  .space-buttons {

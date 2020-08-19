@@ -67,8 +67,8 @@ if (isset($_POST["search-form"])) {
     </form>
 
    <!--Displaying search results-->
-   <h4 class="search-table-header" style="<?php echo $resultsEmpty ? 'display: none;' : '' ?>">Search Results</h4>
    <div id="search-table" class="<?php echo $showSearchTable ? '' : 'hide-menu-table' ?>">
+      <h4 class="table-header" style="<?php echo $resultsEmpty ? 'display: none;' : '' ?>">Search Results</h4>
       <table class='table table-borderless' style="<?php echo $resultsEmpty ? "display: none;" : '' ?>">
          <thead>
             <tr>
@@ -79,32 +79,28 @@ if (isset($_POST["search-form"])) {
          </thead>
          <tbody>
             <?php
-               
-            foreach ($results as $row) {
-                echo "<tr>
-                            <td>{$row['name']}</td>
-                            <td>{$row['description']}</td>
-                            <td>{$row['price']}</td>
+               foreach ($results as $row) {
+                  echo "<tr>
+                           <td>{$row['name']}</td>
+                           <td>{$row['description']}</td>
+                           <td>{$row['price']}</td>
                         </tr>";
-            }
+               }
             ?>
          </tbody>
       </table>
    </div>
 
+   <!--Checking if there are any search results-->
    <?php
-
     if (isset($resultsEmpty) && $resultsEmpty) {
-        echo "No results";
+        echo "<h5 class='table-header'> Search Results </h5>No results :(  Please try again. <br>";
     }
-    
     ?>
-   
-   <div class="space-between"></div>
    
    <!--Displaying breakfast menu description-->
    <div class="menucontent" id="breakfast">
-      <h5 class="table-header">Breakfast Items</h5>
+      <h5 class="table-header">Breakfast Menu</h5>
       <?php
          require "./includes/dbConnect.php";
          $result = mysqli_query($conn, "SELECT category_desc FROM categories WHERE category_id = 8");
@@ -130,6 +126,10 @@ if (isset($_POST["search-form"])) {
          <tbody>
             <tr>
                <?php
+                  $loggedin = false;
+                  if((isset($_SESSION["userId"]))) {
+                     $loggedin = true;
+                  }
                   require "./includes/dbConnect.php";
                   $result = mysqli_query($conn, "SELECT item_id, item_name, item_price, item_desc, take_out FROM menu WHERE item_category = 8;");
                   if (mysqli_num_rows($result) > 0) {
@@ -152,7 +152,7 @@ if (isset($_POST["search-form"])) {
    
    <!--Displaying lunch menu description -->
    <div id="lunch" class="menucontent">
-      <h5 class="table-header">Lunch Items</h5>
+      <h5 class="table-header">Lunch Menu</h5>
       <?php
          require "./includes/dbConnect.php";
          $result = mysqli_query($conn, "SELECT category_desc FROM categories WHERE category_id = 9");
@@ -199,7 +199,7 @@ if (isset($_POST["search-form"])) {
 
    <!--Displaying dinner menu description-->
    <div id="dinner" class="menucontent">
-      <h5 class="table-header">Dinner Items</h5>
+      <h5 class="table-header">Dinner Menu</h5>
 
       <?php
          require "./includes/dbConnect.php";
@@ -247,7 +247,7 @@ if (isset($_POST["search-form"])) {
 
    <!--Displaying side menu items-->
    <div id="sides" class="menucontent">
-      <h5 class="table-header">Side Items</h5>
+      <h5 class="table-header">Sides Menu</h5>
       <table class="table table-borderless">
          <thead>
             <tr>
@@ -280,7 +280,7 @@ if (isset($_POST["search-form"])) {
 
    <!--Displaying dessert menu items-->
    <div id="desserts" class="menucontent">
-      <h5 class="table-header">Dessert Items</h5>
+      <h5 class="table-header">Desserts Menu</h5>
       <table class="table table-borderless">
          <thead>
             <tr>
@@ -313,7 +313,7 @@ if (isset($_POST["search-form"])) {
 
    <!--Displaying drink menu items-->
    <div id="drinks" class="menucontent">
-      <h5 class="table-header">Drink Items</h5>
+      <h5 class="table-header">Drinks Menu</h5>
       <table class="table table-borderless">
          <thead>
             <tr>
@@ -343,7 +343,16 @@ if (isset($_POST["search-form"])) {
          </tbody>
       </table>
    </div>
-
+   
+   <?php 
+      if(!(isset($_SESSION["userId"]))) {
+         header("Location: login.php");
+         exit();
+      } else {
+         echo '<script>var loggedin = true; </script>';
+      }
+   ?>
+   
    <!--Displaying menu item description and add to cart functionality-->
    <div class="modal fade" id="addToCartModal" role="dialog">
       <div class="modal-dialog">
