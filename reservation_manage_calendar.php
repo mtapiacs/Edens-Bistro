@@ -50,7 +50,7 @@ require "./includes/dbConnect.php";
                 var title = event.title; //title
                 var id = event.id; //event id
                 $.ajax({
-                    url:"./includes/update-res.php", //points to the update file
+                    url:"./includes/calendar-update.php", //points to the update file
                     type:"POST", //with a POST method
                     data:{name:title,event_start:start, event_end:end,reservation_id:id}, //items used for post
                     success:function(){ //when update is successful
@@ -66,7 +66,7 @@ require "./includes/dbConnect.php";
                 var title = event.title; //gets the title of the event
                 var id = event.id; //gets the id
                 $.ajax({
-                    url:"./includes/update-res.php", //calls the update php file
+                    url:"./includes/calendar-update.php", //calls the update php file
                     type:"POST", //post method
                     data:{name:event.title,start_event:start, end_event:end,reservation_id:event.id}, //takes the data from the event and completes it in the update file
                     success:function(){

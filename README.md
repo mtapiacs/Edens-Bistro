@@ -8,7 +8,7 @@ Eden's bistro is a restaurant located in NYC!
 
 -   Daniel DeCarlo
 -   Miguel Tapia
--   Steph Tea
+-   Stephanie Tea
 -   Jonathan Wright
 
 ## Project Structure:
