@@ -2,6 +2,7 @@
 require "./includes/header.php";
 require "./includes/dbConnect.php";
 
+// Searches database for any items that match the search query
 if (isset($_POST["search-form"])) {
     require "./includes/dbConnect.php";
 
@@ -20,10 +21,17 @@ if (isset($_POST["search-form"])) {
         while (mysqli_stmt_fetch($stmt)) {
             $results[] = array("id" => $item_id, "name" => $item_name, "description" => $item_desc, "price" => $item_price, "takeout" => $take_out);
         }
-
+        
+        if (count($results) === 0) {
+            $resultsEmpty = true;
+        } else {
+            $resultsEmpty = false;
+        }
+        
         mysqli_stmt_close($stmt);
     }
     require "./includes/dbDisconnect.php";
+    
 }
 ?>
 
@@ -40,7 +48,8 @@ if (isset($_POST["search-form"])) {
         </div>
     </form>
 
-    <div id="search-table">
+   <!--Displays table of menu items from database-->
+   <div id="search-table">
         <table class='table'>
             <thead>
                 <tr>
@@ -96,7 +105,14 @@ if (isset($_POST["search-form"])) {
             </tbody>
         </table>
     </div>
+    
+   <?php
+    if (isset($resultsEmpty) && $resultsEmpty) {
+        echo "<h5 class='table-header'> Search Results </h5>No results :(  Please try again.<br>";
+    }
+    ?>
 
+   <!--Displays modal to modify menu item details-->
     <div class="modal fade" id="modifyItemModal" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -139,8 +155,6 @@ if (isset($_POST["search-form"])) {
                                 while ($row = mysqli_fetch_assoc($res)) {
                                     echo "<option value='{$row['c_id']}'>{$row['c_name']}</option>";
                                 }
-
-
                                 require "./includes/dbDisconnect.php";
                                 ?>
                             </select>
