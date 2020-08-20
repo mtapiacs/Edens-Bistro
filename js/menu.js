@@ -51,13 +51,13 @@ async function populateModal(itemId) {
  
 // Show item details only if user is logged in
 $('.menucontent a').click(function(e) {
-    if(!loggedin) {
-        e.preventDefault();
-        $('#addToCartModal').modal('show');
+   if(loggedin === true) {
+      e.preventDefault();
+      $('#addToCartModal').modal('show');
     }
-    else {
-        console.log(hi);
-        alert("Please login to see item details");
+   else {
+      document.getElementById("menu-link").href="#pleaselogin";
+      alert("Please login to see item details"); 
     }
 });
 
