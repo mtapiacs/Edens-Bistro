@@ -1,6 +1,6 @@
 <?php
 
-$connect = new PDO("mysql:host=localhost;dbname=cis431", "root",''); //connection
+$connect = new PDO("mysql:host=localhost;dbname=manhattanrc", "root",''); //connection
 
 if(isset($_POST["reservation_id"])){
     $query = "UPDATE reservations SET name =:name, start_event = :start_event, end_event = :end_event WHERE reservation_id = :id"; //query to update table when adjustments are made to calendar
