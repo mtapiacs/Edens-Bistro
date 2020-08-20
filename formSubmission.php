@@ -1,10 +1,11 @@
 <link rel="stylesheet" href="./css/main.css" />
 
 <?php
-include_once "./includes/header.php";
-?>
+$isAdminPage = true;
 
-<?php
+include_once "./includes/header.php";
+require "./includes/isAuthenticated.php";
+
 include_once "./includes/dbConnect.php";
 ?>
 
