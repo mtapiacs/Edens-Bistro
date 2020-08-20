@@ -24,54 +24,47 @@ $(".categories a").click(function (e) {
    }
  }
 
-// Get item details when each item is selected based on the id given
-async function populateModal(itemId, isEditModal = false) {
-   const response = await fetch(
-      `./api/menu/getItemDetails.php?itemId=${itemId}`,
-         {
-            method: "GET"
-         }
-   );
- 
-   // create a variable that contains the data from JSON
-   const data = await response.json();
-
-   if (isEditModal) {
-    document.getElementById("modal-item-title").value = data.name; // $("#menu-modal-title").val(data.name)
-    document.getElementById("modal-item-desc").value = data.desc;
-    document.getElementById("modal-item-price").value = data.price;
-    document.getElementById("modal-item-category").value = data.category;
-    document.getElementById("modal-item-id").value = data.id;
-
-    const takeoutRadios = $("[name='takeoutRadios']");
-
-    for (const elem of takeoutRadios) {
-        if (elem.value === 'Y' && data.takeout === 'Y') {
-            elem.checked = true;
-        } else if (elem.value === 'N' && data.takeout === 'N') {
-            elem.checked = true;
+ // Get item details when each item is selected based on the id given
+ async function populateModal(itemId, isEditModal = false) {
+    const response = await fetch(
+        `./api/menu/getItemDetails.php?itemId=${itemId}`,
+        {
+           method: "GET"
         }
-    }        $('#modifyItemModal').modal('show');
+  );
+
+  // create a variable that contains the data from JSON
+  const data = await response.json();
+
+    if (isEditModal) {
+       document.getElementById("modal-item-title").value = data.name; // $("#menu-modal-title").val(data.name)
+       document.getElementById("modal-item-desc").value = data.desc;
+       document.getElementById("modal-item-price").value = data.price;
+       document.getElementById("modal-item-category").value = data.category;
+       document.getElementById("modal-item-id").value = data.id;
+
+       const takeoutRadios = $("[name='takeoutRadios']");
+
+       for (const elem of takeoutRadios) {
+           if (elem.value === 'Y' && data.takeout === 'Y') {
+               elem.checked = true;
+           } else if (elem.value === 'N' && data.takeout === 'N') {
+               elem.checked = true;
+           }
+       }
+
+       $('#modifyItemModal').modal('show');
     } else {
         // Send corresponding item details to modal
-    document.getElementById("modal-item-title").textContent = data.name; // $("#menu-modal-title").val(data.name)
-    document.getElementById("modal-item-desc").textContent = data.desc;
-    document.getElementById("modal-item-price").textContent = data.price;
-    document.getElementById("modal-item-id").value = data.id;
-
-    // Show The Modal
-    $('#addToCartModal').modal('show');
+       document.getElementById("modal-item-title").textContent = data.name; // $("#menu-modal-title").val(data.name)
+       document.getElementById("modal-item-desc").textContent = data.desc;
+       document.getElementById("modal-item-price").textContent = data.price;
+       document.getElementById("modal-item-id").value = data.id;
+       
+       // Show The Modal
+       $('#addToCartModal').modal('show');
     }
- 
-   // Send corresponding item details to modal
-   document.getElementById("modal-item-title").textContent = data.name; // $("#menu-modal-title").val(data.name)
-   document.getElementById("modal-item-desc").textContent = data.desc;
-   document.getElementById("modal-item-price").textContent = data.price;
-   document.getElementById("modal-item-id").value = data.id;
-
-   // Show The Modal
-   $('#addToCartModal').modal('show');
- }
+}
 
  async function modifyMenuItem() {
     const itemId = $("#modal-item-id").val();
