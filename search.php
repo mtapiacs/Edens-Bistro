@@ -39,6 +39,7 @@ require "./includes/dbConnect.php";
                                     <p>".$row['event_end_date']."</p>
                         </div>
                     </div>";
+                    ?> </br> <?php
                 }
             } else {
                 echo "There are no results matching your search.";
