@@ -380,6 +380,10 @@ if (isset($_POST["search-form"])) {
 
 </main>
 
+<script>
+    // Show default menu when page is loaded
+    document.getElementById("defaultOpen").click();
+</script>
 <script type="text/javascript" src="./js/menu.js"></script>
 
 <?php
