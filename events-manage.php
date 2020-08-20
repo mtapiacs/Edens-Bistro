@@ -1,7 +1,8 @@
-<link rel="stylesheet" href="./css/main.css" />
-
 <?php
+$isAdminPage = true;
+
 include_once "./includes/header.php";
+require "./includes/isAuthenticated.php";
 ?>
 <!--Allows admin user to create a new event-->
 <main class="main-container">

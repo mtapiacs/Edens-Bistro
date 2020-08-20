@@ -56,7 +56,7 @@ $isLoggedIn = isset($_SESSION["userId"])
                 <li class="nav-item <?php echo $currentPage === "index.php" ? 'active' : '' ?>">
                     <a class="nav-link" href="./">Home <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item <?php echo $currentPage === "events.php" ? 'active' : '' ?>">
+                <li class="nav-item <?php echo ($currentPage === "events.php" || $currentPage === 'search.php') ? 'active' : '' ?>">
                     <a class="nav-link" href="events.php">Events</a>
                 </li>
                 <li class="nav-item <?php echo $currentPage === "menu.php" ? 'active' : '' ?>">

@@ -1,5 +1,9 @@
 <?php
+$isAdminPage = true;
+
 require "./includes/header.php";
+
+require "./includes/isAuthenticated.php";
 require "./includes/dbConnect.php";
 
 // Searches database for any items that match the search query

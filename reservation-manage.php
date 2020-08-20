@@ -1,6 +1,10 @@
 <?php
-require "./includes/dbConnect.php";
+$isAdminPage = true;
+
 include_once "./includes/header.php";
+require "./includes/isAuthenticated.php";
+
+require "./includes/dbConnect.php";
 ?>
 <main class="main-container">
 
