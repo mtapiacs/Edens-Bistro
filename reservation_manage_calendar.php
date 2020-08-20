@@ -27,22 +27,22 @@ require "./includes/dbConnect.php";
             selectable:true, //allows click and drag
             selectHelper: true, //placeholder for the event
             //inserted different actions
-            select: function(start,end,allDay){
-                var title = prompt("Enter Event Title"); //prompt appears
-                if(title){ //when a title is submitted
-                    var start = $.fullCalendar.formatDate(start, "Y-MM-DD:mm:ss"); //start date
-                    var end = $.fullCalendar.formatDate(end, "Y-MM-DD:mm:ss"); //end date
-                    $.ajax({ //ajax updates the page with out refreshing
-                        url:"insert.php", //insert the file
-                        type:"POST", //with a post method
-                        data:{title:title, start:start, end:end,test:test}, ///contains data within the prompt..variable names for post method
-                        success:function(){ //when the process is successful
-                            calendar.fullCalendar('refetchEvents'); //refresh calendar
-                            alert("Event Added Successfully");
-                        }
-                    })
-                }
-            },
+            // select: function(start,end,allDay){
+            //     var title = prompt("Enter Event Title"); //prompt appears
+            //     if(title){ //when a title is submitted
+            //         var start = $.fullCalendar.formatDate(start, "Y-MM-DD:mm:ss"); //start date
+            //         var end = $.fullCalendar.formatDate(end, "Y-MM-DD:mm:ss"); //end date
+            //         $.ajax({ //ajax updates the page with out refreshing
+            //             url:"insert.php", //insert the file
+            //             type:"POST", //with a post method
+            //             data:{title:title, start:start, end:end,test:test}, ///contains data within the prompt..variable names for post method
+            //             success:function(){ //when the process is successful
+            //                 calendar.fullCalendar('refetchEvents'); //refresh calendar
+            //                 alert("Event Added Successfully");
+            //             }
+            //         })
+            //     }
+            // },
             editable: true,
             eventResize:function(event){ //function that updates the event when resized
                 var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD:mm:ss");//start
