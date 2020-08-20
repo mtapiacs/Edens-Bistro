@@ -60,9 +60,12 @@ $(".categories a").click(function (e) {
        document.getElementById("modal-item-desc").textContent = data.desc;
        document.getElementById("modal-item-price").textContent = data.price;
        document.getElementById("modal-item-id").value = data.id;
+
+        if (loggedIn) {
+            // Show The Modal
+            $('#addToCartModal').modal('show');
+        }
        
-       // Show The Modal
-       $('#addToCartModal').modal('show');
     }
 }
 
@@ -108,14 +111,18 @@ $(".categories a").click(function (e) {
         alert("Error");
     }
 }
- 
+
+var loggedIn = false;
+
 // Show item details only if user is logged in
 $('.menucontent a').click(function(e) {
    if(loggedin === true) {
+      loggedIn = true;
       e.preventDefault();
       $('#addToCartModal').modal('show');
     }
    else {
+      loggedIn = false;
       document.getElementById("menu-link").href="#pleaselogin";
       alert("Please login to see item details"); 
     }
