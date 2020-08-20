@@ -22,7 +22,7 @@ if(isset($_POST['submit'])) {
     //$result = mysqli_query($conn, $sql);
 
     if (mysqli_query($conn, $sql) === TRUE) {
-        echo "New event created successfully";
+        echo "New event created successfully.";
       } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
       }
@@ -30,14 +30,65 @@ if(isset($_POST['submit'])) {
     //echo $result;
     //echo "Event added succesfully to database.";
     //echo $event_name, $event_desc, $event_time, $event_start_date, $event_end_date;
-} else {
-    echo "There was a problemo.";
 }
 ?>
 
-<a href = "events-manage.php">Return to Add Event</a>
+<?php
+/*if(isset($_POST['submit-edit'])) {
+    $event_name = $_POST['event_name'];
+    $event_desc = $_POST['event_desc'];
+    $event_time = $_POST['event_time'];
+    $event_start_date = $_POST['event_start_date'];
+    $event_end_date = $_POST['event_end_date'];
+
+    $sql = "ALTER TABLE events (event_name, event_desc, event_time, event_start_date, event_end_date) VALUES ('$event_name', '$event_desc', '$event_time', '$event_start_date', '$event_end_date')";
+
+    //$result = mysqli_query($conn, $sql);
+
+    if (mysqli_query($conn, $sql) === TRUE) {
+        echo "Event altered successfully.";
+      } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+      }
+
+    //echo $result;
+    //echo "Event added succesfully to database.";
+    //echo $event_name, $event_desc, $event_time, $event_start_date, $event_end_date;
+}*/
+?>
+
+<?php
+if(isset($_POST['submit-remove'])) {
+    $event_name = $_POST['event_name'];
+    $event_desc = $_POST['event_desc'];
+    $event_time = $_POST['event_time'];
+    $event_start_date = $_POST['event_start_date'];
+    $event_end_date = $_POST['event_end_date'];
+
+    $sql = "DELETE FROM events WHERE (event_name, event_desc, event_time, event_start_date, event_end_date) = ('$event_name', '$event_desc', '$event_time', '$event_start_date', '$event_end_date')";
+
+    //$result = mysqli_query($conn, $sql);
+
+    if (mysqli_query($conn, $sql) === TRUE) {
+        echo "Event altered successfully.";
+      } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+      }
+
+    //echo $result;
+    //echo "Event added succesfully to database.";
+    //echo $event_name, $event_desc, $event_time, $event_start_date, $event_end_date;
+}
+?>
+
+<a href = "events-manage.php">Return Event manage page.</a>
 
 </main>
+
+<?php
+  include_once "./includes/dbDisconnect.php";
+?>
+
 <?php
 include_once "./includes/footer.php";
 ?>

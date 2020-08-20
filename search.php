@@ -12,35 +12,43 @@ require "./includes/dbConnect.php";
 <h1>Events matching your search:</h1>
 <div>
     <?php
-    
+    //Used bootstrap for the card CSS
         if(isset($_POST['submit-search'])) {
             
             $search = mysqli_real_escape_string($conn, $_POST['search']);
-            //echo $search;
+            //Queries the DB to find the event searched for and it associated information
             $sql = "SELECT * FROM events WHERE MATCH(event_name, event_desc) AGAINST ('$search' IN NATURAL LANGUAGE MODE)";
-            //echo $sql;
             $result = mysqli_query($conn, $sql);
-            //echo $conn -> error;
-            //echo $result;
             $queryResult = mysqli_num_rows($result);
-            //echo $queryResult;
 
             if ($queryResult > 0) {
-                echo "There are ".$queryResult." results";
+                echo "There are ".$queryResult." results.";
+                ?> <a href = "events.php">Return to Events</a> <?php
                 while ($row = mysqli_fetch_assoc($result)) {
-                    echo "<div>
-                    <h3>".$row['event_name']."</h3>
-                    <p>".$row['event_desc']."</p>
-                    <p>Starts: ".$row['event_start_date']."</p>
-                    <p>".$row['event_time']."</p>
-                    <p>Ends: ".$row['event_end_date']."</p>
-                  </div>";
+                    echo 
+                    "<div class='card' style='width: 18rem;' >
+                        <div class='card-body'>
+                            <h5 class='card-title'>".$row['event_name']."</h5>
+                                <h6 class='card-subtitle mb-2 text-muted'>".$row['event_start_date']."</h6>
+                                    <p class='card-text'>".$row['event_desc']."</p>
+                                        Starts:
+                                    <p>".$row['event_start_date']."</p>
+                                        At:
+                                    <p>".$row['event_time']."</p>
+                                        Ends:
+                                    <p>".$row['event_end_date']."</p>
+                        </div>
+                    </div>";
                 }
             } else {
                 echo "There are no results matching your search.";
             }
         }
     ?>
-    <a href = "events.php">Return to Events</a>
+    </br>
 </div>
 </main>
+
+<?php
+  include_once "./includes/dbDisconnect.php";
+?>
