@@ -1,12 +1,15 @@
 <?php
 
+// Get Client Input
 $json = file_get_contents("php://input");
 $postObj = json_decode($json);
 
+// Based On Type Determine If Validation Or Register
 $type = $_GET["type"];
 
 switch ($type) {
     case "REGISTER":
+        // Reply Error If All Values Are Not Legitimate
         if (!allPagesValid()) {
             $response = array("type" => "FAIL", "message" => "You have an invalid value");
             header('Content-type: application/json');
@@ -14,6 +17,7 @@ switch ($type) {
             break;
         }
 
+        // Get All Values From Client
         $firstName = $postObj->firstName;
         $lastName = $postObj->lastName;
         $email = $postObj->email;
@@ -30,7 +34,7 @@ switch ($type) {
 
         require "../../includes/dbConnect.php";
 
-        // NOTE: Prepared Statements Used Inside Stored Procedure. The Procedure Leverages The Power Of Transactions.
+        // NOTE: Prepared Statements Also Used Inside Stored Procedure. The Procedure Leverages The Power Of Transactions.
         $stmt = mysqli_prepare($conn, "CALL RegisterUser(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
         mysqli_stmt_bind_param($stmt, "sssssssssss", $addressLineMain, $addressLineSecondary, $city, $state, $zip, $firstName, $lastName, $email, $phone, $password, $username);
 
@@ -49,6 +53,7 @@ switch ($type) {
         break;
 
     case "VALIDATE":
+        // Validate Independent Pages
         $page = (int)$_GET["page"];
 
         if ($page === 1) {
@@ -69,7 +74,7 @@ switch ($type) {
         echo json_encode($response);
 }
 
-//***************** Validation *****************//
+//***************** Validation Functions *****************//
 // General / Contact Info
 function validatePage1()
 {
@@ -96,7 +101,7 @@ function validatePage1()
 // Addresses
 function validatePage2()
 {
-    // TODO: Use Regex For Common Addresses
+    // TODO FUTURE: Use Regex For Common Addresses
     global $postObj;
 
     $addressLineMain = $postObj->addressLineMain;
@@ -148,6 +153,7 @@ function hashPassword($incomingPassword)
 
 function checkUniqueUsernameOrEmail($value)
 {
+    // Check If SQL Query Returns Any Values
     require "../../includes/dbConnect.php";
 
     $stmt = mysqli_stmt_init($conn);
@@ -171,6 +177,7 @@ function checkUniqueUsernameOrEmail($value)
 
 function allPagesValid()
 {
+    // Call Helper Validation Functions For Each Page Or Sections
     $vP1 = validatePage1();
     $vP2 = validatePage2();
     $vP3 = validatePage3();

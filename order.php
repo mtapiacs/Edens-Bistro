@@ -6,6 +6,7 @@ include_once "./includes/header.php";
 include_once "./includes/helpers/main.php";
 
 if (isset($_POST["clean-cart"])) {
+    // Clears Cart
     $_SESSION["cart"] = array();
 } else if (isset($_POST["process-order"])) {
     // General Data
@@ -62,6 +63,8 @@ if (isset($_POST["clean-cart"])) {
 
             // Clear Cart
             $_SESSION["cart"] = array();
+
+            $orderProcessed = true;
         } else {
             mysqli_rollback($conn);
 
@@ -75,7 +78,9 @@ if (isset($_POST["clean-cart"])) {
 ?>
 
 <main class="main-container">
-    <h2 class="page-header">Order</h2>
+    <div class="text-center">
+        <h2 class="d-inline-block" data-toggle="tooltip" data-placement="bottom" title="Click item to modify it!">Order</h2>
+    </div>
     <div class="row">
         <?php
         $cart = $_SESSION["cart"];
@@ -219,32 +224,50 @@ if (isset($_POST["clean-cart"])) {
         </div>
     </div>
 
-    <!-- <hr>
-    <h3 class="mb-3">Factory Starts Here 😂 | Will Not Be In Production</h3>
+    <?php
 
-    < ?php
-    require "./includes/dbConnect.php";
+    // Toggle Factory Or Not - Used For Testing
+    $factoryActive = false;
 
-    $sql = "SELECT * FROM menu;";
-    $result = mysqli_query($conn, $sql);
+    if ($factoryActive) {
+        echo  "<hr>";
+        echo "<h3 class='mb-3'>Factory Starts Here 😂 | Will Not Be In Production</h3>";
 
-    if (mysqli_num_rows($result) > 0) {
-        while ($row = mysqli_fetch_assoc($result)) {
-            echo "<div class='mb-3'>";
-            echo    "<h4>{$row['item_name']} - {$row['item_price']}</h4><input class='form-control w-50 d-inline-block mr-2' id='{$row['item_id']}-qty' type='number'/><button class='btn btn-site-main' onClick='addToCart({$row['item_id']})'>Add Item</button>";
-            echo "</div>";
+        require "./includes/dbConnect.php";
+
+        $sql = "SELECT * FROM menu;";
+        $result = mysqli_query($conn, $sql);
+
+        if (mysqli_num_rows($result) > 0) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                echo "<div class='mb-3'>";
+                echo    "<h4>{$row['item_name']} - {$row['item_price']}</h4><input class='form-control w-50 d-inline-block mr-2' id='{$row['item_id']}-qty' type='number'/><button class='btn btn-site-main' onClick='addToCart({$row['item_id']})'>Add Item</button>";
+                echo "</div>";
+            }
+        } else {
+            echo "No results";
         }
-    } else {
-        echo "No results";
+
+        require "./includes/dbDisconnect.php";
+
+        outputSession();
     }
 
-    require "./includes/dbDisconnect.php";
-
-    outputSession();
-
-    ?> -->
+    ?>
 </main>
+<script>
+    // Activates Tooltips
+    $(function() {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
 
+    // Alerts Successful Process
+    <?php
+    if (isset($orderProcessed)) {
+        echo "alert('Order processed!')";
+    }
+    ?>
+</script>
 
 <?php
 include_once "./includes/footer.php";

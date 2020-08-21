@@ -3,223 +3,222 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
- }
- 
- body {
+}
+
+body {
     font-family: "Rubik", sans-serif;
     overflow-y: scroll;
- }
- 
- /*** REUSABLE CLASSES ***/
- .main-container {
+}
+
+/*** REUSABLE CLASSES ***/
+.main-container {
     max-width: 1250px;
     width: 90%;
     margin: 0 auto;
     padding: 5rem 0 0 0;
- }
- 
- /* For Alerts */
- .notice {
+}
+
+/* For Alerts */
+.notice {
     width: 90%;
     max-width: 500px;
     margin: 2em auto 0 auto;
- }
- 
- .bg-main-green {
+}
+
+.bg-main-green {
     background-color: #034c3c;
- }
- 
- /* Colors */
- .color-primary {
+}
+
+/* Colors */
+.color-primary {
     color: #034c3c;
- }
- 
- .color-secondary {
+}
+
+.color-secondary {
     color: #b1b1b1;
- }
- 
- .color-final {
+}
+
+.color-final {
     color: #902923;
- }
- 
- /* Buttons */
- .btn-site-main {
+}
+
+/* Buttons */
+.btn-site-main {
     color: white !important;
     background-color: #034c3c !important;
     border-color: #034c3c !important;
- }
- 
- /* A smaller button of the main button */
- .btn-sm {
+}
+
+/* A smaller button of the main button */
+.btn-sm {
     color: white !important;
     background-color: #034c3c !important;
     border-color: #034c3c !important;
- }
- 
- /* Large button design */
- .btn-lg {
+}
+
+/* Large button design */
+.btn-lg {
     color: white !important;
     background-color: #034c3c !important;
     border-color: #034c3c !important;
- }
- 
- /* Button with primary color and same size formatting */
- .btn-primary-color {
+}
+
+/* Button with primary color and same size formatting */
+.btn-primary-color {
     color: white !important;
     background-color: #034c3c !important;
     border-color: #034c3c !important;
- }
- 
- /* Button with the secondary color */
- .btn-secondary-color {
+}
+
+/* Button with the secondary color */
+.btn-secondary-color {
     color: white !important;
     background-color: #902923 !important;
     border-color: #902923 !important;
- }
- 
- /* Typography */
- .page-header {
+}
+
+/* Typography */
+.page-header {
     text-align: center;
     font-weight: 300;
- }
- 
- .lower-weight {
+}
+
+.lower-weight {
     font-weight: 300;
- }
- 
- /*** HOME ***/
- .carousel-image {
+}
+
+/*** HOME ***/
+.carousel-image {
     height: 500px;
     object-fit: cover;
     object-position: 50% 50%;
- }
- 
- /* Additional CSS Properties For Better View */
- .carousel-caption {
+}
+
+/* Additional CSS Properties For Better View */
+.carousel-caption {
     background-color: rgba(0, 0, 0, 0.6);
     border-radius: 12px;
- }
- 
- .home-info {
+}
+
+.home-info {
     text-align: justify;
- }
- 
- /*** REGISTER ***/
- .form-container {
+}
+
+/*** REGISTER ***/
+.form-container {
     width: 90%;
     max-width: 500px;
- }
- 
- .btn-inv {
+}
+
+.btn-inv {
     visibility: hidden;
- }
- 
- /*** ORDER ***/
- .order-item:hover {
+}
+
+/*** ORDER ***/
+.order-item:hover {
     cursor: pointer;
     background-color: #f4f4f4;
- }
- 
- /*** MANAGE ***/
- .manage-index-box {
+}
+
+/*** MANAGE ***/
+.manage-index-box {
     width: 90%;
     max-width: 900px;
     margin: 0 auto;
- }
- 
- /*** Menu ***/
- .hide-menu-table {
-     display: none;
- }
- 
- /* Menu categories */
- .categories a {
+}
+
+/*** Menu ***/
+.hide-menu-table {
+    display: none;
+}
+
+/* Menu categories */
+.categories a {
     float: left;
     cursor: pointer;
     padding: 0 4px 0 2px;
     font-size: 1em;
     color: #000 !important;
- }
- 
- .categories a.active {
+}
+
+.categories a.active {
     font-weight: bold !important;
     color: #902923 !important;
- }
+}
 
- /* Menu Content & Tables */
- .menucontent {
+/* Menu Content & Tables */
+.menucontent {
     float: left;
     width: 100%;
- }
- 
- .table-header {
-   color: #902923 !important;
-   font-weight: bold !important;
- }
- 
- .table-borderless th {
+}
+
+.table-header {
+    color: #902923 !important;
+    font-weight: bold !important;
+}
+
+.table-borderless th {
     color: #902923 !important;
     font-weight: bold !important;
     border: 0 !important;
- }
- 
- .menucontent a:link,
- .menucontent a:visited,
- .menucontent a:hover,
- .menucontent td {
+}
+
+.menucontent a:link,
+.menucontent a:visited,
+.menucontent a:hover,
+.menucontent td {
     color: #030e11;
- }
- 
- .item-link:link,
- .item-link:visited,
- .item-link:hover {
+}
+
+.item-link:link,
+.item-link:visited,
+.item-link:hover {
     color: #000000;
- }
- 
- .desc {
+}
+
+.desc {
     font-size: 1em;
     font-style: italic;
     font-weight: bold;
- }
- 
- .takeout {
+}
+
+.takeout {
     font-weight: bold;
- }
- 
- /*** Reservation and Calender ***/
- .space-buttons {
+}
+
+/*** Reservation and Calender ***/
+.space-buttons {
     display: flex;
     justify-content: space-evenly;
- }
- 
- .reservation-results {
+}
+
+.reservation-results {
     list-style-type: none !important;
     display: inline-block !important;
- }
- 
- .manage-res-table {
+}
+
+.manage-res-table {
     border-collapse: collapse;
     width: 100%;
- }
- 
- .res-td,
- .res-th {
+}
+
+.res-td,
+.res-th {
     border: 1px solid white;
     text-align: left;
     padding: 8px;
- }
- 
- .res-tr:nth-child(even) {
+}
+
+.res-tr:nth-child(even) {
     background-color: #034c3c;
- }
- 
- .res-records {
+}
+
+.res-records {
     color: white;
- }
- 
- .reservation-container {
+}
+
+.reservation-container {
     width: 1000px;
     background-color: white;
     padding: 30px;
- }
- 
+}

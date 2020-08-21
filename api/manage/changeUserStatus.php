@@ -1,4 +1,5 @@
 <?php
+// Simple RESTful API To Change Admin Status
 
 require "../../includes/dbConnect.php";
 

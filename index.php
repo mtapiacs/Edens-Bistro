@@ -1,7 +1,7 @@
 <?php
 include_once "./includes/header.php";
 
-
+// Get File And Convert It To Php Object (Associative Array)
 $string = file_get_contents("./1-home.json");
 $homeObj = json_decode($string, true);
 
@@ -18,6 +18,7 @@ $carouselItems = $homeObj["carousel"];
         <div class="carousel-inner">
             <?php
 
+            // Spit Out Carousel Items Dynamically
             foreach ($carouselItems as $k => $v) {
                 $active = $k === 0 ? 'active' : '';
 

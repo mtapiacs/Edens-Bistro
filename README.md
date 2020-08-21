@@ -28,7 +28,6 @@ Pages Located **HERE** At Root Level (_Ex: events.php_)
 -   [x] Create Boilerplate Including Pages
 -   [x] Clean up and finish login page, finish registration page, finish front landing (dynamic)
 -   [x] Add favicon
--   [ ] Download external libraries
 -   [x] Server side validation for registration
 
 ## Sources:

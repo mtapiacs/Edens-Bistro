@@ -1,6 +1,7 @@
 <?php
 include_once "./includes/header.php";
 
+// Show Registered Box
 $registered = isset($_GET["registered"]) ? true : false;
 
 if (isset($_POST["login-form"])) {
@@ -25,6 +26,7 @@ if (isset($_POST["login-form"])) {
 
     require "./includes/dbDisconnect.php";
 
+    // Verify Hash And User / Email
     $p_match = password_verify($p_in, $password);
     if (($u_in === $email || $u_in === $username) && $p_match) {
         if (session_status() == PHP_SESSION_NONE) {
@@ -36,7 +38,7 @@ if (isset($_POST["login-form"])) {
         $_SESSION["cart"] = array();
         header("Location: index.php");
     } else {
-        $error = array("message" => "Wrong Username Or Password!", "wrongUsername" => $username, "wrongPassword" => $p_in);
+        $error = array("message" => "Wrong Username Or Password!", "wrongUsername" => $u_in, "wrongPassword" => $p_in);
     }
 }
 ?>

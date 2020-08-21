@@ -25,17 +25,16 @@ if (isset($_POST["search-form"])) {
         while (mysqli_stmt_fetch($stmt)) {
             $results[] = array("id" => $item_id, "name" => $item_name, "description" => $item_desc, "price" => $item_price, "takeout" => $take_out);
         }
-        
+
         if (count($results) === 0) {
             $resultsEmpty = true;
         } else {
             $resultsEmpty = false;
         }
-        
+
         mysqli_stmt_close($stmt);
     }
     require "./includes/dbDisconnect.php";
-    
 }
 ?>
 
@@ -52,43 +51,25 @@ if (isset($_POST["search-form"])) {
         </div>
     </form>
 
-   <!--Displays table of menu items from database-->
-   <div id="search-table">
-        <table class='table'>
-            <thead>
-                <tr>
-                    <th scope='col'>Name</th>
-                    <th scope='col'>Description</th>
-                    <th scope='col'>Price</th>
-                    <th scope="col">Takeout</th>
-                    <th scope="col">Modify</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
+    <!--Displays table of menu items from database-->
+    <div id="search-table">
+        <div class="table-responsive">
+            <table class='table'>
+                <thead>
+                    <tr>
+                        <th scope='col'>Name</th>
+                        <th scope='col'>Description</th>
+                        <th scope='col'>Price</th>
+                        <th scope="col">Takeout</th>
+                        <th scope="col">Modify</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
 
-                if (isset($results)) {
-                    foreach ($results as $row) {
-                        echo "<tr>
-                                <td>{$row['name']}</td>
-                                <td>{$row['description']}</td>
-                                <td>{$row['price']}</td>
-                                <td>{$row['takeout']}</td>
-                                <td>
-                                    <button class=\"btn btn-site-main\" onclick='populateModal(\"{$row['id']}\", true)'>Modify</button>
-                                </td>
-                            </tr>";
-                    }
-                } else {
-                    require "./includes/dbConnect.php";
-
-                    $sql = "SELECT item_id AS id, item_name AS name, item_desc AS description, item_price AS price, take_out AS takeout FROM menu;";
-                    $res = mysqli_query($conn, $sql);
-
-                    if (mysqli_num_rows($res)) {
-                        while ($row = mysqli_fetch_assoc($res)) {
-                            echo
-                                "<tr>
+                    if (isset($results)) {
+                        foreach ($results as $row) {
+                            echo "<tr>
                                 <td>{$row['name']}</td>
                                 <td>{$row['description']}</td>
                                 <td>{$row['price']}</td>
@@ -99,24 +80,44 @@ if (isset($_POST["search-form"])) {
                             </tr>";
                         }
                     } else {
-                        echo "No results";
+                        require "./includes/dbConnect.php";
+
+                        $sql = "SELECT item_id AS id, item_name AS name, item_desc AS description, item_price AS price, take_out AS takeout FROM menu;";
+                        $res = mysqli_query($conn, $sql);
+
+                        if (mysqli_num_rows($res)) {
+                            while ($row = mysqli_fetch_assoc($res)) {
+                                echo
+                                    "<tr>
+                                <td>{$row['name']}</td>
+                                <td>{$row['description']}</td>
+                                <td>{$row['price']}</td>
+                                <td>{$row['takeout']}</td>
+                                <td>
+                                    <button class=\"btn btn-site-main\" onclick='populateModal(\"{$row['id']}\", true)'>Modify</button>
+                                </td>
+                            </tr>";
+                            }
+                        } else {
+                            echo "No results";
+                        }
+
+                        require "./includes/dbDisconnect.php";
                     }
 
-                    require "./includes/dbDisconnect.php";
-                }
-
-                ?>
-            </tbody>
-        </table>
+                    ?>
+                </tbody>
+            </table>
+        </div>
     </div>
-    
-   <?php
+
+    <?php
     if (isset($resultsEmpty) && $resultsEmpty) {
-        echo "<h5 class='table-header'> Search Results </h5>No results :(  Please try again.<br>";
+        echo "<h5 class='text-center color-primary'> Search Results</h5><p class='text-center'>No results :(  Please try again.</p>";
     }
     ?>
 
-   <!--Displays modal to modify menu item details-->
+    <!--Displays modal to modify menu item details-->
     <div class="modal fade" id="modifyItemModal" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">

@@ -6,6 +6,7 @@ include_once "./includes/header.php";
 require "./includes/isAuthenticated.php";
 
 if (isset($_POST['update-index-columns'])) {
+    // Update Index Columns
     $string = file_get_contents("./1-home.json");
     $homeObj = json_decode($string, true);
 
@@ -34,6 +35,7 @@ if (isset($_POST['update-index-columns'])) {
 };
 
 if (isset($_POST["update-carousel-items"])) {
+    // Update Carousel Items
     $string = file_get_contents("./1-home.json");
     $homeObj = json_decode($string, true);
 
@@ -65,6 +67,7 @@ if (isset($_POST["update-carousel-items"])) {
 }
 
 if (isset($_POST['add-carousel-item'])) {
+    // Adding Carousel Item
     $string = file_get_contents("./1-home.json");
     $homeObj = json_decode($string, true);
 

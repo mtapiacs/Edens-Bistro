@@ -1,9 +1,11 @@
 <?php
 
+// Start Session If Not Already Started
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+// Check If Admin
 $isAdmin = isset($_SESSION["isAdmin"]) ? $_SESSION["isAdmin"] : null;
 $currentPage = basename($_SERVER["PHP_SELF"]);
 

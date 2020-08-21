@@ -1,8 +1,10 @@
 <?php
 
+// Get Input From Body
 $json = file_get_contents("php://input");
 $postObj = json_decode($json);
 
+// Allow Add To Cart If LoggedIn
 session_start();
 
 if (!(isset($_SESSION["userId"]))) {
@@ -16,8 +18,9 @@ if (!(isset($_SESSION["userId"]))) {
 $item_id = (int)$postObj->itemId;
 $quantity = (int)$postObj->quantity;
 
-$item_in_cart = isset($_SESSION["cart"][$item_id]);
+$item_in_cart = isset($_SESSION["cart"][$item_id]); // Checks If item In Cart
 
+// If Cart In Item, Update Quantity Else Add Item
 if ($item_in_cart) {
     $currentQty = $_SESSION["cart"][$item_id]["quantity"];
 
@@ -31,7 +34,7 @@ if ($item_in_cart) {
     header("Content-Type: application/json");
     echo json_encode($response);
 } else {
-    $desc = getItemDesc($item_id);
+    $desc = getItemDesc($item_id); // Get Item Details
     $total = $desc["price"] * $quantity;
     $newItem = array("name" => $desc["name"], "quantity" => $quantity, "price" => $desc["price"], "total" => $total);
 

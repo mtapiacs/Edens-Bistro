@@ -1,5 +1,6 @@
 // *************** REUSABLE *************** //
 const parseInput = type => {
+    // Takes Phone Input And Parses It With Dashes
     if (type === "PHONE") {
         const phoneElem = $("#phone");
         const phoneElemVal = phoneElem.val();
@@ -17,6 +18,7 @@ const parseInput = type => {
 
 // *************** REGISTER *************** //
 const submitRegister = async () => {
+    // Get All Key Values From Form
     const fields = $("input");
     const postObj = {};
 
@@ -24,6 +26,7 @@ const submitRegister = async () => {
         postObj[field.id] = field.value;
     }
 
+    // Calls RESTful Api
     const response = await fetch(
         "./api/register/registerUser.php?type=REGISTER",
         {
@@ -40,12 +43,12 @@ const submitRegister = async () => {
     if (data.message === "SUCCESS") {
         location.replace("./login.php?registered");
     } else {
-        // TODO: Send to register
-        alert("There was a problemo");
+        alert("Problem Registering!");
     }
 };
 
 const handleNextPage = async (event, currentPage) => {
+    // OnEach Subsequent Page -> Validate. At Last Page SubmitRegister()
     event.preventDefault();
 
     const validationData = await validateSection(currentPage);
@@ -68,6 +71,7 @@ const handleNextPage = async (event, currentPage) => {
 };
 
 const handleLastPage = currentPage => {
+    // Manages Switches Between Pages
     $("#alert-box").hide();
     $(`#sec-${currentPage}`).hide();
 
@@ -81,6 +85,7 @@ const handleLastPage = currentPage => {
 
 //* Validate Inputs And Store In Server
 const validateSection = async page => {
+    // Validates Every Section Against The Server
     let data;
     if (page === 1) {
         const firstName = $("#firstName").val();
@@ -151,6 +156,7 @@ const validateSection = async page => {
 };
 
 const checkPasswordMatch = () => {
+    // Checks If Passwords Match
     const passwordElem = $("#password");
     const cPasswordElem = $("#confirmPassword");
 
@@ -169,6 +175,7 @@ const addToCart = async () => {
     const itemId = $("#modal-item-id").val();
     const quantity = $("#item-qty").val();
 
+    // Adds To Cart Via Rest
     const response = await fetch("./api/cart/addToCart.php", {
         method: "POST",
         headers: {
@@ -185,6 +192,7 @@ const addToCart = async () => {
 };
 
 const modifyCart = async (action, itemId, quantity) => {
+    // Action Show Sets Modal Values & Shows
     if (action === "SHOW") {
         // Exit Early As Just Populating Modal
         $("#modifyItemQty").val(quantity);
@@ -198,6 +206,7 @@ const modifyCart = async (action, itemId, quantity) => {
     itemId = $("#modifyItemId").val();
     quantity = $("#modifyItemQty").val();
 
+    // Dynamically Set Request Body Based On Action
     const requestBody = action === "AMOUNT" ? { itemId, quantity } : { itemId };
 
     const response = await fetch(`./api/cart/modifyCart.php?action=${action}`, {
@@ -214,6 +223,7 @@ const modifyCart = async (action, itemId, quantity) => {
 
 // *************** MANAGE *************** //
 const changeAdminStatus = async event => {
+    // Change Admin Status Via Rest
     const userId = event.target.value;
     const isAdmin = event.target.checked;
 

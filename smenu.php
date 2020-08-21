@@ -4,6 +4,7 @@ include_once "./includes/header.php";
 
 <?php
 
+// NOTE: Example Search Script
 // SOURCES: 
 // https://www.php.net/manual/en/mysqli.quickstart.prepared-statements.php
 // https://www.php.net/manual/en/mysqli-stmt.bind-result.php

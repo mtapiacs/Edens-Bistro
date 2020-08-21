@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-//* Initializing Current Page Variable: https://stackoverflow.com/questions/13032930/how-to-get-current-php-page-name
+
+// Initializing Current Page Variable: https://stackoverflow.com/questions/13032930/how-to-get-current-php-page-name
 $currentPage = basename($_SERVER["PHP_SELF"]);
 
+// Start Session If Not Started
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+// Determine If User Is Admin And/Or Logged In
 $isAdmin = isset($_SESSION["isAdmin"]) ? $_SESSION["isAdmin"] : null;
 $isLoggedIn = isset($_SESSION["userId"])
 
@@ -23,6 +26,7 @@ $isLoggedIn = isset($_SESSION["userId"])
 
     <?php
 
+    // J.S Calendar Library Requires Different Libraries
     if ($currentPage === "reservation_calendar.php" || $currentPage === "reservation_manage_calendar.php") {
         echo '
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css" />
@@ -79,6 +83,7 @@ $isLoggedIn = isset($_SESSION["userId"])
 
                 <?php
                 if ($isLoggedIn && $isAdmin) {
+                    // Adds Admin Pages If Authenticated
                     $adminPages = array("orders-manage.php", "index-manage.php", "register-manage.php", "reservation-manage.php", "events-manage.php", "reservation_manage_calendar.php", "menu-manage.php");
                     $activeClass = in_array($currentPage, $adminPages) ? "active" : "";
                     echo "<li class='nav-item dropdown $activeClass'>

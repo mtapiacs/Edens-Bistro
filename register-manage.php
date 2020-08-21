@@ -1,5 +1,6 @@
 <?php
 
+// This Flag Removes Non Admin Users
 $isAdminPage = true;
 
 include_once "./includes/header.php";

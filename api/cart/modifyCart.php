@@ -1,9 +1,11 @@
 <?php
 
+// https://stackoverflow.com/questions/6249707/check-if-php-session-has-already-started
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+// Respond With Not Authenticated JSON
 if (!(isset($_SESSION["userId"]))) {
     $response = array("type" => "FAIL", "message" => "Not authenticated!");
     header("Content-Type: application/json");
@@ -11,9 +13,11 @@ if (!(isset($_SESSION["userId"]))) {
     exit();
 }
 
+// Get Input From Client
 $json = file_get_contents("php://input");
 $postObj = json_decode($json);
 
+// Route Based On Get Action
 $action = $_GET["action"];
 
 switch ($action) {
@@ -23,6 +27,7 @@ switch ($action) {
 
         $item_in_cart = isset($_SESSION["cart"][$itemId]);
 
+        // Modify Amount Based Through RESTs
         if ($item_in_cart) {
             $newQty = $quantity;
             $_SESSION["cart"][$itemId]["quantity"] = $newQty; // Set New Qty
@@ -47,6 +52,7 @@ switch ($action) {
         $item_in_cart = isset($_SESSION["cart"][$itemId]);
 
         if ($item_in_cart) {
+            // Unset Item From Session, Since Cart's Managed Over Session
             unset($_SESSION["cart"][$itemId]);
 
             $response = array("type" => "SUCCESS", "message" => "Item successfully removed");

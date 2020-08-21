@@ -5,6 +5,7 @@ require "../../includes/dbConnect.php";
 $json = file_get_contents("php://input");
 $postObj = json_decode($json);
 
+// Get All Values From Client Regarding A Menu Item
 $itemId = $postObj->itemId;
 $itemName = $postObj->itemName;
 $itemDesc = $postObj->itemDesc;
@@ -13,12 +14,14 @@ $itemTakeOut = $postObj->itemTakeout;
 $itemCategory = $postObj->itemCategory;
 $itemRemove = $postObj->itemRemove;
 
+// Dynamically Determine SQL Query Based On ItemRemove Flag
 $sqlUpdate = "UPDATE menu SET item_name = ?, item_desc = ?, item_price = ?, take_out = ?, item_category = ? WHERE item_id = ?;";
 $sqlDelete = "DELETE FROM menu WHERE item_id = ?;";
 $sql = $itemRemove ? $sqlDelete : $sqlUpdate;
 
 $stmt = mysqli_stmt_init($conn);
 if (mysqli_stmt_prepare($stmt, $sql)) {
+    // Select Bind Param Based On ItemRemove Flag
     if ($itemRemove) {
         mysqli_stmt_bind_param($stmt, "i", $itemId);
     } else {
